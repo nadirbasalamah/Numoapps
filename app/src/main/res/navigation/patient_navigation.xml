@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="nadirbasalamah.android.com.numoapps.patient.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_monitoring"
+        android:name="nadirbasalamah.android.com.numoapps.patient.ui.monitoring.MonitoringFragment"
+        android:label="@string/title_monitoring"
+        tools:layout="@layout/fragment_monitoring" />
+
+    <fragment
+        android:id="@+id/navigation_articles"
+        android:name="nadirbasalamah.android.com.numoapps.patient.ui.articles.ArticlesFragment"
+        android:label="@string/title_articles"
+        tools:layout="@layout/fragment_articles" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="nadirbasalamah.android.com.numoapps.patient.ui.settings.SettingFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
