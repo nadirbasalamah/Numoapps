@@ -1,19 +1,442 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_antropometry_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_antropometry_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/antropometry"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_body_weight_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/body_weight_sample"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_antropometry_title" />
+
+            <TextView
+                android:id="@+id/tv_body_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_body_weight_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_antropometry_title" />
+
+            <TextView
+                android:id="@+id/tv_bw_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/kg_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_body_weight"
+                app:layout_constraintTop_toBottomOf="@+id/tv_antropometry_title" />
+
+            <TextView
+                android:id="@+id/tv_body_height_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/body_height_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_body_weight_title" />
+
+            <TextView
+                android:id="@+id/tv_body_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_body_height_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_body_weight" />
+
+            <TextView
+                android:id="@+id/tv_bh_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/cm_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_body_height"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bw_unit" />
+
+            <TextView
+                android:id="@+id/tv_hc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/hc_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_body_height_title" />
+
+            <TextView
+                android:id="@+id/tv_hc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_hc_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_body_height_title" />
+
+            <TextView
+                android:id="@+id/tv_hc_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/cm_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_hc"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bh_unit" />
+
+            <TextView
+                android:id="@+id/tv_bmi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/bmi_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hc_title" />
+
+            <TextView
+                android:id="@+id/tv_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_bmi_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hc" />
+
+            <TextView
+                android:id="@+id/tv_bmi_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/empty_space"
+                app:layout_constraintStart_toEndOf="@+id/tv_bmi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hc_unit" />
+
+            <TextView
+                android:id="@+id/tv_bwi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/bwi_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bmi_title" />
+
+            <TextView
+                android:id="@+id/tv_bwi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_bwi_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bmi" />
+
+            <TextView
+                android:id="@+id/tv_bwi_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/empty_space"
+                app:layout_constraintStart_toEndOf="@+id/tv_bwi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bmi_unit" />
+
+            <TextView
+                android:id="@+id/tv_nut_status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/nutrition_status_title"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_antropometry_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                android:id="@+id/tv_nut_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/nut_status_sample"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_bw_unit"
+                app:layout_constraintTop_toBottomOf="@+id/tv_nut_status_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_interenvension_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_antropometry_data">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textSize="24sp"
+                android:id="@+id/tv_interenvension_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/interenvensi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_energy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/kebutuhan_energi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_interenvension_title" />
+
+            <TextView
+                android:id="@+id/tv_energy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_energy_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_interenvension_title" />
+
+            <TextView
+                android:id="@+id/tv_energy_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/energy_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_energy"
+                app:layout_constraintTop_toBottomOf="@+id/tv_interenvension_title" />
+
+            <TextView
+                android:id="@+id/tv_carbo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/carbo_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_energy_title" />
+
+            <TextView
+                android:id="@+id/tv_carbo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_carbo_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_energy" />
+
+            <TextView
+                android:id="@+id/tv_carbo_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/percent_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_carbo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_energy_unit" />
+
+            <TextView
+                android:id="@+id/tv_carbo_gram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/energy_gram_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_carbo_percent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_energy_unit" />
+
+            <TextView
+                android:id="@+id/tv_protein_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/protein_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_carbo_title" />
+
+            <TextView
+                android:id="@+id/tv_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_protein_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_carbo" />
+
+            <TextView
+                android:id="@+id/tv_protein_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/percent_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_protein"
+                app:layout_constraintTop_toBottomOf="@+id/tv_carbo_percent" />
+
+            <TextView
+                android:id="@+id/tv_protein_gram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/energy_gram_sample"
+                app:layout_constraintStart_toEndOf="@+id/tv_protein_percent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_carbo_gram" />
+
+            <TextView
+                android:id="@+id/tv_fat_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/fat_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_protein_title" />
+
+            <TextView
+                android:id="@+id/tv_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/number_sample"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_fat_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_protein" />
+
+            <TextView
+                android:id="@+id/tv_fat_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/percent_unit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_fat"
+                app:layout_constraintTop_toBottomOf="@+id/tv_protein_percent" />
+
+            <TextView
+                android:id="@+id/tv_fat_gram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/energy_gram_sample"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_fat_percent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_protein_gram" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_diet_type_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_interenvension_data">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_diet_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/diet_type_title"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/tv_diet_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/diet_type_sample"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_diet_type_title"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

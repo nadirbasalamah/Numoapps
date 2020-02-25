@@ -1,5 +1,6 @@
 package nadirbasalamah.android.com.numoapps.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -24,9 +25,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        userApiInterface = ApiClient.create()
+        btn_to_signup.setOnClickListener {
+            val intent = Intent(applicationContext,RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
         btn_login.setOnClickListener{
+            userApiInterface = ApiClient.create()
+
             username = et_username_login.text.toString()
             password = et_password_login.text.toString()
             postLogin = userApiInterface?.postLogin(username,password)
