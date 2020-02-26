@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/admin_navigation_home">
+
+    <fragment
+        android:id="@+id/admin_navigation_home"
+        android:name="nadirbasalamah.android.com.numoapps.admin.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_admin_home" />
+
+    <fragment
+        android:id="@+id/admin_navigation_settings"
+        android:name="nadirbasalamah.android.com.numoapps.admin.ui.settings.SettingFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_admin_setting" />
+</navigation>

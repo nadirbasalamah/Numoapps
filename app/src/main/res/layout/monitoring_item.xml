@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/monitoring_item"
     android:layout_gravity="center"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="4dp"
