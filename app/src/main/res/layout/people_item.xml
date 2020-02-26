@@ -35,27 +35,6 @@
             android:text="@string/full_name"
             card_view:layout_constraintStart_toEndOf="@+id/iv_people_logo"
             card_view:layout_constraintTop_toTopOf="@+id/iv_people_logo" />
-
-        <ImageButton
-            android:background="#FFFFFF"
-            android:id="@+id/ib_edit_people"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/tv_people_name"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:srcCompat="@drawable/ic_edit_blue_24dp" />
-
-        <ImageButton
-            android:id="@+id/ib_delete_people"
-            android:background="#FFFFFF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/ib_edit_people"
-            card_view:layout_constraintTop_toTopOf="@+id/ib_edit_people"
-            card_view:srcCompat="@drawable/ic_delete_blue_24dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

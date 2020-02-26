@@ -74,4 +74,12 @@
     <string name="nip_hint">NIP</string>
     <string name="old_password_hint">Password lama</string>
     <string name="new_password_hint">Password baru</string>
+    <string name="forget_password_title">LUPA PASSWORD</string>
+    <string name="title_activity_nutritionist">NutritionistActivity</string>
+    <string name="phone_number_title">Nomor Ponsel</string>
+    <string name="edit_keyword">EDIT</string>
+    <string name="delete_keyword">HAPUS</string>
+    <string name="title_hint">Judul</string>
+    <string name="description_hint">Deskripsi</string>
+    <string name="source_hint">Sumber</string>
 </resources>

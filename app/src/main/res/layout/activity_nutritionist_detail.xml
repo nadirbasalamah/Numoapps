@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.ui.nutritionists.NutritionistDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_nut_fullname_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/full_name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nut_detail_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:text="@string/full_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_fullname_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_fullname_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_nut_gender_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_fullname_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/gender"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_gender_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_gender_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_nut_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/address_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_gender_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/address_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_address_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_address_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_phonenumber_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/phone_number_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_address_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/phone_number_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_phonenumber_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_phonenumber_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_nut_birthdate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/birthdate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_phonenumber_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/birthdate_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_birthdate_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_birthdate_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_nut_email_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/email_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_birthdate_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/email_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_email_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_email_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_nip_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/nip_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_email_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_nut_detail_nip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/nip_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_nut_nip_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_nut_nip_title" />
+
+        <Button
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:id="@+id/btn_to_edit_nutritionist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/edit_keyword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nut_detail_nip" />
+
+    <Button
+        android:id="@+id/btn_delete_nutritionist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/delete_keyword"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_to_edit_nutritionist" />
+</androidx.constraintlayout.widget.ConstraintLayout>

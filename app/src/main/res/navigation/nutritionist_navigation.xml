@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nut_navigation_home">
+
+    <fragment
+        android:id="@+id/nut_navigation_home"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_nut_home" />
+
+    <fragment
+        android:id="@+id/nut_navigation_articles"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.articles.ArticleFragment"
+        android:label="@string/title_articles"
+        tools:layout="@layout/fragment_nut_article" />
+
+    <fragment
+        android:id="@+id/nut_navigation_settings"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.settings.SettingFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_nut_setting" />
+</navigation>

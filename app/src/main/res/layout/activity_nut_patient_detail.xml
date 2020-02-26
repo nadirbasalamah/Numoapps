@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nutritionist.ui.nutrition_records.PatientDetailActivity">
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_rm_number_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/rm_number_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_rm_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/rm_number_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_rm_number_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_rm_number_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_rm_nut_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/rmnut_number_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rm_number_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_rm_nut_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/rmnut_number_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_rm_nut_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_rm_nut_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_visitdate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/visitdate_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rm_nut_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_visitdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/visitdate_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_visitdate_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_visitdate_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_referral_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/referral_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_visitdate_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_referral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/referral_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_referral_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_referral_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_fullname_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/full_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_referral_title" />
+
+    <TextView
+        android:id="@+id/tv_detail_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:text="@string/full_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_fullname_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_fullname_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_gender_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fullname_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/gender"
+        app:layout_constraintStart_toEndOf="@+id/tv_gender_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_gender_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/address_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gender_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/address_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_address_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_address_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_phonenumber_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/phone_number_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/phone_number_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_phonenumber_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_phonenumber_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_birthdate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/birthdate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phonenumber_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/birthdate_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/tv_birthdate_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_birthdate_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_edu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/edu_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_birthdate_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_edu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/edu_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_edu_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_edu_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/job_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edu_title" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tv_detail_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/job_hint"
+        app:layout_constraintStart_toEndOf="@+id/tv_job_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_job_title" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:id="@+id/tv_religion_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/religion_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_job_title" />
+
+    <TextView
+        android:id="@+id/tv_detail_religion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/religion_hint"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_religion_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_religion_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
