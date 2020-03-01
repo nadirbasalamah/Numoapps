@@ -268,4 +268,18 @@
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/tv_religion_title"
         app:layout_constraintTop_toTopOf="@+id/tv_religion_title" />
+
+    <Button
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
+        android:id="@+id/btn_to_view_nutrecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/lihat_data_gizi_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_religion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".nutritionist.ui.nutrition_records.ViewInterenventionFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/tv_view_energi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:text="@string/energi_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_view_energi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_energi_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_energi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_keterangan_inter_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/keterangan_inter_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_energi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_keterangan_inter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_keterangan_inter_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_keterangan_inter_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_karbohidrat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/persen_karbohidrat_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_keterangan_inter_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_karbohidrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_persen_karbohidrat_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_persen_karbohidrat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_karbohidrat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gram_karbohidrat_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_persen_karbohidrat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_karbohidrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gram_karbohidrat_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gram_karbohidrat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_protein_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/persen_protein_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_gram_karbohidrat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_persen_protein_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_persen_protein_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_protein_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gram_protein_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_persen_protein_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gram_protein_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gram_protein_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_lemak_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/persen_lemak_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_gram_protein_title" />
+
+        <TextView
+            android:id="@+id/tv_view_persen_lemak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_persen_lemak_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_persen_lemak_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_lemak_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gram_lemak_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_persen_lemak_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gram_lemak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gram_lemak_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gram_lemak_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

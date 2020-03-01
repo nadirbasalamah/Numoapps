@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".nutritionist.ui.nutrition_records.ViewDietaryFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/tv_view_nafsu_makan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:text="@string/nafsu_makan_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_view_nafsu_makan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_nafsu_makan_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_nafsu_makan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_frekuensi_makan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/frekuensi_makan_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_nafsu_makan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_frekuensi_makan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_frekuensi_makan_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_frekuensi_makan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_alergi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/alergi_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_frekuensi_makan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_alergi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_alergi_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_alergi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_makanan_kesukaan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/makanan_kesukaan_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_alergi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_makanan_kesukaan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_makanan_kesukaan_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_makanan_kesukaan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_nasi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_nasi_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_makanan_kesukaan_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_nasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_nasi_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_nasi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lauk_hewani_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_lauk_hewani_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_nasi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lauk_hewani"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_lauk_hewani_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_lauk_hewani_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lauk_nabati_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_lauk_nabati_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_lauk_hewani_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lauk_nabati"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_lauk_nabati_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_lauk_nabati_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_sayur_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_sayur_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_lauk_nabati_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_sayur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_sayur_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_sayur_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_sumber_minyak_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_sumber_minyak_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_sayur_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_sumber_minyak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_sumber_minyak_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_sumber_minyak_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_minuman_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_minuman_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_sumber_minyak_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_minuman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_minuman_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_minuman_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_soft_drink_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_soft_drink_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_minuman_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_soft_drink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_soft_drink_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_soft_drink_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_jus_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_jus_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_soft_drink_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_jus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_jus_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_jus_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_suplemen_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_suplemen_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_jus_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_suplemen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_suplemen_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_suplemen_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lain_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dietary_lain_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_suplemen_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dietary_lain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dietary_lain_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dietary_lain_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dlain2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/data_lain_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_dietary_lain_title" />
+
+        <TextView
+            android:id="@+id/tv_view_dlain2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_dlain2_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_dlain2_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

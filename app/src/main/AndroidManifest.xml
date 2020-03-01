@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".nutritionist.ui.nutrition_records.PatientDetailActivity"></activity>
+        <activity android:name=".nutritionist.ui.nutrition_records.ViewNutritionRecordActivity"></activity>
+        <activity android:name=".nutritionist.ui.nutrition_records.PatientDetailActivity" />
         <activity android:name=".admin.ui.nutritionists.NutritionistDetailActivity" />
         <activity android:name=".admin.ui.patients.PatientDetailActivity" />
         <activity android:name=".nutritionist.ui.articles.NutArticleDetailActivity" />

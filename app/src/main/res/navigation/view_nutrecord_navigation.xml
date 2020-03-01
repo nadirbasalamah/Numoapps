@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_nutrecord_navigation"
+    app:startDestination="@+id/vnut_navigation_antropometry">
+    <fragment
+        android:id="@+id/vnut_navigation_antropometry"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewAntropometryFragment"
+        android:label="@string/antropometry"
+        tools:layout="@layout/fragment_view_antropometry" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_biochemistry"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewBiochemistryFragment"
+        android:label="@string/biochemistry"
+        tools:layout="@layout/fragment_view_biochemistry" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_clinic"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewClinicFragment"
+        android:label="@string/clinic"
+        tools:layout="@layout/fragment_view_clinic" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_dietary"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewDietaryFragment"
+        android:label="@string/dietary"
+        tools:layout="@layout/fragment_view_dietary" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_diagnose"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewDiagnoseFragment"
+        android:label="@string/diagnosa"
+        tools:layout="@layout/fragment_view_diagnose" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_interenvention"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewInterenventionFragment"
+        android:label="@string/interenvensi"
+        tools:layout="@layout/fragment_view_interenvention" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_monev"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewMonevFragment"
+        android:label="@string/monitoring"
+        tools:layout="@layout/fragment_view_monev" />
+</navigation>

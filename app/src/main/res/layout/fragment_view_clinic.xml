@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".nutritionist.ui.nutrition_records.ViewClinicFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/tv_view_tensi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:text="@string/tensi_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_view_tensi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_tensi_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_tensi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_rr_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/rr_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_tensi_title" />
+
+        <TextView
+            android:id="@+id/tv_view_rr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_rr_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_rr_title" />
+
+        <TextView
+            android:id="@+id/tv_view_suhu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/suhu_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_rr_title" />
+
+        <TextView
+            android:id="@+id/tv_view_suhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_suhu_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_suhu_title" />
+
+        <TextView
+            android:id="@+id/tv_view_data_lain_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/data_lain_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_suhu_title" />
+
+        <TextView
+            android:id="@+id/tv_view_data_lain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_data_lain_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_data_lain_title" />
+
+        <TextView
+            android:id="@+id/tv_view_oedema_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/oedema_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_data_lain_title" />
+
+        <TextView
+            android:id="@+id/tv_view_oedema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_oedema_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_oedema_title" />
+
+        <TextView
+            android:id="@+id/tv_view_aktivitas_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/aktivitas_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_oedema_title" />
+
+        <TextView
+            android:id="@+id/tv_view_aktivitas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_aktivitas_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_aktivitas_title" />
+
+        <TextView
+            android:id="@+id/tv_view_durasi_olahraga_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/durasi_olahraga_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_aktivitas_title" />
+
+        <TextView
+            android:id="@+id/tv_view_durasi_olahraga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_durasi_olahraga_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_durasi_olahraga_title" />
+
+        <TextView
+            android:id="@+id/tv_view_jenis_olahraga_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/jenis_olahraga_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_durasi_olahraga_title" />
+
+        <TextView
+            android:id="@+id/tv_view_jenis_olahraga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_jenis_olahraga_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_jenis_olahraga_title" />
+
+        <TextView
+            android:id="@+id/tv_view_diagnosa_dahulu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/diagnosa_dahulu_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_jenis_olahraga_title" />
+
+        <TextView
+            android:id="@+id/tv_view_diagnosa_dahulu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_diagnosa_dahulu_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_diagnosa_dahulu_title" />
+
+        <TextView
+            android:id="@+id/tv_view_diagnosa_sekarang_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/diagnosa_sekarang_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_diagnosa_dahulu_title" />
+
+        <TextView
+            android:id="@+id/tv_view_diagnosa_sekarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_diagnosa_sekarang_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_diagnosa_sekarang_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

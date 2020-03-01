@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nutritionist.ui.nutrition_records.ViewBiochemistryFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/tv_view_gda_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:text="@string/gda_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_view_gda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gda_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gda_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gdp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gdp_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_gda_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gdp_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gdp_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gd2jpp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/gd2jpp_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_gdp_title" />
+
+        <TextView
+            android:id="@+id/tv_view_gd2jpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_gd2jpp_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_gd2jpp_title" />
+
+        <TextView
+            android:id="@+id/tv_view_asam_urat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/asam_urat_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_gd2jpp_title" />
+
+        <TextView
+            android:id="@+id/tv_view_asam_urat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_asam_urat_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_asam_urat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_trigliserida_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/trigliserida_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_asam_urat_title" />
+
+        <TextView
+            android:id="@+id/tv_view_trigliserida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_trigliserida_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_trigliserida_title" />
+
+        <TextView
+            android:id="@+id/tv_view_kolesterol_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/kolesterol_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_trigliserida_title" />
+
+        <TextView
+            android:id="@+id/tv_view_kolesterol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_kolesterol_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_kolesterol_title" />
+
+        <TextView
+            android:id="@+id/tv_view_ldl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ldl_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_kolesterol_title" />
+
+        <TextView
+            android:id="@+id/tv_view_ldl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_ldl_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_ldl_title" />
+
+        <TextView
+            android:id="@+id/tv_view_hdl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/hdl_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_ldl_title" />
+
+        <TextView
+            android:id="@+id/tv_view_hdl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_hdl_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_hdl_title" />
+
+        <TextView
+            android:id="@+id/tv_view_ureum_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ureum_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_hdl_title" />
+
+        <TextView
+            android:id="@+id/tv_view_ureum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_ureum_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_ureum_title" />
+
+        <TextView
+            android:id="@+id/tv_view_kreatinin_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/kreatinin_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_ureum_title" />
+
+        <TextView
+            android:id="@+id/tv_view_kreatinin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_kreatinin_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_kreatinin_title" />
+
+        <TextView
+            android:id="@+id/tv_view_sgot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/sgot_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_kreatinin_title" />
+
+        <TextView
+            android:id="@+id/tv_view_sgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_sgot_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_sgot_title" />
+
+        <TextView
+            android:id="@+id/tv_view_sgpt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/sgpt_hint"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_view_sgot_title" />
+
+        <TextView
+            android:id="@+id/tv_view_sgpt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/number_sample"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_view_sgpt_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_view_sgpt_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
