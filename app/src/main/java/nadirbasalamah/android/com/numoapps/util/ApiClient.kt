@@ -5,11 +5,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-     fun create(): UserApiInterface {
-         val retrofit = Retrofit.Builder()
-             .addConverterFactory(GsonConverterFactory.create())
-             .baseUrl("http://192.168.1.12:8080/klinikapps-api/public/")
-             .build()
-         return retrofit.create(UserApiInterface::class.java)
-     }
+    val BASE_URL: String? = "http://192.168.1.12:8080/klinikapps-api/public/"
+    private var retrofit: Retrofit? = null
+    fun getClient(): Retrofit? {
+        if (retrofit == null) {
+            retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+        return retrofit
+    }
 }
