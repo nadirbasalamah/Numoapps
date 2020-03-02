@@ -15,6 +15,7 @@ class UserViewModel : ViewModel() {
     private var userApiInterface: UserApiInterface? = null
     private var postLogin: Call<UserResponse?>? = null
     private var postRegister: Call<UserResponse?>? = null
+    private var postForgetPassword: Call<UserResponse?>? = null
     private var context: Context? = null
 
     internal fun setContext(context: Context?) { this.context = context }
@@ -73,6 +74,34 @@ class UserViewModel : ViewModel() {
                         Toast.makeText(context, "Login sukses!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Login gagal!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<UserResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+    }
+
+    internal fun forgetPassword(data: HashMap<String, String>) {
+        userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
+        postForgetPassword = userApiInterface?.postForgetPassword(data["username"],data["password"])
+        postForgetPassword?.enqueue(
+            object : Callback<UserResponse?> {
+                override fun onResponse(
+                    call: Call<UserResponse?>?,
+                    response: Response<UserResponse?>?
+                ) {
+                    var test = response?.body().toString()
+                    if(test.contains("true",false)) {
+                        Toast.makeText(context, "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Perubahan password gagal, username tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
                 }
 

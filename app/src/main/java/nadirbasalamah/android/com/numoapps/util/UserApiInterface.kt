@@ -29,4 +29,11 @@ interface UserApiInterface {
         @Field("username") username: String?,
         @Field("password") password: String?
     ): Call<UserResponse?>?
+
+    @FormUrlEncoded
+    @POST("forgetPassword")
+    fun postForgetPassword(
+        @Field("username") username: String?,
+        @Field("password") password: String?
+    ): Call<UserResponse?>?
 }
