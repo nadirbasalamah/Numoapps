@@ -36,4 +36,28 @@ interface UserApiInterface {
         @Field("username") username: String?,
         @Field("password") password: String?
     ): Call<UserResponse?>?
+
+    @FormUrlEncoded
+    @POST("editProfile/{id}")
+    fun postEditProfile(
+        @Path("id") id: Int?,
+        @Field("username") username: String?,
+        @Field("phone_number") phone_number: String?,
+        @Field("email") email: String?,
+        @Field("address") address: String?
+    ): Call<UserResponse?>?
+
+    @FormUrlEncoded
+    @POST("changePassword/{id}")
+    fun postChangePassword(
+        @Path("id") id: Int?,
+        @Field("old_password") old_password: String?,
+        @Field("new_password") new_password: String?
+    ) : Call<UserResponse?>?
+
+    @GET("user/{id}")
+    fun getUserById(@Path("id") id: Int?) : Call<UserResponse?>?
+
+    @GET("userNutRecord/{id}")
+    fun getNutRecordById(@Path("id") id: Int?) : Call<UserResponse?>?
 }
