@@ -1,6 +1,6 @@
 package nadirbasalamah.android.com.numoapps.util
 
-import nadirbasalamah.android.com.numoapps.model.UserResponse
+import nadirbasalamah.android.com.numoapps.model.response.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -18,7 +18,7 @@ interface NutritionistApiInterface {
         @Field("visceral_fat") visceral_fat: Float?,
         @Field("muscle") muscle: Float?,
         @Field("body_age") body_age: Float?
-    ): Call<UserResponse?>?
+    ): Call<AntropometryResponse?>?
 
     @FormUrlEncoded
     @POST("updateBiochemistry/{id}")
@@ -36,7 +36,7 @@ interface NutritionistApiInterface {
         @Field("kreatinin") kreatinin: Float?,
         @Field("sgot") sgot: Float?,
         @Field("sgpt") sgpt: Float?
-    ): Call<UserResponse?>?
+    ): Call<BiochemistryResponse?>?
 
     @FormUrlEncoded
     @POST("updateClinic/{id}")
@@ -52,7 +52,7 @@ interface NutritionistApiInterface {
         @Field("jenis_olahraga") jenis_olahraga: String?,
         @Field("diagnosa_dahulu") diagnosa_dahulu: String?,
         @Field("diagnosa_skrg") diagnosa_skrg: String?
-    ): Call<UserResponse?>?
+    ): Call<ClinicResponse?>?
 
     @FormUrlEncoded
     @POST("updateDietary/{id}")
@@ -73,14 +73,14 @@ interface NutritionistApiInterface {
         @Field("dietary_suplemen") dietary_suplemen: String?,
         @Field("dietary_lainnya") dietary_lainnya: String?,
         @Field("lain_lain") lain_lain: String?
-    ): Call<UserResponse?>?
+    ): Call<DietaryResponse?>?
 
     @FormUrlEncoded
     @POST("updateDiagnose/{id}")
     fun postUpdateDiagnose(
         @Path("id") id: Int?,
         @Field("diagnose") diagnose: String?
-    ): Call<UserResponse?>?
+    ): Call<DiagnoseResponse?>?
 
     @FormUrlEncoded
     @POST("updateInterenvention/{id}")
@@ -91,27 +91,28 @@ interface NutritionistApiInterface {
         @Field("persen_karbohidrat") persen_karbohidrat: Float?,
         @Field("persen_protein") persen_protein: Float?,
         @Field("persen_lemak") persen_lemak: Float?
-    ): Call<UserResponse?>?
+    ): Call<InterenventionResponse?>?
 
     @FormUrlEncoded
     @POST("updateMonitoring/{id}")
     fun postUpdateMonitoring(
         @Path("id") id: Int?,
         @Field("mon_date") mon_date: String?,
-        @Field("result") result: String?
-    ): Call<UserResponse?>?
+        @Field("result") result: String?,
+        @Field("return_date") return_date: String?
+    ): Call<MonitoringResponse?>?
 
     @GET("nutRecord/{id}")
-    fun getNutRecordById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun getNutRecordById(@Path("id") id: Int?): Call<NutritionRecordResponse?>?
 
     @GET("articles")
-    fun getAllArticles(): Call<UserResponse?>?
+    fun getAllArticles(): Call<ArticlesResponse?>?
 
     @GET("guides")
-    fun getAllGuides(): Call<UserResponse?>?
+    fun getAllGuides(): Call<ArticlesResponse?>?
 
     @GET("article/{id}")
-    fun getArticleById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun getArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
 
     @FormUrlEncoded
     @POST("addArticle")
@@ -121,10 +122,10 @@ interface NutritionistApiInterface {
         @Field("title") title: String?,
         @Field("description") description: String?,
         @Field("source") source: String?
-    ): Call<UserResponse?>?
+    ): Call<ArticleResponse?>?
 
     @POST("deleteArticle/{id}")
-    fun deleteArticleById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun deleteArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
 
     @POST("editArticle/{id}")
     fun postEditArticle(
@@ -132,5 +133,5 @@ interface NutritionistApiInterface {
         @Field("title") title: String?,
         @Field("description") description: String?,
         @Field("source") source: String?
-    ): Call<UserResponse?>?
+    ): Call<ArticleResponse?>?
 }

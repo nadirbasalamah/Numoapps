@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import nadirbasalamah.android.com.numoapps.model.UserResponse
+import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import nadirbasalamah.android.com.numoapps.util.ApiClient
 import nadirbasalamah.android.com.numoapps.util.UserApiInterface
 import retrofit2.Call

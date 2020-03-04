@@ -145,4 +145,6 @@
     <string name="interenvensi">Interenvensi</string>
     <string name="monitoring">Monitoring</string>
     <string name="title_guide">Panduan</string>
+    <string name="return_date_title">Tanggal Kembali</string>
+    <string name="choose_return_date">PILIH TANGGAL KEMBALI</string>
 </resources>

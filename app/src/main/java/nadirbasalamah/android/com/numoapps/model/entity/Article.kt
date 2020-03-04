@@ -1,18 +1,20 @@
-package nadirbasalamah.android.com.numoapps.model
+package nadirbasalamah.android.com.numoapps.model.entity
 
 import com.google.gson.annotations.SerializedName
 
 data class Article(
     @SerializedName("id")
-    private val id: Int,
+    val id: Int,
     @SerializedName("author")
-    private val author: String,
+    val author: String,
     @SerializedName("type")
-    private val type: String,
+    val type: String,
+    @SerializedName("title")
+    val title: String,
     @SerializedName("description")
-    private val description: String,
+    val description: String,
     @SerializedName("image")
-    private val image: String,
+    val image: String,
     @SerializedName("source")
-    private val source: String
+    val source: String
 )

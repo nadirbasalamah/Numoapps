@@ -1,30 +1,30 @@
-package nadirbasalamah.android.com.numoapps.model
+package nadirbasalamah.android.com.numoapps.model.entity
 
 import com.google.gson.annotations.SerializedName
 
 data class User(
     @SerializedName("id")
-    private val id: Int,
+     val id: Int,
     @SerializedName("role")
-    private val role: String,
+     val role: String,
     @SerializedName("fullname")
-    private val fullname: String,
+     val fullname: String,
     @SerializedName("username")
-    private val username: String,
+     val username: String,
     @SerializedName("birthdate")
-    private val birthdate: String,
+     val birthdate: String,
     @SerializedName("gender")
-    private val gender: String,
+     val gender: String,
     @SerializedName("age")
-    private val age: Int,
+     val age: Int,
     @SerializedName("phone_number")
-    private val phone_number: String,
+     val phone_number: String,
     @SerializedName("email")
-    private val email: String,
+     val email: String,
     @SerializedName("address")
-    private val address: String,
+     val address: String,
     @SerializedName("id_number")
-    private val id_number: String,
+     val id_number: String,
     @SerializedName("id_type")
-    private val id_type: String
+     val id_type: String
 )

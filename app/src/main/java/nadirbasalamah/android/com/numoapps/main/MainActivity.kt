@@ -2,19 +2,11 @@ package nadirbasalamah.android.com.numoapps.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import nadirbasalamah.android.com.numoapps.R
-import nadirbasalamah.android.com.numoapps.model.UserResponse
-import nadirbasalamah.android.com.numoapps.util.ApiClient
-import nadirbasalamah.android.com.numoapps.util.UserApiInterface
 import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {

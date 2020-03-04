@@ -1,6 +1,6 @@
 package nadirbasalamah.android.com.numoapps.util
 
-import nadirbasalamah.android.com.numoapps.model.UserResponse
+import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import retrofit2.http.*
 import retrofit2.Call
 

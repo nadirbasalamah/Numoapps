@@ -1,34 +1,34 @@
-package nadirbasalamah.android.com.numoapps.model
+package nadirbasalamah.android.com.numoapps.model.entity
 
 import com.google.gson.annotations.SerializedName
 
 data class Biochemistry(
     @SerializedName("id")
-    private val id: Int,
+     val id: Int,
     @SerializedName("id_patient")
-    private val id_patient: Int,
+     val id_patient: Int,
     @SerializedName("gda")
-    private val gda: Float,
+     val gda: Float,
     @SerializedName("gdp")
-    private val gdp: Float,
+     val gdp: Float,
     @SerializedName("gd2jpp")
-    private val gd2jpp: Float,
+     val gd2jpp: Float,
     @SerializedName("asam_urat")
-    private val asam_urat: Float,
+     val asam_urat: Float,
     @SerializedName("trigliserida")
-    private val trigliserida: Float,
+     val trigliserida: Float,
     @SerializedName("kolesterol")
-    private val kolesterol: Float,
+     val kolesterol: Float,
     @SerializedName("ldl")
-    private val ldl: Float,
+     val ldl: Float,
     @SerializedName("hdl")
-    private val hdl: Float,
+     val hdl: Float,
     @SerializedName("ureum")
-    private val ureum: Float,
+     val ureum: Float,
     @SerializedName("kreatinin")
-    private val kreatinin: Float,
+     val kreatinin: Float,
     @SerializedName("sgot")
-    private val sgot: Float,
+     val sgot: Float,
     @SerializedName("sgpt")
-    private val sgpt: Float
+     val sgpt: Float
 )

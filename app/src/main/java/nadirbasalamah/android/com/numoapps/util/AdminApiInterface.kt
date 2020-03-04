@@ -1,6 +1,6 @@
 package nadirbasalamah.android.com.numoapps.util
 
-import nadirbasalamah.android.com.numoapps.model.UserResponse
+import nadirbasalamah.android.com.numoapps.model.response.*
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.*
 import retrofit2.Call
@@ -8,14 +8,14 @@ import retrofit2.Call
 interface AdminApiInterface {
 
     @GET("patients")
-    fun getAllPatients(): Call<UserResponse?>?
+    fun getAllPatients(): Call<PatientsResponse?>?
 
     @GET("patient/{id}")
-    fun getPatientById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun getPatientById(@Path("id") id: Int?): Call<PatientResponse?>?
 
 
     @POST("deletePatient/{id}")
-    fun deletePatientById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun deletePatientById(@Path("id") id: Int?): Call<PatientResponse?>?
 
     @FormUrlEncoded
     @POST("editPatient/{id}")
@@ -26,7 +26,7 @@ interface AdminApiInterface {
         @Field("education") education: String?,
         @Field("job") job: String?,
         @Field("religion") religion: String?
-    ): Call<UserResponse?>?
+    ): Call<PatientResponse?>?
 
     @FormUrlEncoded
     @POST("addPatient")
@@ -44,19 +44,19 @@ interface AdminApiInterface {
         @Field("education") education: String?,
         @Field("job") job: String?,
         @Field("religion") religion: String?
-    ): Call<UserResponse?>?
+    ): Call<PatientResponse?>?
 
     @GET("getPatient/{fullname}")
-    fun getPatientByName(@Path("fullname") fullname: String?): Call<UserResponse?>?
+    fun getPatientByName(@Path("fullname") fullname: String?): Call<PatientsResponse?>?
 
     @GET("nutritionists")
-    fun getAllNutritionists(): Call<UserResponse?>?
+    fun getAllNutritionists(): Call<NutritionistsResponse?>?
 
     @GET("nutritionist/{id}")
-    fun getNutritionistById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun getNutritionistById(@Path("id") id: Int?): Call<NutritionistResponse?>?
 
     @POST("deleteNutritionist/{id}")
-    fun deleteNutritionistById(@Path("id") id: Int?): Call<UserResponse?>?
+    fun deleteNutritionistById(@Path("id") id: Int?): Call<NutritionistResponse?>?
 
     @FormUrlEncoded
     @POST("editNutritionist/{id}")
@@ -66,7 +66,7 @@ interface AdminApiInterface {
         @Field("phone_number") phone_number: String?,
         @Field("email") email: String?,
         @Field("address") address: String?
-    ): Call<UserResponse?>?
+    ): Call<NutritionistResponse?>?
 
     @FormUrlEncoded
     @POST("addNutritionist")
@@ -81,10 +81,10 @@ interface AdminApiInterface {
         @Field("email") email: String?,
         @Field("address") address: String?,
         @Field("nip") nip: String?
-    ): Call<UserResponse?>?
+    ): Call<NutritionistResponse?>?
 
     @GET("getNutritionist/{fullname}")
-    fun getNutritionistByName(@Path("fullname") fullname: String?)
+    fun getNutritionistByName(@Path("fullname") fullname: String?): Call<NutritionistsResponse?>?
 
 
 }

@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         >
         <TextView
+            android:textStyle="bold"
             android:textSize="24sp"
             android:id="@+id/tv_article_title"
             android:layout_width="wrap_content"
