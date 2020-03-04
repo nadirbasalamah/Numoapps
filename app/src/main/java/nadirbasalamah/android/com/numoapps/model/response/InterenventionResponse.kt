@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.Interenvention
 
 data class InterenventionResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("data")
      val data: Interenvention
 )

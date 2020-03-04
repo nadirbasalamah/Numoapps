@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.Nutritionist
 
 data class NutritionistResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("data")
      val data: Nutritionist
 )

@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.Article
 
 data class ArticlesResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("data")
      val data: ArrayList<Article>
 )

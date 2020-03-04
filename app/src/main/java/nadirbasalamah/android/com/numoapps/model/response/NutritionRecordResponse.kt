@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.*
 
 data class NutritionRecordResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("antropometry_data")
      val antropometry_data: Antropometry,
     @SerializedName("biochemistry_data")

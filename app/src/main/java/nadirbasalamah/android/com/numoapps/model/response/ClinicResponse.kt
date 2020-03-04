@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.Clinic
 
 data class ClinicResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("data")
      val data: Clinic
 )

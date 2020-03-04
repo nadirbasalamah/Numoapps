@@ -5,7 +5,7 @@ import nadirbasalamah.android.com.numoapps.model.entity.Antropometry
 
 data class AntropometryResponse(
     @SerializedName("status")
-     val status: String,
+     val status: Boolean,
     @SerializedName("data")
      val data: Antropometry
 )
