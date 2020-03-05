@@ -3,9 +3,11 @@ package nadirbasalamah.android.com.numoapps.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.patient.PatientActivity
 import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
 
 
@@ -36,8 +38,12 @@ class MainActivity : AppCompatActivity() {
 
             userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
             userViewModel.setContext(applicationContext)
-            userViewModel.login(data)
-
+            userViewModel.login(data)?.observe(this, Observer {result ->
+                if(result?.status == true) {
+                    val intent = Intent(applicationContext, PatientActivity::class.java)
+                    startActivity(intent)
+                }
+            })
         }
     }
 }

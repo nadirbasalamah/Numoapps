@@ -3,6 +3,7 @@ package nadirbasalamah.android.com.numoapps.viewmodel
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import nadirbasalamah.android.com.numoapps.util.ApiClient
@@ -20,8 +21,10 @@ class UserViewModel : ViewModel() {
 
     internal fun setContext(context: Context?) { this.context = context }
 
-    internal fun register(data: HashMap<String, String>) {
+    internal fun register(data: HashMap<String, String>): MutableLiveData<UserResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
+        var requestResult: UserResponse?
+        val result: MutableLiveData<UserResponse?>? = MutableLiveData()
         postRegister = userApiInterface?.postRegister(
             data["fullname"],
             data["username"],
@@ -41,12 +44,14 @@ class UserViewModel : ViewModel() {
                     call: Call<UserResponse?>?,
                     response: Response<UserResponse?>?
                 ) {
-                    var test = response?.body().toString()
-                    if(test.contains("true",false)) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
                         Toast.makeText(context, "Register sukses!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Register gagal!", Toast.LENGTH_SHORT).show()
                     }
+                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -58,10 +63,13 @@ class UserViewModel : ViewModel() {
                 }
             }
         )
+        return result
     }
 
-    internal fun login(data: HashMap<String, String>) {
+    internal fun login(data: HashMap<String, String>): MutableLiveData<UserResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
+        var requestResult: UserResponse?
+        val result: MutableLiveData<UserResponse?>? = MutableLiveData()
         postLogin = userApiInterface?.postLogin(data["username"],data["password"])
         postLogin?.enqueue(
             object : Callback<UserResponse?> {
@@ -69,12 +77,14 @@ class UserViewModel : ViewModel() {
                     call: Call<UserResponse?>?,
                     response: Response<UserResponse?>?
                 ) {
-                    var test = response?.body().toString()
-                    if(test.contains("true",false)) {
+                    var test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
                         Toast.makeText(context, "Login sukses!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Login gagal!", Toast.LENGTH_SHORT).show()
                     }
+                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -86,10 +96,13 @@ class UserViewModel : ViewModel() {
                 }
             }
         )
+        return result
     }
 
-    internal fun forgetPassword(data: HashMap<String, String>) {
+    internal fun forgetPassword(data: HashMap<String, String>): MutableLiveData<UserResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
+        var requestResult: UserResponse?
+        val result: MutableLiveData<UserResponse?>? = MutableLiveData()
         postForgetPassword = userApiInterface?.postForgetPassword(data["username"],data["password"])
         postForgetPassword?.enqueue(
             object : Callback<UserResponse?> {
@@ -97,12 +110,14 @@ class UserViewModel : ViewModel() {
                     call: Call<UserResponse?>?,
                     response: Response<UserResponse?>?
                 ) {
-                    var test = response?.body().toString()
-                    if(test.contains("true",false)) {
+                    var test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
                         Toast.makeText(context, "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Perubahan password gagal, username tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
+                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -114,6 +129,6 @@ class UserViewModel : ViewModel() {
                 }
             }
         )
+        return result
     }
-
 }

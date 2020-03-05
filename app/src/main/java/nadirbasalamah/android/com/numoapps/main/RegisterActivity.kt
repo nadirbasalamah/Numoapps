@@ -2,13 +2,17 @@ package nadirbasalamah.android.com.numoapps.main
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Intent
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_register.*
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
 import java.util.*
 
@@ -80,7 +84,11 @@ class RegisterActivity : AppCompatActivity() {
 
             userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
             userViewModel.setContext(applicationContext)
-            userViewModel.register(data)
+            userViewModel.register(data)?.observe(this, Observer {result ->
+                if(result?.status == true) {
+                    finish()
+                }
+            })
         }
     }
 }

@@ -2,6 +2,7 @@ package nadirbasalamah.android.com.numoapps.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_forget_password.*
 import nadirbasalamah.android.com.numoapps.R
@@ -24,8 +25,11 @@ class ForgetPasswordActivity : AppCompatActivity() {
 
             userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
             userViewModel.setContext(applicationContext)
-            userViewModel.forgetPassword(data)
-
+            userViewModel.forgetPassword(data)?.observe(this, Observer { result ->
+                if(result?.status == true) {
+                    finish()
+                }
+            })
         }
     }
 }
