@@ -86,7 +86,7 @@ interface NutritionistApiInterface {
     @POST("updateInterenvention/{id}")
     fun postUpdateInterenvention(
         @Path("id") id: Int?,
-        @Field("energi") energi: String?,
+        @Field("energi") energi: Float?,
         @Field("keterangan_inter") keterangan_inter: String?,
         @Field("persen_karbohidrat") persen_karbohidrat: Float?,
         @Field("persen_protein") persen_protein: Float?,
@@ -104,34 +104,4 @@ interface NutritionistApiInterface {
 
     @GET("nutRecord/{id}")
     fun getNutRecordById(@Path("id") id: Int?): Call<NutritionRecordResponse?>?
-
-    @GET("articles")
-    fun getAllArticles(): Call<ArticlesResponse?>?
-
-    @GET("guides")
-    fun getAllGuides(): Call<ArticlesResponse?>?
-
-    @GET("article/{id}")
-    fun getArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
-
-    @FormUrlEncoded
-    @POST("addArticle")
-    fun postAddArticle(
-        @Field("author") author: String?,
-        @Field("type") type: String?,
-        @Field("title") title: String?,
-        @Field("description") description: String?,
-        @Field("source") source: String?
-    ): Call<ArticleResponse?>?
-
-    @POST("deleteArticle/{id}")
-    fun deleteArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
-
-    @POST("editArticle/{id}")
-    fun postEditArticle(
-        @Path("id") id: Int?,
-        @Field("title") title: String?,
-        @Field("description") description: String?,
-        @Field("source") source: String?
-    ): Call<ArticleResponse?>?
 }

@@ -1,5 +1,6 @@
 package nadirbasalamah.android.com.numoapps.util
 
+import nadirbasalamah.android.com.numoapps.model.response.NutritionRecordResponse
 import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import retrofit2.http.*
 import retrofit2.Call
@@ -59,5 +60,5 @@ interface UserApiInterface {
     fun getUserById(@Path("id") id: Int?) : Call<UserResponse?>?
 
     @GET("userNutRecord/{id}")
-    fun getNutRecordById(@Path("id") id: Int?) : Call<UserResponse?>?
+    fun getNutRecordById(@Path("id") id: Int?) : Call<NutritionRecordResponse?>?
 }
