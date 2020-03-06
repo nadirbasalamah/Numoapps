@@ -7,6 +7,13 @@ import retrofit2.http.*
 interface NutritionistApiInterface {
 
     @FormUrlEncoded
+    @POST("setNutritionist/{id}")
+    fun postSetNutritionist(
+        @Path("id") id: Int?,
+        @Field("id_nutritionist") id_nutritionist: Int?
+    ): Call<PatientResponse?>?
+
+    @FormUrlEncoded
     @POST("updateAntropometry/{id}")
     fun postUpdateAntropometry(
         @Path("id") id: Int?,

@@ -14,6 +14,7 @@ import retrofit2.Response
 
 class NutritionistViewModel : ViewModel() {
     private var nutritionistApiInterface: NutritionistApiInterface? = null
+    private var postSetNutritionist: Call<PatientResponse?>? = null
     private var postUpdateAntropometry: Call<AntropometryResponse?>? = null
     private var postUpdateBiochemistry: Call<BiochemistryResponse?>? = null
     private var postUpdateClinic: Call<ClinicResponse?>? = null
@@ -26,6 +27,39 @@ class NutritionistViewModel : ViewModel() {
     private var context: Context? = null
 
     internal fun setContext(context: Context?) { this.context = context }
+
+    internal fun setNutritionist(data: HashMap<String, String>): MutableLiveData<PatientResponse?>? {
+        nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
+        var requestResult: PatientResponse?
+        val result: MutableLiveData<PatientResponse?>? = MutableLiveData()
+        postSetNutritionist = nutritionistApiInterface?.postSetNutritionist(data["id"]?.toInt(),data["id_nutritionist"]?.toInt())
+        postSetNutritionist?.enqueue(
+            object : Callback<PatientResponse?> {
+                override fun onResponse(
+                    call: Call<PatientResponse?>?,
+                    response: Response<PatientResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data pasien berhasil diubah!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<PatientResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
 
     internal fun updateAntropometry(data: HashMap<String, String>): MutableLiveData<AntropometryResponse?>? {
         nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
