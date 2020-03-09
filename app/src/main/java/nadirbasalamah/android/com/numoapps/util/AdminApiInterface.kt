@@ -69,6 +69,14 @@ interface AdminApiInterface {
     ): Call<NutritionistResponse?>?
 
     @FormUrlEncoded
+    @POST("editNutPassword/{id}")
+    fun postEditNutritionistPassword(
+        @Path("id") id: Int?,
+        @Field("old_password") old_password: String?,
+        @Field("new_password") new_password: String?
+    ): Call<NutritionistResponse?>?
+
+    @FormUrlEncoded
     @POST("addNutritionist")
     fun postAddNutritionist(
         @Field("fullname") fullname: String?,

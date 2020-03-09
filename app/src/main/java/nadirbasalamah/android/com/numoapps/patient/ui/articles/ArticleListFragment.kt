@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.ArticleViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class ArticleListFragment : Fragment() {
+class ArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var adapter: ArticlesAdapter
     private lateinit var articleViewModel: ArticleViewModel
 
@@ -36,6 +37,7 @@ class ArticleListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rv_articles.setHasFixedSize(true)
         showArticleList()
+        sv_articles.setOnQueryTextListener(this)
     }
 
     private fun showArticleList() {
@@ -71,5 +73,39 @@ class ArticleListFragment : Fragment() {
         } else {
             pb_articlelist.visibility = View.GONE
         }
+    }
+
+    override fun onQueryTextSubmit(keyword: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(keyword: String): Boolean {
+        getArticleList(keyword)
+        return false
+    }
+
+    private fun getArticleList(keyword: String) {
+        rv_articles.layoutManager = LinearLayoutManager(context)
+        adapter = ArticlesAdapter()
+        adapter.notifyDataSetChanged()
+        rv_articles.adapter = adapter
+
+        articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
+        showLoading(true)
+        articleViewModel.getArticleByTitle(keyword)?.observe(this, Observer {articleItems ->
+            if(articleItems != null) {
+                adapter.setData(articleItems.data)
+                showLoading(false)
+            }
+        })
+
+        adapter.setOnItemClickCallback(object : ArticlesAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Article) {
+                val detailArticleIntent = Intent(context, ArticleDetailActivity::class.java)
+                detailArticleIntent.putExtra(ArticleDetailActivity.EXTRA_ARTICLE,data)
+                startActivity(detailArticleIntent)
+            }
+        })
+
     }
 }

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +22,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.AdminViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class NutritionistListFragment : Fragment() {
+class NutritionistListFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var adapter: NutritionistsAdapter
     private lateinit var adminViewModel: AdminViewModel
 
@@ -36,6 +38,7 @@ class NutritionistListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rv_nutritionistlist.setHasFixedSize(true)
         showNutritionistList()
+        sv_nutritionistlist.setOnQueryTextListener(this)
 
         fab_add_nutritionist.setOnClickListener {
             val intent = Intent(context,AddNutritionistActivity::class.java)
@@ -63,8 +66,9 @@ class NutritionistListFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : NutritionistsAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Nutritionist) {
-                val detailPatientIntent = Intent(context, NutritionistDetailActivity::class.java)
-                startActivity(detailPatientIntent)
+                val detailNutritionistIntent = Intent(context, NutritionistDetailActivity::class.java)
+                detailNutritionistIntent.putExtra(NutritionistDetailActivity.EXTRA_NUTRITIONIST,data)
+                startActivity(detailNutritionistIntent)
             }
         })
     }
@@ -75,5 +79,39 @@ class NutritionistListFragment : Fragment() {
         } else {
             pb_nutritionistlist.visibility = View.GONE
         }
+    }
+
+    override fun onQueryTextSubmit(keyword: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(keyword: String): Boolean {
+        getNutritionistList(keyword)
+        return false
+    }
+
+    private fun getNutritionistList(keyword: String) {
+        rv_nutritionistlist.layoutManager = LinearLayoutManager(context)
+        adapter = NutritionistsAdapter()
+        adapter.notifyDataSetChanged()
+        rv_nutritionistlist.adapter = adapter
+
+        adminViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(AdminViewModel::class.java)
+        showLoading(true)
+        adminViewModel.getNutritionistByName(keyword)?.observe(this, Observer {nutritionistItems ->
+            if(nutritionistItems != null) {
+                adapter.setData(nutritionistItems.data)
+                showLoading(false)
+            }
+        })
+
+        adapter.setOnItemClickCallback(object : NutritionistsAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Nutritionist) {
+                Toast.makeText(context,data.toString(),Toast.LENGTH_SHORT).show()
+                val detailNutritionistIntent = Intent(context, NutritionistDetailActivity::class.java)
+                detailNutritionistIntent.putExtra(NutritionistDetailActivity.EXTRA_NUTRITIONIST,data)
+                startActivity(detailNutritionistIntent)
+            }
+        })
     }
 }

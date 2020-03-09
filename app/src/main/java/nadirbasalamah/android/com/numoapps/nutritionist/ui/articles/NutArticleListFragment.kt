@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.ArticleViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class NutArticleListFragment : Fragment() {
+class NutArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var adapter: ArticlesAdapter
     private lateinit var articleViewModel: ArticleViewModel
 
@@ -37,6 +38,7 @@ class NutArticleListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rv_nut_articlelist.setHasFixedSize(true)
         showArticleList()
+        sv_nut_articlelist.setOnQueryTextListener(this)
         fab_add_article.setOnClickListener {
             val intent = Intent(context,AddArticleActivity::class.java)
             startActivity(intent)
@@ -75,5 +77,39 @@ class NutArticleListFragment : Fragment() {
         } else {
             pb_nut_articlelist.visibility = View.GONE
         }
+    }
+
+    override fun onQueryTextSubmit(keyword: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(keyword: String): Boolean {
+        getArticleList(keyword)
+        return false
+    }
+
+    private fun getArticleList(keyword: String) {
+        rv_nut_articlelist.layoutManager = LinearLayoutManager(context)
+        adapter = ArticlesAdapter()
+        adapter.notifyDataSetChanged()
+        rv_nut_articlelist.adapter = adapter
+
+        articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
+        showLoading(true)
+        articleViewModel.getArticleByTitle(keyword)?.observe(this, Observer {articleItems ->
+            if(articleItems != null) {
+                adapter.setData(articleItems.data)
+                showLoading(false)
+            }
+        })
+
+        adapter.setOnItemClickCallback(object : ArticlesAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Article) {
+                val detailArticleIntent = Intent(context, NutArticleDetailActivity::class.java)
+                detailArticleIntent.putExtra(NutArticleDetailActivity.EXTRA_NUT_ARTICLE,data)
+                startActivity(detailArticleIntent)
+            }
+        })
+
     }
 }

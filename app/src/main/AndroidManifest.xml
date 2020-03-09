@@ -3,6 +3,7 @@
     package="nadirbasalamah.android.com.numoapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"

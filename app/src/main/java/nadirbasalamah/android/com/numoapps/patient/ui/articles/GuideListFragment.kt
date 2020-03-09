@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.ArticleViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class GuideListFragment : Fragment() {
+class GuideListFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var adapter: ArticlesAdapter
     private lateinit var articleViewModel: ArticleViewModel
 
@@ -36,6 +37,7 @@ class GuideListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rv_guides.setHasFixedSize(true)
         showGuideList()
+        sv_guides.setOnQueryTextListener(this)
     }
 
     private fun showGuideList() {
@@ -71,5 +73,38 @@ class GuideListFragment : Fragment() {
         } else {
             pb_guidelist.visibility = View.GONE
         }
+    }
+
+    override fun onQueryTextSubmit(keyword: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(keyword: String): Boolean {
+        getGuideList(keyword)
+        return false
+    }
+
+    private fun getGuideList(keyword: String) {
+        rv_guides.layoutManager = LinearLayoutManager(context)
+        adapter = ArticlesAdapter()
+        adapter.notifyDataSetChanged()
+        rv_guides.adapter = adapter
+
+        articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
+        showLoading(true)
+        articleViewModel.getArticleByTitle(keyword)?.observe(this, Observer {articleItems ->
+            if(articleItems != null) {
+                adapter.setData(articleItems.data)
+                showLoading(false)
+            }
+        })
+
+        adapter.setOnItemClickCallback(object : ArticlesAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: Article) {
+                val detailArticleIntent = Intent(context, ArticleDetailActivity::class.java)
+                detailArticleIntent.putExtra(ArticleDetailActivity.EXTRA_ARTICLE,data)
+                startActivity(detailArticleIntent)
+            }
+        })
     }
 }

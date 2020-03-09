@@ -80,7 +80,11 @@ class MainActivity : AppCompatActivity() {
                 loginDataEdit.putInt("id_user",result?.data.id)
                 loginDataEdit.putString("username",result?.data.username)
                 loginDataEdit.apply()
-                checkRole(result?.data.username)
+                if(username.contains("AG_")) {
+                    checkRole("AG_" + result?.data.username)
+                } else {
+                    checkRole(result?.data.username)
+                }
                 et_username_login.setText("")
                 et_password_login.setText("")
             }

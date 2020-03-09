@@ -16,7 +16,7 @@ class ArticlePagerAdapter(private val mContext: Context?, fm: FragmentManager) :
     private val pages = listOf(ArticleListFragment(), GuideListFragment())
 
     override fun getItem(position: Int): Fragment {
-        return pages[position]
+        return pages[position] as Fragment
     }
 
     override fun getCount(): Int = 2
