@@ -18,6 +18,7 @@ class ArticleViewModel : ViewModel() {
     private var getAllArticles: Call<ArticlesResponse?>? = null
     private var getAllGuides: Call<ArticlesResponse?>? = null
     private var getArticleById: Call<ArticleResponse?>? = null
+    private var getArticleByTitle: Call<ArticlesResponse?>? = null
     private var postAddArticle: Call<ArticleResponse?>? = null
     private var postDeleteArticle: Call<ArticleResponse?>? = null
     private var postEditArticle: Call<ArticleResponse?>? = null
@@ -92,11 +93,11 @@ class ArticleViewModel : ViewModel() {
         return result
     }
 
-    internal fun getArticleById(data: HashMap<String, String>): MutableLiveData<ArticleResponse?>? {
+    internal fun getArticleById(data: Int): MutableLiveData<ArticleResponse?>? {
         articleApiInterface = ApiClient.getClient()?.create(ArticleApiInterface::class.java)
         var requestResult: ArticleResponse?
         val result: MutableLiveData<ArticleResponse?>? = MutableLiveData()
-        getArticleById = articleApiInterface?.getArticleById(data["id"]?.toInt())
+        getArticleById = articleApiInterface?.getArticleById(data)
         getArticleById?.enqueue(
             object : Callback<ArticleResponse?> {
                 override fun onResponse(
@@ -115,6 +116,39 @@ class ArticleViewModel : ViewModel() {
 
                 override fun onFailure(
                     call: Call<ArticleResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+    internal fun getArticleByTitle(data: String): MutableLiveData<ArticlesResponse?>? {
+        articleApiInterface = ApiClient.getClient()?.create(ArticleApiInterface::class.java)
+        var requestResult: ArticlesResponse?
+        val result: MutableLiveData<ArticlesResponse?>? = MutableLiveData()
+        getArticleByTitle = articleApiInterface?.getArticleByTitle(data)
+        getArticleByTitle?.enqueue(
+            object : Callback<ArticlesResponse?> {
+                override fun onResponse(
+                    call: Call<ArticlesResponse?>?,
+                    response: Response<ArticlesResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data artikel ditemukan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Data artikel tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<ArticlesResponse?>,
                     t: Throwable
                 ) {
                     Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()

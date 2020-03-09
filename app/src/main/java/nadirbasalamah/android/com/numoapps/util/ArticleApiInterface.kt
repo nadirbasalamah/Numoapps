@@ -15,6 +15,9 @@ interface ArticleApiInterface {
     @GET("article/{id}")
     fun getArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
 
+    @GET("getArticle/{title}")
+    fun getArticleByTitle(@Path("title") title: String?): Call<ArticlesResponse?>?
+
     @FormUrlEncoded
     @POST("addArticle")
     fun postAddArticle(

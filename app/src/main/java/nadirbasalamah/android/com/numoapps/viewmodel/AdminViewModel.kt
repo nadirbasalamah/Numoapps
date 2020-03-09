@@ -65,11 +65,11 @@ class AdminViewModel :  ViewModel() {
         return result
     }
 
-    internal fun getPatientById(data: HashMap<String, String>): MutableLiveData<PatientResponse?>? {
+    internal fun getPatientById(data: Int): MutableLiveData<PatientResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
         var requestResult: PatientResponse?
         val result: MutableLiveData<PatientResponse?>? = MutableLiveData()
-        getPatientById = adminApiInterface?.getPatientById(data["id"]?.toInt())
+        getPatientById = adminApiInterface?.getPatientById(data)
         getPatientById?.enqueue(
             object : Callback<PatientResponse?> {
                 override fun onResponse(
@@ -98,11 +98,11 @@ class AdminViewModel :  ViewModel() {
         return result
     }
 
-    internal fun deletePatient(data: HashMap<String, String>): MutableLiveData<PatientResponse?>? {
+    internal fun deletePatient(data: Int): MutableLiveData<PatientResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
         var requestResult: PatientResponse?
         val result: MutableLiveData<PatientResponse?>? = MutableLiveData()
-        postDeletePatient = adminApiInterface?.deletePatientById(data["id"]?.toInt())
+        postDeletePatient = adminApiInterface?.deletePatientById(data)
         postDeletePatient?.enqueue(
             object : Callback<PatientResponse?> {
                 override fun onResponse(
@@ -284,11 +284,11 @@ class AdminViewModel :  ViewModel() {
         return result
     }
 
-    internal fun getNutritionistById(data: HashMap<String, String>): MutableLiveData<NutritionistResponse?>? {
+    internal fun getNutritionistById(data: Int): MutableLiveData<NutritionistResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
         var requestResult: NutritionistResponse?
         val result: MutableLiveData<NutritionistResponse?>? = MutableLiveData()
-        getNutritionistById = adminApiInterface?.getNutritionistById(data["id"]?.toInt())
+        getNutritionistById = adminApiInterface?.getNutritionistById(data)
         getNutritionistById?.enqueue(
             object : Callback<NutritionistResponse?> {
                 override fun onResponse(
@@ -317,11 +317,11 @@ class AdminViewModel :  ViewModel() {
         return result
     }
 
-    internal fun deleteNutriritonist(data: HashMap<String, String>): MutableLiveData<NutritionistResponse?>? {
+    internal fun deleteNutriritonist(data: Int): MutableLiveData<NutritionistResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
         var requestResult: NutritionistResponse?
         val result: MutableLiveData<NutritionistResponse?>? = MutableLiveData()
-        postDeleteNutritionist = adminApiInterface?.deleteNutritionistById(data["id"]?.toInt())
+        postDeleteNutritionist = adminApiInterface?.deleteNutritionistById(data)
         postDeleteNutritionist?.enqueue(
             object : Callback<NutritionistResponse?> {
                 override fun onResponse(

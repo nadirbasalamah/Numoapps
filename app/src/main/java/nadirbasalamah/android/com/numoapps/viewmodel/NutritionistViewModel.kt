@@ -359,11 +359,11 @@ class NutritionistViewModel : ViewModel() {
         return result
     }
 
-    internal fun getNutRecordById(data: HashMap<String, String>): MutableLiveData<NutritionRecordResponse?>? {
+    internal fun getNutRecordById(data: Int): MutableLiveData<NutritionRecordResponse?>? {
         nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
         var requestResult: NutritionRecordResponse?
         val result: MutableLiveData<NutritionRecordResponse?>? = MutableLiveData()
-        getNutRecordById = nutritionistApiInterface?.getNutRecordById(data["id"]?.toInt())
+        getNutRecordById = nutritionistApiInterface?.getNutRecordById(data)
         getNutRecordById?.enqueue(
             object : Callback<NutritionRecordResponse?> {
                 override fun onResponse(

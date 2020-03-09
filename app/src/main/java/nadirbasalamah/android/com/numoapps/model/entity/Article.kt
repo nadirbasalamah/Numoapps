@@ -1,20 +1,23 @@
 package nadirbasalamah.android.com.numoapps.model.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Article(
     @SerializedName("id")
     val id: Int,
     @SerializedName("author")
-    val author: String,
+    val author: String?,
     @SerializedName("type")
-    val type: String,
+    val type: String?,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("source")
-    val source: String
-)
+    val source: String?
+): Parcelable

@@ -24,6 +24,17 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:id="@+id/tv_control_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/control_date"
+                app:layout_constraintStart_toEndOf="@+id/tv_control_date_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_control_date_title" />
+
+            <TextView
                 android:id="@+id/tv_mon_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,6 +57,18 @@
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_mon_date" />
+
+            <TextView
+                android:id="@+id/tv_control_date_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/control_date"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mon_result" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

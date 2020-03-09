@@ -1,26 +1,29 @@
 package nadirbasalamah.android.com.numoapps.model.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Nutritionist(
     @SerializedName("id")
      val id: Int,
     @SerializedName("fullname")
-     val fullname: String,
+     val fullname: String?,
     @SerializedName("username")
-     val username: String,
+     val username: String?,
     @SerializedName("birthdate")
-     val birthdate: String,
+     val birthdate: String?,
     @SerializedName("gender")
-     val gender: String,
+     val gender: String?,
     @SerializedName("age")
-     val age: Int,
+     val age: Int?,
     @SerializedName("phone_number")
-     val phone_number: String,
+     val phone_number: String?,
     @SerializedName("email")
-     val email: String,
+     val email: String?,
     @SerializedName("address")
-     val address: String,
+     val address: String?,
     @SerializedName("nip")
-     val nip: String
-)
+     val nip: String?
+): Parcelable

@@ -14,7 +14,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profil</string>
     <string name="notification_settings">Pengaturan Notifikasi</string>
-    <string name="logout">LOGOUT</string>
+    <string name="logout">Logout</string>
     <string name="full_name">Nama lengkap</string>
     <string name="username">Username</string>
     <string name="birthdate">Tanggal lahir</string>
@@ -31,6 +31,7 @@
     <string name="id_card_type">Jenis kartu identitas</string>
     <string name="card_type_ktp">KTP</string>
     <string name="card_type_ktm">KTM</string>
+    <string name="gram_unit">gram</string>
     <string name="antropometry">Antropometri</string>
     <string name="body_weight_sample">Berat Badan :</string>
     <string name="number_sample">00</string>
@@ -147,4 +148,8 @@
     <string name="title_guide">Panduan</string>
     <string name="return_date_title">Tanggal Kembali</string>
     <string name="choose_return_date">PILIH TANGGAL KEMBALI</string>
+    <string name="control_date">Tanggal Kembali : </string>
+    <string name="patient_title">PASIEN</string>
+    <string name="nutritionist_title">AHLI GIZI</string>
+    <string name="source_title">Sumber :</string>
 </resources>

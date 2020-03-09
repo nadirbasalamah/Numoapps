@@ -214,11 +214,11 @@ class UserViewModel : ViewModel() {
         return result
     }
 
-    internal fun getUserById(data: HashMap<String, String>): MutableLiveData<UserResponse?>? {
+    internal fun getUserById(data: Int): MutableLiveData<UserResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
         var requestResult: UserResponse?
         val result: MutableLiveData<UserResponse?>? = MutableLiveData()
-        getUserById = userApiInterface?.getUserById(data["id"]?.toInt())
+        getUserById = userApiInterface?.getUserById(data)
         getUserById?.enqueue(
             object : Callback<UserResponse?> {
                 override fun onResponse(
@@ -247,11 +247,11 @@ class UserViewModel : ViewModel() {
         return result
     }
 
-    internal fun getNutRecordByUserId(data: HashMap<String, String>): MutableLiveData<NutritionRecordResponse?>? {
+    internal fun getNutRecordByUserId(data: Int): MutableLiveData<NutritionRecordResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
         var requestResult: NutritionRecordResponse?
         val result: MutableLiveData<NutritionRecordResponse?>? = MutableLiveData()
-        getNutRecordByUserId = userApiInterface?.getNutRecordById(data["id"]?.toInt())
+        getNutRecordByUserId = userApiInterface?.getNutRecordById(data)
         getNutRecordByUserId?.enqueue(
             object : Callback<NutritionRecordResponse?> {
                 override fun onResponse(
