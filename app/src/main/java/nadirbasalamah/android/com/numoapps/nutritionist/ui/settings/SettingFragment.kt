@@ -33,10 +33,5 @@ class SettingFragment : Fragment() {
             logoutIntent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(logoutIntent)
         }
-
-        cv_edit_profile.setOnClickListener {
-            val intent = Intent(context, EditProfileActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

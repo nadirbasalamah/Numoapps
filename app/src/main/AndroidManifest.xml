@@ -18,7 +18,7 @@
         <activity android:name=".admin.ui.nutritionists.NutritionistDetailActivity" />
         <activity android:name=".admin.ui.patients.PatientDetailActivity" />
         <activity android:name=".nutritionist.ui.articles.NutArticleDetailActivity" />
-        <activity android:name=".nutritionist.ui.nutrition_records.EditNutritionRecordActivity" />
+        <activity android:name=".nutritionist.ui.nutrition_records.AddNutritionRecordActivity" />
         <activity android:name=".nutritionist.ui.articles.AddArticleActivity" />
         <activity android:name=".nutritionist.ui.articles.EditArticleActivity" />
         <activity

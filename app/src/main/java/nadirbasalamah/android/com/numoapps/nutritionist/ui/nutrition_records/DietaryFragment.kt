@@ -6,13 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_dietary.*
 
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
 class DietaryFragment : Fragment() {
+    private lateinit var nutritionistViewModel: NutritionistViewModel
+    var idPatient: Int = 0
+    var mode: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,5 +30,75 @@ class DietaryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_dietary, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        if(mode.equals("EDIT_MODE")) {
+            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+            nutritionistViewModel.setContext(context)
+            nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+                if(result?.status == true) {
+                    et_nafsu_makan.setText(result.dietary_data.nafsu_makan)
+                    et_frekuensi_makan.setText(result.dietary_data.frekuensi_makan)
+                    et_alergi.setText(result.dietary_data.alergi)
+                    et_makanan_kesukaan.setText(result.dietary_data.makanan_kesukaan)
+                    et_dietary_nasi.setText(result.dietary_data.dietary_nasi)
+                    et_dietary_lauk_hewani.setText(result.dietary_data.dietary_lauk_hewani)
+                    et_dietary_lauk_nabati.setText(result.dietary_data.dietary_lauk_nabati)
+                    et_dietary_sayur.setText(result.dietary_data.dietary_sayur)
+                    et_dietary_sumber_minyak.setText(result.dietary_data.dietary_sumber_minyak)
+                    et_dietary_minuman.setText(result.dietary_data.dietary_minuman)
+                    et_softdrink.setText(result.dietary_data.dietary_softdrink)
+                    et_jus.setText(result.dietary_data.dietary_jus)
+                    et_suplemen.setText(result.dietary_data.dietary_suplemen)
+                    et_dlain.setText(result.dietary_data.dietary_lainnya)
+                    et_dlain2.setText(result.dietary_data.lain_lain)
+                }
+            })
+        }
+
+        btn_dietary_save.setOnClickListener {
+            var data: HashMap<String, String> = HashMap<String, String>()
+            val nafsu_makan = et_nafsu_makan.text.toString()
+            val frekuensi_makan = et_frekuensi_makan.text.toString()
+            val alergi = et_alergi.text.toString()
+            val makanan_kesukaan = et_makanan_kesukaan.text.toString()
+            val dietary_nasi = et_dietary_nasi.text.toString()
+            val dietary_lauk_hewani = et_dietary_lauk_hewani.text.toString()
+            val dietary_lauk_nabati = et_dietary_lauk_nabati.text.toString()
+            val dietary_sayur = et_dietary_sayur.text.toString()
+            val dietary_sumber_minyak = et_dietary_sumber_minyak.text.toString()
+            val dietary_minuman = et_dietary_minuman.text.toString()
+            val dietary_softdrink = et_softdrink.text.toString()
+            val dietary_jus = et_jus.text.toString()
+            val dietary_suplemen = et_suplemen.text.toString()
+            val dietary_lainnya = et_dlain.text.toString()
+            val lain_lain = et_dlain2.text.toString()
+
+            data.put("id",idPatient.toString())
+            data.put("nafsu_makan",nafsu_makan)
+            data.put("frekuensi_makan",frekuensi_makan)
+            data.put("alergi",alergi)
+            data.put("makanan_kesukaan",makanan_kesukaan)
+            data.put("dietary_nasi",dietary_nasi)
+            data.put("dietary_lauk_hewani",dietary_lauk_hewani)
+            data.put("dietary_lauk_nabati",dietary_lauk_nabati)
+            data.put("dietary_sayur",dietary_sayur)
+            data.put("dietary_sumber_minyak",dietary_sumber_minyak)
+            data.put("dietary_minuman",dietary_minuman)
+            data.put("dietary_softdrink",dietary_softdrink)
+            data.put("dietary_jus",dietary_jus)
+            data.put("dietary_suplemen",dietary_suplemen)
+            data.put("dietary_lainnya",dietary_lainnya)
+            data.put("lain_lain",lain_lain)
+
+            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+            nutritionistViewModel.setContext(context)
+            nutritionistViewModel.updateDietary(data)?.observe(this, Observer {result ->
+                if(result?.status == true) {
+                    Toast.makeText(context,"Perekaman data dietary berhasil", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+    }
 }

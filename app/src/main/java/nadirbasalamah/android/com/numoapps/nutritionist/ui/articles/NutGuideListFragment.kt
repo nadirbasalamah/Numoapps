@@ -40,6 +40,7 @@ class NutGuideListFragment : Fragment(), SearchView.OnQueryTextListener {
         sv_nut_guidelist.setOnQueryTextListener(this)
         fab_add_guide.setOnClickListener {
             val intent = Intent(context,AddArticleActivity::class.java)
+            intent.putExtra(AddArticleActivity.ARTICLE_TYPE,"guide")
             startActivity(intent)
         }
     }

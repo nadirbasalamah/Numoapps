@@ -41,6 +41,7 @@ class NutArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
         sv_nut_articlelist.setOnQueryTextListener(this)
         fab_add_article.setOnClickListener {
             val intent = Intent(context,AddArticleActivity::class.java)
+            intent.putExtra(AddArticleActivity.ARTICLE_TYPE,"article")
             startActivity(intent)
         }
     }

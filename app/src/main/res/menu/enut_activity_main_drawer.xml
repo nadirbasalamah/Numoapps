@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/enut_navigation_antropometry"
+            android:icon="@drawable/ic_accessibility_white_24dp"
+            android:title="@string/antropometry" />
+        <item
+            android:id="@+id/enut_navigation_biochemistry"
+            android:icon="@drawable/ic_opacity_white_24dp"
+            android:title="@string/biochemistry" />
+        <item
+            android:id="@+id/enut_navigation_clinic"
+            android:icon="@drawable/ic_local_hospital_white_24dp"
+            android:title="@string/clinic" />
+        <item
+            android:id="@+id/enut_navigation_dietary"
+            android:icon="@drawable/ic_restaurant_white_24dp"
+            android:title="@string/dietary" />
+        <item
+            android:id="@+id/enut_navigation_diagnose"
+            android:icon="@drawable/ic_list_white_24dp"
+            android:title="@string/diagnosa" />
+        <item
+            android:id="@+id/enut_navigation_interenvention"
+            android:icon="@drawable/ic_restaurant_menu_white_24dp"
+            android:title="@string/interenvensi" />
+        <item
+            android:id="@+id/enut_navigation_monev"
+            android:icon="@drawable/ic_rate_review_white_24dp"
+            android:title="@string/monitoring" />
+    </group>
+</menu>

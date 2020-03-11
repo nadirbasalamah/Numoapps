@@ -152,4 +152,7 @@
     <string name="patient_title">PASIEN</string>
     <string name="nutritionist_title">AHLI GIZI</string>
     <string name="source_title">Sumber :</string>
+    <string name="edit_article_title">Edit Artikel</string>
+    <string name="delete_article_title">Hapus Artikel</string>
+    <string name="add_nutrecord_title">TAMBAH DATA GIZI</string>
 </resources>

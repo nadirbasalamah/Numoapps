@@ -198,11 +198,11 @@ class ArticleViewModel : ViewModel() {
         return result
     }
 
-    internal fun deleteArticle(data: HashMap<String, String>): MutableLiveData<ArticleResponse?>? {
+    internal fun deleteArticle(data: Int): MutableLiveData<ArticleResponse?>? {
         articleApiInterface = ApiClient.getClient()?.create(ArticleApiInterface::class.java)
         var requestResult: ArticleResponse?
         val result: MutableLiveData<ArticleResponse?>? = MutableLiveData()
-        postDeleteArticle = articleApiInterface?.deleteArticleById(data["id"]?.toInt())
+        postDeleteArticle = articleApiInterface?.deleteArticleById(data)
         postDeleteArticle?.enqueue(
             object : Callback<ArticleResponse?> {
                 override fun onResponse(

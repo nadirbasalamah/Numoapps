@@ -38,27 +38,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
 
-        <Switch
-            android:id="@+id/sw_return_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/return_date_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
-
         <Button
-            android:enabled="false"
-            android:padding="8dp"
-            android:background="@color/colorAccent"
-            android:textColor="#FFFFFF"
             android:id="@+id/btn_select_return_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:padding="8dp"
             android:text="@string/choose_return_date"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/sw_return_date" />
+            app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
+
+        <TextView
+            android:id="@+id/tv_return_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/control_date"
+            app:layout_constraintBottom_toTopOf="@+id/btn_monitoring_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_select_return_date" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

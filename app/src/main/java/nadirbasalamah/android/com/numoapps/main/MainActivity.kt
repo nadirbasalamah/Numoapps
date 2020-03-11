@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         et_password_login.setOnEditorActionListener(enterListener)
         loginData = appContext.getSharedPreferences("Login", MODE_PRIVATE)
         val uname = loginData.getString("username",null).toString()
-        Toast.makeText(applicationContext,"Username : " + uname,Toast.LENGTH_SHORT).show()
         checkRole(uname)
 
         btn_login.setOnClickListener{
