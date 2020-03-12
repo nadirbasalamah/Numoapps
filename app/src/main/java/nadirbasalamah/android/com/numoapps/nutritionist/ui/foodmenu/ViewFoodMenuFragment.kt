@@ -1,4 +1,4 @@
-package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
+package nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu
 
 
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.fragment_view_monev.*
+import kotlinx.android.synthetic.main.fragment_view_food_menu.*
 
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
@@ -16,11 +16,11 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class ViewMonevFragment : Fragment() {
+class ViewFoodMenuFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
     var idPatient: Int? = 0
     companion object {
-        const val EXTRA_ID_PATIENT = "ID_PATIENT"
+        const val EXTRA_ID_PATIENT = "EXTRA"
     }
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class ViewMonevFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_monev, container, false)
+        return inflater.inflate(R.layout.fragment_view_food_menu, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,10 +37,14 @@ class ViewMonevFragment : Fragment() {
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(context)
-        nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+        nutritionistViewModel.getFoodMenuById(idPatient)?.observe(this, Observer {result ->
             if(result?.status == true) {
-                tv_view_mondate.text = result.monitoring_data.mon_date
-                tv_view_monresult.text = result.monitoring_data.result
+                tv_breakfast.text = result.data.breakfast
+                tv_breakfast_time.text = result.data.breakfast_time
+                tv_lunch.text = result.data.lunch
+                tv_lunch_time.text = result.data.lunch_time
+                tv_dinner.text = result.data.dinner
+                tv_dinner_time.text = result.data.dinner_time
             }
         })
     }

@@ -67,6 +67,7 @@ class NutArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
         adapter.setOnItemClickCallback(object : ArticlesAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Article) {
                 val detailArticleIntent = Intent(context, NutArticleDetailActivity::class.java)
+                detailArticleIntent.putExtra(NutArticleDetailActivity.EXTRA_NUT_ARTICLE,data)
                 startActivity(detailArticleIntent)
             }
         })

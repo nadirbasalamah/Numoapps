@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import nadirbasalamah.android.com.numoapps.model.response.FoodMenuResponse
 import nadirbasalamah.android.com.numoapps.model.response.NutritionRecordResponse
 import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import nadirbasalamah.android.com.numoapps.util.ApiClient
@@ -22,6 +23,7 @@ class UserViewModel : ViewModel() {
     private var postChangePassword: Call<UserResponse?>? = null
     private var getUserById: Call<UserResponse?>? = null
     private var getNutRecordByUserId: Call<NutritionRecordResponse?>? = null
+    private var getFoodMenuByUserId: Call<FoodMenuResponse?>? = null
 
     private var context: Context? = null
 
@@ -270,6 +272,39 @@ class UserViewModel : ViewModel() {
 
                 override fun onFailure(
                     call: Call<NutritionRecordResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+    internal fun getFoodMenuByUserId(data: Int): MutableLiveData<FoodMenuResponse?>? {
+        userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
+        var requestResult: FoodMenuResponse?
+        val result: MutableLiveData<FoodMenuResponse?>? = MutableLiveData()
+        getFoodMenuByUserId = userApiInterface?.getUserFoodMenuById(data)
+        getFoodMenuByUserId?.enqueue(
+            object : Callback<FoodMenuResponse?> {
+                override fun onResponse(
+                    call: Call<FoodMenuResponse?>?,
+                    response: Response<FoodMenuResponse?>?
+                ) {
+                    var test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data menu makanan berhasil ditemukan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Data menu makanan tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<FoodMenuResponse?>,
                     t: Throwable
                 ) {
                     Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()

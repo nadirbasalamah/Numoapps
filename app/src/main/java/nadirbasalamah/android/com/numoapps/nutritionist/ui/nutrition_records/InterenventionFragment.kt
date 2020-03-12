@@ -19,8 +19,13 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class InterenventionFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int = 0
-    var mode: String = ""
+    var idPatient: Int? = 0
+    var mode: String? = ""
+
+    companion object {
+        const val EXTRA_ID_PATIENT = "EXTRA_ID_PATIENT"
+        const val EXTRA_MODE = "EXTRA_MODE"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,5 +78,13 @@ class InterenventionFragment : Fragment() {
         }
     }
 
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (arguments != null) {
+            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
+            val dataMode = arguments?.getString(EXTRA_MODE)
+            idPatient = patientId
+            mode = dataMode
+        }
+    }
 }

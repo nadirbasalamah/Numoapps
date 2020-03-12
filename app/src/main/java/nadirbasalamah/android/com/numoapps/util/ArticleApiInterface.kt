@@ -28,9 +28,11 @@ interface ArticleApiInterface {
         @Field("source") source: String?
     ): Call<ArticleResponse?>?
 
+
     @POST("deleteArticle/{id}")
     fun deleteArticleById(@Path("id") id: Int?): Call<ArticleResponse?>?
 
+    @FormUrlEncoded
     @POST("editArticle/{id}")
     fun postEditArticle(
         @Path("id") id: Int?,

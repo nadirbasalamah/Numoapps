@@ -32,5 +32,10 @@
             android:id="@+id/enut_navigation_monev"
             android:icon="@drawable/ic_rate_review_white_24dp"
             android:title="@string/monitoring" />
+
+        <item
+            android:id="@+id/enut_navigation_foodmenu"
+            android:icon="@drawable/ic_restaurant_menu_white_24dp"
+            android:title="@string/menu_title" />
     </group>
 </menu>

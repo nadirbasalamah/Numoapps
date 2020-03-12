@@ -1,6 +1,7 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,7 +20,10 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewAntropometryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int = 0
+    var idPatient: Int? = 0
+    companion object {
+        const val EXTRA_ID_PATIENT = "ID_PATIENT"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +32,7 @@ class ViewAntropometryFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_antropometry, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,5 +55,13 @@ class ViewAntropometryFragment : Fragment() {
                 tv_view_body_age.setText(result.antropometry_data.body_age.toString())
             }
         })
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (arguments != null) {
+            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
+            idPatient = patientId
+        }
     }
 }

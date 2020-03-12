@@ -18,7 +18,10 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewBiochemistryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int = 0
+    var idPatient: Int? = 0
+    companion object {
+        const val EXTRA_ID_PATIENT = "ID_PATIENT"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,5 +53,12 @@ class ViewBiochemistryFragment : Fragment() {
                 tv_view_sgpt.setText(result.biochemistry_data.sgpt.toString())
             }
         })
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (arguments != null) {
+            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
+            idPatient = patientId
+        }
     }
 }

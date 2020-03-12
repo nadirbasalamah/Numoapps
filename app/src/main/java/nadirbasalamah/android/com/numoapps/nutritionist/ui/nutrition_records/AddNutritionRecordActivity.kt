@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu.AddFoodMenuFragment
 
 class AddNutritionRecordActivity : AppCompatActivity() {
     private var patientId: Int = 0
@@ -33,22 +34,20 @@ class AddNutritionRecordActivity : AppCompatActivity() {
         val diagnoseFragment = DiagnoseFragment()
         val interenventionFragment = InterenventionFragment()
         val monevFragment = MonevFragment()
+        val foodMenuFragment = AddFoodMenuFragment()
 
+        val bundle = Bundle()
+        bundle.putInt(AntropometryFragment.EXTRA_ID_PATIENT,patientId)
+        bundle.putString(AntropometryFragment.EXTRA_MODE, ADD_MODE)
 
-        antropometryFragment.idPatient = patientId
-        antropometryFragment.mode = ADD_MODE
-        biochemistryFragment.idPatient = patientId
-        biochemistryFragment.mode = ADD_MODE
-        clinicFragment.idPatient = patientId
-        clinicFragment.mode = ADD_MODE
-        dietaryFragment.idPatient = patientId
-        dietaryFragment.mode = ADD_MODE
-        diagnoseFragment.idPatient = patientId
-        diagnoseFragment.mode = ADD_MODE
-        interenventionFragment.idPatient = patientId
-        interenventionFragment.mode = ADD_MODE
-        monevFragment.idPatient = patientId
-        monevFragment.mode = ADD_MODE
+        antropometryFragment.arguments = bundle
+        biochemistryFragment.arguments = bundle
+        clinicFragment.arguments = bundle
+        dietaryFragment.arguments = bundle
+        diagnoseFragment.arguments = bundle
+        interenventionFragment.arguments = bundle
+        monevFragment.arguments = bundle
+        foodMenuFragment.arguments = bundle
 
         val drawerLayout: DrawerLayout = findViewById(R.id.enut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.enut_nav_view)
@@ -59,7 +58,7 @@ class AddNutritionRecordActivity : AppCompatActivity() {
                 R.id.enut_navigation_antropometry, R.id.enut_navigation_biochemistry,
                 R.id.enut_navigation_clinic, R.id.enut_navigation_dietary,
                 R.id.enut_navigation_diagnose, R.id.enut_navigation_interenvention,
-                R.id.enut_navigation_monev)
+                R.id.enut_navigation_monev,R.id.enut_navigation_foodmenu)
             .setDrawerLayout(drawerLayout)
             .build()
 
@@ -68,7 +67,7 @@ class AddNutritionRecordActivity : AppCompatActivity() {
                 R.id.enut_navigation_antropometry, R.id.enut_navigation_biochemistry,
                 R.id.enut_navigation_clinic, R.id.enut_navigation_dietary,
                 R.id.enut_navigation_diagnose, R.id.enut_navigation_interenvention,
-                R.id.enut_navigation_monev
+                R.id.enut_navigation_monev,R.id.enut_navigation_foodmenu
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

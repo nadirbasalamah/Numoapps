@@ -155,4 +155,13 @@
     <string name="edit_article_title">Edit Artikel</string>
     <string name="delete_article_title">Hapus Artikel</string>
     <string name="add_nutrecord_title">TAMBAH DATA GIZI</string>
+    <string name="breakfast_title">Makan Pagi</string>
+    <string name="time_sample">00:00</string>
+    <string name="lunch_title">Makan Siang</string>
+    <string name="dinner_title">Makan Malam</string>
+    <string name="choose_breakfast_time_title">PILIH JAM MAKAN PAGI</string>
+    <string name="choose_lunch_time">PILIH JAM MAKAN SIANG</string>
+    <string name="choose_dinner_time">PILIH JAM MAKAN MALAM</string>
+    <string name="menu_title">Menu Makanan</string>
+    <string name="view_foodmenu_title">LIHAT MENU MAKANAN</string>
 </resources>

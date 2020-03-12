@@ -2,20 +2,22 @@ package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
 
 
 import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_monev.*
-
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
 import java.util.*
 import kotlin.collections.HashMap
+
 
 /**
  * A simple [Fragment] subclass.
@@ -26,8 +28,13 @@ class MonevFragment : Fragment() {
     private var day: Int = 0
     private var mon_date: String = ""
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int = 0
-    var mode: String = ""
+    var idPatient: Int? = 0
+    var mode: String? = ""
+
+    companion object {
+        const val EXTRA_ID_PATIENT = "EXTRA_ID_PATIENT"
+        const val EXTRA_MODE = "EXTRA_MODE"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,16 +64,14 @@ class MonevFragment : Fragment() {
             month = calendar.get(Calendar.MONTH)
             day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val datePickerDialog = context?.let { it1 ->
-                DatePickerDialog(
-                    it1,
-                    DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                        tv_return_date.text =
-                            dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                    }, year, month, day
-                )
-            }
-            datePickerDialog?.show()
+            val datePickerDialog = DatePickerDialog(
+                context!!.applicationContext,
+                OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    tv_return_date.text = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
+                }, year, month, day
+            )
+
+            datePickerDialog.show()
         }
         val calendar: Calendar = Calendar.getInstance()
         mon_date = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + calendar.get(Calendar.MONTH).toString() + "-" + calendar.get(
@@ -90,6 +95,16 @@ class MonevFragment : Fragment() {
                     Toast.makeText(context,"Perekaman data monitoring berhasil", Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (arguments != null) {
+            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
+            val dataMode = arguments?.getString(EXTRA_MODE)
+            idPatient = patientId
+            mode = dataMode
         }
     }
 }

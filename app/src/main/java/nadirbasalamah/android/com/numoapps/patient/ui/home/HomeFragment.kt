@@ -2,6 +2,7 @@ package nadirbasalamah.android.com.numoapps.patient.ui.home
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,5 +53,9 @@ class HomeFragment : Fragment() {
             }
         })
 
+        btn_to_foodmenu_detail.setOnClickListener {
+            val intent = Intent(context,FoodMenuDetailActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

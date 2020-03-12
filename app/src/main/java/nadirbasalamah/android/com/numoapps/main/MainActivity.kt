@@ -77,13 +77,14 @@ class MainActivity : AppCompatActivity() {
             if(result?.status == true) {
                 val loginDataEdit = loginData.edit()
                 loginDataEdit.putInt("id_user",result?.data.id)
-                loginDataEdit.putString("username",result?.data.username)
-                loginDataEdit.apply()
                 if(username.contains("AG_")) {
+                    loginDataEdit.putString("username","AG_" + result?.data.username)
                     checkRole("AG_" + result?.data.username)
                 } else {
+                    loginDataEdit.putString("username",result?.data.username)
                     checkRole(result?.data.username)
                 }
+                loginDataEdit.apply()
                 et_username_login.setText("")
                 et_password_login.setText("")
             }

@@ -45,4 +45,10 @@
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewMonevFragment"
         android:label="@string/monitoring"
         tools:layout="@layout/fragment_view_monev" />
+
+    <fragment
+        android:id="@+id/vnut_navigation_foodmenu"
+        android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu.ViewFoodMenuFragment"
+        android:label="@string/menu_title"
+        tools:layout="@layout/fragment_view_food_menu" />
 </navigation>

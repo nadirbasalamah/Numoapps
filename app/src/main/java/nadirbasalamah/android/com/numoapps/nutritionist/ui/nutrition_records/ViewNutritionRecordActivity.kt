@@ -11,12 +11,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu.AddFoodMenuFragment
+import nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu.ViewFoodMenuFragment
 
 class ViewNutritionRecordActivity : AppCompatActivity() {
     private var patientId: Int = 0
     private lateinit var appBarConfiguration: AppBarConfiguration
     companion object {
         const val PATIENT_ID = "PATIENT_ID"
+        const val EXTRA_ID_PATIENT = "ID_PATIENT"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,34 +28,22 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
 
         patientId = intent.getIntExtra(PATIENT_ID,0)
 
-        val antropometryFragment = ViewAntropometryFragment()
-        val biochemistryFragment = ViewBiochemistryFragment()
-        val clinicFragment = ViewClinicFragment()
-        val dietaryFragment  = ViewDietaryFragment()
-        val diagnoseFragment = ViewDiagnoseFragment()
-        val interenventionFragment = ViewInterenventionFragment()
-        val monevFragment = ViewMonevFragment()
-
         Toast.makeText(applicationContext,"ID DARI ACTIVITY : $patientId",Toast.LENGTH_SHORT).show()
 
-        antropometryFragment.idPatient = patientId
-        biochemistryFragment.idPatient = patientId
-        clinicFragment.idPatient = patientId
-        dietaryFragment.idPatient = patientId
-        diagnoseFragment.idPatient = patientId
-        interenventionFragment.idPatient = patientId
-        monevFragment.idPatient = patientId
+        val bundle = Bundle()
+        bundle.putInt(EXTRA_ID_PATIENT, patientId)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.vnut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.vnut_nav_view)
         val navController = findNavController(R.id.vnut_nav_host_fragment)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration.Builder(
                 R.id.vnut_navigation_antropometry, R.id.vnut_navigation_biochemistry,
                 R.id.vnut_navigation_clinic, R.id.vnut_navigation_dietary,
                 R.id.vnut_navigation_diagnose, R.id.vnut_navigation_interenvention,
-                R.id.vnut_navigation_monev)
+                R.id.vnut_navigation_monev,R.id.vnut_navigation_foodmenu)
             .setDrawerLayout(drawerLayout)
             .build()
 
@@ -61,7 +52,7 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
                 R.id.vnut_navigation_antropometry, R.id.vnut_navigation_biochemistry,
                 R.id.vnut_navigation_clinic, R.id.vnut_navigation_dietary,
                 R.id.vnut_navigation_diagnose, R.id.vnut_navigation_interenvention,
-                R.id.vnut_navigation_monev
+                R.id.vnut_navigation_monev,R.id.vnut_navigation_foodmenu
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

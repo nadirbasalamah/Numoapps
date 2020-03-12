@@ -111,4 +111,31 @@ interface NutritionistApiInterface {
 
     @GET("nutRecord/{id}")
     fun getNutRecordById(@Path("id") id: Int?): Call<NutritionRecordResponse?>?
+
+    @GET("foodMenu/{id}")
+    fun getFoodMenuById(@Path("id") id: Int?): Call<FoodMenuResponse?>?
+
+    @FormUrlEncoded
+    @POST("addFoodMenu/{id}")
+    fun postAddFoodMenu(
+        @Path("id") id: Int?,
+        @Field("breakfast") breakfast: String?,
+        @Field("breakfast_time") breakfast_time: String?,
+        @Field("lunch") lunch: String?,
+        @Field("lunch_time") lunch_time: String?,
+        @Field("dinner") dinner: String?,
+        @Field("dinner_time") dinner_time: String?
+    ): Call<FoodMenuResponse?>?
+
+    @FormUrlEncoded
+    @POST("editFoodMenu/{id}")
+    fun postEditFoodMenu(
+        @Path("id") id: Int?,
+        @Field("breakfast") breakfast: String?,
+        @Field("breakfast_time") breakfast_time: String?,
+        @Field("lunch") lunch: String?,
+        @Field("lunch_time") lunch_time: String?,
+        @Field("dinner") dinner: String?,
+        @Field("dinner_time") dinner_time: String?
+    ): Call<FoodMenuResponse?>?
 }

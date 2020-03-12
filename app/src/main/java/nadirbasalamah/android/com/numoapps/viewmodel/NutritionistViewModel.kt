@@ -23,6 +23,9 @@ class NutritionistViewModel : ViewModel() {
     private var postUpdateInterenvention: Call<InterenventionResponse?>? = null
     private var postUpdateMonitoring: Call<MonitoringResponse?>? = null
     private var getNutRecordById: Call<NutritionRecordResponse?>? = null
+    private var getFoodMenuById: Call<FoodMenuResponse?>? = null
+    private var addFoodMenuById: Call<FoodMenuResponse?>? = null
+    private var editFoodMenuId: Call<FoodMenuResponse?>? = null
 
     private var context: Context? = null
 
@@ -359,7 +362,7 @@ class NutritionistViewModel : ViewModel() {
         return result
     }
 
-    internal fun getNutRecordById(data: Int): MutableLiveData<NutritionRecordResponse?>? {
+    internal fun getNutRecordById(data: Int?): MutableLiveData<NutritionRecordResponse?>? {
         nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
         var requestResult: NutritionRecordResponse?
         val result: MutableLiveData<NutritionRecordResponse?>? = MutableLiveData()
@@ -382,6 +385,121 @@ class NutritionistViewModel : ViewModel() {
 
                 override fun onFailure(
                     call: Call<NutritionRecordResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+    internal fun getFoodMenuById(data: Int?): MutableLiveData<FoodMenuResponse?>? {
+        nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
+        var requestResult: FoodMenuResponse?
+        val result: MutableLiveData<FoodMenuResponse?>? = MutableLiveData()
+        getFoodMenuById = nutritionistApiInterface?.getFoodMenuById(data)
+        getFoodMenuById?.enqueue(
+            object : Callback<FoodMenuResponse?> {
+                override fun onResponse(
+                    call: Call<FoodMenuResponse?>?,
+                    response: Response<FoodMenuResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data menu makanan berhasil ditemukan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Data menu makanan tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<FoodMenuResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+    internal fun addFoodMenu(data: HashMap<String, String>): MutableLiveData<FoodMenuResponse?>? {
+        nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
+        var requestResult: FoodMenuResponse?
+        val result: MutableLiveData<FoodMenuResponse?>? = MutableLiveData()
+        addFoodMenuById = nutritionistApiInterface?.postAddFoodMenu(
+            data["id"]?.toInt(),
+            data["breakfast"],
+            data["breakfast_time"],
+            data["lunch"],
+            data["lunch_time"],
+            data["dinner"],
+            data["dinner_time"]
+        )
+        addFoodMenuById?.enqueue(
+            object : Callback<FoodMenuResponse?> {
+                override fun onResponse(
+                    call: Call<FoodMenuResponse?>?,
+                    response: Response<FoodMenuResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data menu makanan berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Penambahan data gagal!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<FoodMenuResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+    internal fun editFoodMenu(data: HashMap<String, String>): MutableLiveData<FoodMenuResponse?>? {
+        nutritionistApiInterface = ApiClient.getClient()?.create(NutritionistApiInterface::class.java)
+        var requestResult: FoodMenuResponse?
+        val result: MutableLiveData<FoodMenuResponse?>? = MutableLiveData()
+        editFoodMenuId = nutritionistApiInterface?.postEditFoodMenu(
+            data["id"]?.toInt(),
+            data["breakfast"],
+            data["breakfast_time"],
+            data["lunch"],
+            data["lunch_time"],
+            data["dinner"],
+            data["dinner_time"]
+        )
+        editFoodMenuId?.enqueue(
+            object : Callback<FoodMenuResponse?> {
+                override fun onResponse(
+                    call: Call<FoodMenuResponse?>?,
+                    response: Response<FoodMenuResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data menu makanan berhasil diubah!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<FoodMenuResponse?>,
                     t: Throwable
                 ) {
                     Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
