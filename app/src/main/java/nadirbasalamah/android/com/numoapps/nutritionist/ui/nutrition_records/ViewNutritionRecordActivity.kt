@@ -31,11 +31,12 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
         Toast.makeText(applicationContext,"ID DARI ACTIVITY : $patientId",Toast.LENGTH_SHORT).show()
 
         val bundle = Bundle()
-        bundle.putInt(EXTRA_ID_PATIENT, patientId)
+        bundle.putInt("IDPATIENT", patientId)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.vnut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.vnut_nav_view)
         val navController = findNavController(R.id.vnut_nav_host_fragment)
+        navController.setGraph(R.navigation.view_nutrecord_navigation,bundle)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

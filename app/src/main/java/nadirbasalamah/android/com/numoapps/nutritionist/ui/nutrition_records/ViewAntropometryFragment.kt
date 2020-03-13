@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_antropometry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -20,10 +21,6 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewAntropometryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int? = 0
-    companion object {
-        const val EXTRA_ID_PATIENT = "ID_PATIENT"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +34,12 @@ class ViewAntropometryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(context,idPatient.toString(),Toast.LENGTH_SHORT).show()
+        val args:  ViewAntropometryFragmentArgs by navArgs()
+        val patientId = args.IDPATIENT
 
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(context)
-        nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+        nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
                 tv_view_bw.setText(result.antropometry_data.bb.toString())
                 tv_view_bh.setText(result.antropometry_data.tb.toString())
@@ -55,13 +53,5 @@ class ViewAntropometryFragment : Fragment() {
                 tv_view_body_age.setText(result.antropometry_data.body_age.toString())
             }
         })
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (arguments != null) {
-            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
-            idPatient = patientId
-        }
     }
 }

@@ -8,47 +8,119 @@
         android:id="@+id/enut_navigation_antropometry"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.AntropometryFragment"
         android:label="@string/antropometry"
-        tools:layout="@layout/fragment_antropometry" />
+        tools:layout="@layout/fragment_antropometry">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_biochemistry"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.BiochemistryFragment"
         android:label="@string/biochemistry"
-        tools:layout="@layout/fragment_biochemistry" />
+        tools:layout="@layout/fragment_biochemistry">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_clinic"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ClinicFragment"
         android:label="@string/clinic"
-        tools:layout="@layout/fragment_clinic" />
+        tools:layout="@layout/fragment_clinic">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_dietary"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.DietaryFragment"
         android:label="@string/dietary"
-        tools:layout="@layout/fragment_dietary" />
+        tools:layout="@layout/fragment_dietary">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_diagnose"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.DiagnoseFragment"
         android:label="@string/diagnosa"
-        tools:layout="@layout/fragment_diagnose" />
+        tools:layout="@layout/fragment_diagnose">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_interenvention"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.InterenventionFragment"
         android:label="@string/interenvensi"
-        tools:layout="@layout/fragment_interenvention" />
+        tools:layout="@layout/fragment_interenvention">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_monev"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.MonevFragment"
         android:label="@string/monitoring"
-        tools:layout="@layout/fragment_monev" />
+        tools:layout="@layout/fragment_monev">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/enut_navigation_foodmenu"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu.AddFoodMenuFragment"
         android:label="@string/menu_title"
-        tools:layout="@layout/fragment_add_food_menu" />
+        tools:layout="@layout/fragment_add_food_menu">
+        <argument
+            android:name="IDPATIENT"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="MODE"
+            android:defaultValue="NONE_MODE"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_add_food_menu.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
@@ -23,15 +24,8 @@ import kotlin.collections.HashMap
  */
 class AddFoodMenuFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int? = 0
-    var mode: String? = ""
     private var hour: Int = 0
     private var minute: Int = 0
-    companion object {
-        const val EXTRA_ID_PATIENT = "EXTRA_ID_PATIENT"
-        const val EXTRA_MODE = "EXTRA_MODE"
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +38,14 @@ class AddFoodMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val args:  AddFoodMenuFragmentArgs by navArgs()
+        val patientId = args.IDPATIENT
+        val mode = args.MODE
+
         if(mode.equals("EDIT_MODE")) {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
             nutritionistViewModel.setContext(context)
-            nutritionistViewModel.getFoodMenuById(idPatient)?.observe(this, Observer {result ->
+            nutritionistViewModel.getFoodMenuById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
                 if(result?.status == true) {
                     et_breakfast.setText(result.data.breakfast)
                     tv_breakfast_time.setText(result.data.breakfast_time)
@@ -102,7 +100,7 @@ class AddFoodMenuFragment : Fragment() {
             val dinner = et_dinner.text.toString()
             val dinner_time = tv_dinner_time.text.toString()
 
-            data.put("id",idPatient.toString())
+            data.put("id",patientId.toString())
             data.put("breakfast",breakfast)
             data.put("breakfast_time",breakfast_time)
             data.put("lunch",lunch)
@@ -113,28 +111,18 @@ class AddFoodMenuFragment : Fragment() {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
             nutritionistViewModel.setContext(context)
             if(mode.equals("EDIT_MODE")) {
-                nutritionistViewModel.editFoodMenu(data)?.observe(this, Observer {result ->
+                nutritionistViewModel.editFoodMenu(data)?.observe(viewLifecycleOwner, Observer {result ->
                     if(result?.status == true) {
                         Toast.makeText(context,"Perubahan data menu makanan berhasil", Toast.LENGTH_SHORT).show()
                     }
                 })
             } else {
-                nutritionistViewModel.addFoodMenu(data)?.observe(this, Observer {result ->
+                nutritionistViewModel.addFoodMenu(data)?.observe(viewLifecycleOwner, Observer {result ->
                     if(result?.status == true) {
                         Toast.makeText(context,"Penambahan data menu makanan berhasil", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (arguments != null) {
-            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
-            val dataMode = arguments?.getString(EXTRA_MODE)
-            idPatient = patientId
-            mode = dataMode
         }
     }
 }

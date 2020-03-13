@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_clinic.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -18,10 +19,6 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewClinicFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int? = 0
-    companion object {
-        const val EXTRA_ID_PATIENT = "ID_PATIENT"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +31,13 @@ class ViewClinicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val args:  ViewClinicFragmentArgs by navArgs()
+        val patientId = args.IDPATIENT
+
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(context)
-        nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+        nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
                 tv_view_tensi.setText(result.clinic_data.tensi.toString())
                 tv_view_rr.setText(result.clinic_data.rr.toString())
@@ -50,12 +50,5 @@ class ViewClinicFragment : Fragment() {
                 tv_view_diagnosa_sekarang.setText(result.clinic_data.diagnosa_skrg)
             }
         })
-    }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (arguments != null) {
-            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
-            idPatient = patientId
-        }
     }
 }

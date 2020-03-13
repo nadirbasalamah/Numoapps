@@ -27,31 +27,15 @@ class AddNutritionRecordActivity : AppCompatActivity() {
 
         patientId = intent.getIntExtra(PATIENT_ID,0)
 
-        val antropometryFragment = AntropometryFragment()
-        val biochemistryFragment = BiochemistryFragment()
-        val clinicFragment = ClinicFragment()
-        val dietaryFragment  = DietaryFragment()
-        val diagnoseFragment = DiagnoseFragment()
-        val interenventionFragment = InterenventionFragment()
-        val monevFragment = MonevFragment()
-        val foodMenuFragment = AddFoodMenuFragment()
-
         val bundle = Bundle()
-        bundle.putInt(AntropometryFragment.EXTRA_ID_PATIENT,patientId)
-        bundle.putString(AntropometryFragment.EXTRA_MODE, ADD_MODE)
-
-        antropometryFragment.arguments = bundle
-        biochemistryFragment.arguments = bundle
-        clinicFragment.arguments = bundle
-        dietaryFragment.arguments = bundle
-        diagnoseFragment.arguments = bundle
-        interenventionFragment.arguments = bundle
-        monevFragment.arguments = bundle
-        foodMenuFragment.arguments = bundle
+        bundle.putInt("IDPATIENT",patientId)
+        bundle.putString("MODE", ADD_MODE)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.enut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.enut_nav_view)
         val navController = findNavController(R.id.enut_nav_host_fragment)
+        navController.setGraph(R.navigation.edit_nutrecord_navigation,bundle)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration.Builder(

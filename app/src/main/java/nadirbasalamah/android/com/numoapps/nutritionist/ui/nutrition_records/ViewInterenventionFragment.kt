@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_interenvention.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -18,10 +19,6 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewInterenventionFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int? = 0
-    companion object {
-        const val EXTRA_ID_PATIENT = "ID_PATIENT"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +31,13 @@ class ViewInterenventionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val args:  ViewInterenventionFragmentArgs by navArgs()
+        val patientId = args.IDPATIENT
+
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(context)
-        nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+        nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
                 tv_view_energi.setText(result.interenvention_data.energi.toString())
                 tv_view_keterangan_inter.setText(result.interenvention_data.keterangan_inter)
@@ -49,13 +49,5 @@ class ViewInterenventionFragment : Fragment() {
                 tv_view_gram_lemak.setText(result.interenvention_data.gram_lemak.toString())
             }
         })
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (arguments != null) {
-            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
-            idPatient = patientId
-        }
     }
 }

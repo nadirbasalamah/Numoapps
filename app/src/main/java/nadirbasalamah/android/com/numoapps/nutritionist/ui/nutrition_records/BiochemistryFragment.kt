@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_biochemistry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -19,12 +20,6 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class BiochemistryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    var idPatient: Int? = 0
-    var mode: String? = ""
-    companion object {
-        const val EXTRA_ID_PATIENT = "EXTRA_ID_PATIENT"
-        const val EXTRA_MODE = "EXTRA_MODE"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +32,14 @@ class BiochemistryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val args:  BiochemistryFragmentArgs by navArgs()
+        val patientId = args.IDPATIENT
+        val mode = args.MODE
+
         if(mode.equals("EDIT_MODE")) {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
             nutritionistViewModel.setContext(context)
-            nutritionistViewModel.getNutRecordById(idPatient)?.observe(this, Observer {result ->
+            nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
                 if(result?.status == true) {
                     et_gda.setText(result.biochemistry_data.gda.toString())
                     et_gdp.setText(result.biochemistry_data.gdp.toString())
@@ -74,7 +73,7 @@ class BiochemistryFragment : Fragment() {
             val sgpt = et_sgpt.text.toString()
 
 
-            data.put("id",idPatient.toString())
+            data.put("id",patientId.toString())
             data.put("gda",gda)
             data.put("gdp",gdp)
             data.put("gd2jpp",gd2jpp)
@@ -90,23 +89,11 @@ class BiochemistryFragment : Fragment() {
 
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
             nutritionistViewModel.setContext(context)
-            nutritionistViewModel.updateBiochemistry(data)?.observe(this, Observer {result ->
+            nutritionistViewModel.updateBiochemistry(data)?.observe(viewLifecycleOwner, Observer {result ->
                 if(result?.status == true) {
                     Toast.makeText(context,"Perekaman data biokimia berhasil", Toast.LENGTH_SHORT).show()
                 }
             })
         }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (arguments != null) {
-            val patientId = arguments?.getInt(EXTRA_ID_PATIENT)
-            val dataMode = arguments?.getString(EXTRA_MODE)
-            idPatient = patientId
-            mode = dataMode
-        }
-    }
-
-
 }
