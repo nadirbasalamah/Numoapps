@@ -1,6 +1,7 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,9 +33,10 @@ class ClinicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args:  ClinicFragmentArgs by navArgs()
-        val patientId = args.IDPATIENT
-        val mode = args.MODE
+        val appContext = AddNutritionRecordActivity.getAppContext()
+        val patientData = appContext.getSharedPreferences("Patient_Data", Context.MODE_PRIVATE)
+        val patientId = patientData.getInt("id_patient",0)
+        val mode = patientData.getString("MODE","")
 
         if(mode.equals("EDIT_MODE")) {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
@@ -46,6 +48,7 @@ class ClinicFragment : Fragment() {
                     et_suhu.setText(result.clinic_data.suhu.toString())
                     et_data_lain.setText(result.clinic_data.lainnya)
                     et_oedema.setText(result.clinic_data.oedema.toString())
+                    et_aktivitas.setText(result.clinic_data.aktivitas)
                     et_durasi_olahraga.setText(result.clinic_data.durasi_olahraga)
                     et_jenis_olahraga.setText(result.clinic_data.jenis_olahraga)
                     et_diagnosa_dahulu.setText(result.clinic_data.diagnosa_dahulu)
@@ -61,6 +64,7 @@ class ClinicFragment : Fragment() {
             val suhu = et_suhu.text.toString()
             val data_lain = et_data_lain.text.toString()
             val oedema = et_oedema.text.toString()
+            val aktivitas = et_aktivitas.text.toString()
             val durasi_olahraga = et_durasi_olahraga.text.toString()
             val jenis_olahraga = et_jenis_olahraga.text.toString()
             val diagnosa_dahulu = et_diagnosa_dahulu.text.toString()
@@ -72,6 +76,7 @@ class ClinicFragment : Fragment() {
             data.put("suhu",suhu)
             data.put("lainnya",data_lain)
             data.put("oedema",oedema)
+            data.put("aktivitas",aktivitas)
             data.put("durasi_olahraga",durasi_olahraga)
             data.put("jenis_olahraga",jenis_olahraga)
             data.put("diagnosa_dahulu",diagnosa_dahulu)

@@ -1,6 +1,7 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_food_menu.*
 
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.ViewNutritionRecordActivity
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
 
 /**
@@ -31,8 +33,9 @@ class ViewFoodMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args:  ViewFoodMenuFragmentArgs by navArgs()
-        val patientId = args.IDPATIENT
+        val appContext = ViewNutritionRecordActivity.getAppContext()
+        val patientData = appContext.getSharedPreferences("Patient_Data", Context.MODE_PRIVATE)
+        val patientId = patientData.getInt("id_patient",0)
 
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             NutritionistViewModel::class.java)

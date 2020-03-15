@@ -69,6 +69,7 @@ class PatientDetailActivity : AppCompatActivity() {
                 if(result?.status == true) {
                     val intent = Intent(applicationContext,AddNutritionRecordActivity::class.java)
                     intent.putExtra(AddNutritionRecordActivity.PATIENT_ID,patient.id)
+                    intent.putExtra(AddNutritionRecordActivity.MODE,"ADD_MODE")
                     startActivity(intent)
                 }
             })

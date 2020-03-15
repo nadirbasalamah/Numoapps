@@ -21,6 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class ViewAntropometryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
+    private var idPatient: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +35,10 @@ class ViewAntropometryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args:  ViewAntropometryFragmentArgs by navArgs()
-        val patientId = args.IDPATIENT
+//        val patientId = arguments?.getInt("IDPATIENT")
+        val appContext = ViewNutritionRecordActivity.getAppContext()
+        val patientData = appContext.getSharedPreferences("Patient_Data", Context.MODE_PRIVATE)
+        val patientId = patientData.getInt("id_patient",0)
 
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(context)

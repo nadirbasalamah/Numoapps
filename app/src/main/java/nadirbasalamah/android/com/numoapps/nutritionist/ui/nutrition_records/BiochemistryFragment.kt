@@ -1,6 +1,7 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,9 +33,10 @@ class BiochemistryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args:  BiochemistryFragmentArgs by navArgs()
-        val patientId = args.IDPATIENT
-        val mode = args.MODE
+        val appContext = AddNutritionRecordActivity.getAppContext()
+        val patientData = appContext.getSharedPreferences("Patient_Data", Context.MODE_PRIVATE)
+        val patientId = patientData.getInt("id_patient",0)
+        val mode = patientData.getString("MODE","")
 
         if(mode.equals("EDIT_MODE")) {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
@@ -71,7 +73,6 @@ class BiochemistryFragment : Fragment() {
             val kreatinin = et_kreatinin.text.toString()
             val sgot = et_sgot.text.toString()
             val sgpt = et_sgpt.text.toString()
-
 
             data.put("id",patientId.toString())
             data.put("gda",gda)

@@ -3,6 +3,7 @@ package nadirbasalamah.android.com.numoapps.nutritionist.ui.foodmenu
 
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_add_food_menu.*
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.AddNutritionRecordActivity
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
 import java.util.*
 import kotlin.collections.HashMap
@@ -38,9 +40,10 @@ class AddFoodMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args:  AddFoodMenuFragmentArgs by navArgs()
-        val patientId = args.IDPATIENT
-        val mode = args.MODE
+        val appContext = AddNutritionRecordActivity.getAppContext()
+        val patientData = appContext.getSharedPreferences("Patient_Data", Context.MODE_PRIVATE)
+        val patientId = patientData.getInt("id_patient",0)
+        val mode = patientData.getString("MODE","")
 
         if(mode.equals("EDIT_MODE")) {
             nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
