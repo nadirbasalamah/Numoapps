@@ -38,7 +38,9 @@ class SettingFragment : Fragment() {
             val intent = Intent(context,EditProfileActivity::class.java)
             startActivity(intent)
         }
+        cv_notif_settings.setOnClickListener{
+            val intent = Intent(context,PatientReminderSettingActivity::class.java)
+            startActivity(intent)
+        }
     }
-
-
 }

@@ -165,4 +165,10 @@
     <string name="menu_title">Menu Makanan</string>
     <string name="view_foodmenu_title">LIHAT MENU MAKANAN</string>
     <string name="edit_data_gizi">Edit Data Gizi</string>
+    <string name="food_schedule_key">Food Schedule Reminder</string>
+    <string name="food_schedule_title">Pengingat Jadwal Makan</string>
+    <string name="food_schedule_desc">Pengingat jadwal makan yang sesuai dengan rekomendasi ahli gizi</string>
+    <string name="return_schedule_key">Return Schedule Reminder</string>
+    <string name="return_schedule_title">Pengingat Jadwal Kembali</string>
+    <string name="return_schedule_desc">Pengingat jadwal kembali ke ahli gizi</string>
 </resources>

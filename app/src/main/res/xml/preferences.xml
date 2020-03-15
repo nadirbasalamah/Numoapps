@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/food_schedule_key"
+        android:title="@string/food_schedule_title"
+        android:summary="@string/food_schedule_desc"
+        app:iconSpaceReserved="false"
+        />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/return_schedule_key"
+        android:title="@string/return_schedule_title"
+        android:summary="@string/return_schedule_desc"
+        app:iconSpaceReserved="false"
+        />
+
+</androidx.preference.PreferenceScreen>

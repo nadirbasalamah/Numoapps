@@ -31,7 +31,7 @@ class FoodMenuDetailActivity : AppCompatActivity() {
                 tv_lunch.text = result.data.lunch
                 tv_lunch_time.text = result.data.lunch_time
                 tv_dinner.text = result.data.dinner
-                tv_dinner_time.text = result.data.dinner
+                tv_dinner_time.text = result.data.dinner_time
             }
         })
     }
