@@ -171,4 +171,6 @@
     <string name="return_schedule_key">Return Schedule Reminder</string>
     <string name="return_schedule_title">Pengingat Jadwal Kembali</string>
     <string name="return_schedule_desc">Pengingat jadwal kembali ke ahli gizi</string>
+    <string name="message_hint">Masukkan pesan Anda kepada ahli gizi</string>
+    <string name="send_title">KIRIM</string>
 </resources>

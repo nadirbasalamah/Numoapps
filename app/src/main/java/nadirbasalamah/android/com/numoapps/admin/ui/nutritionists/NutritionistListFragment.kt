@@ -57,7 +57,7 @@ class NutritionistListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        adminViewModel.getAllNutritionists()?.observe(this, Observer {nutritionistItems ->
+        adminViewModel.getAllNutritionists()?.observe(viewLifecycleOwner, Observer {nutritionistItems ->
             if(nutritionistItems != null) {
                 adapter.setData(nutritionistItems.data)
                 showLoading(false)

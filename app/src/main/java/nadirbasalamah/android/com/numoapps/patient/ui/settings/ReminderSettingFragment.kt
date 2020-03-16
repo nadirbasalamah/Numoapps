@@ -1,12 +1,15 @@
 package nadirbasalamah.android.com.numoapps.patient.ui.settings
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import nadirbasalamah.android.com.numoapps.R
+import nadirbasalamah.android.com.numoapps.main.MainActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +21,7 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
     private lateinit var RETURN_DATE_REMINDER: String
     private var isFoodScheduleChecked: Boolean = false
     private var isReturnDateChecked: Boolean = false
+    private var userId: Int? = 0
 
     private lateinit var foodScheduleReminderPreference: SwitchPreference
     private lateinit var returnDatePreference: SwitchPreference
@@ -25,10 +29,16 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
 //    private lateinit var currentDate: String
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        val appContext = MainActivity.getAppContext()
+        val loginData = appContext.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        userId = loginData.getInt("id_user",0)
+
         addPreferencesFromResource(R.xml.preferences)
+
 //        alarmReceiver = AlarmReceiver()
 //        AndroidThreeTen.init(context)
 //        currentDate = LocalDate.now().toString()
+        Toast.makeText(context,"ID USER : $userId",Toast.LENGTH_LONG).show()
         init()
         setSummaries()
     }

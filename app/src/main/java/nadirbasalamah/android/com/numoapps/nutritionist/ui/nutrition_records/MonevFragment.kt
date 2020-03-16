@@ -57,30 +57,17 @@ class MonevFragment : Fragment() {
             })
         }
 
-        btn_select_return_date.setOnClickListener {
-            val calendar: Calendar = Calendar.getInstance()
-            year = calendar.get(Calendar.YEAR)
-            month = calendar.get(Calendar.MONTH)
-            day = calendar.get(Calendar.DAY_OF_MONTH)
-
-            val datePickerDialog = DatePickerDialog(
-                context!!.applicationContext,
-                OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    tv_return_date.text = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                }, year, month, day
-            )
-
-            datePickerDialog.show()
-        }
         val calendar: Calendar = Calendar.getInstance()
         mon_date = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + calendar.get(Calendar.MONTH).toString() + "-" + calendar.get(
             Calendar.YEAR)
 
         btn_monitoring_save.setOnClickListener {
+            val returnDate = dp_return_date.dayOfMonth.toString() + "-" + (dp_return_date.month + 1).toString() + "-" + dp_return_date.year.toString()
+            tv_return_date.setText(returnDate)
+
             var data: HashMap<String, String> = HashMap<String, String>()
             val result = et_mon_result.text.toString()
             val return_date = tv_return_date.text.toString()
-
 
             data.put("id",patientId.toString())
             data.put("mon_date",mon_date)

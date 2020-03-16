@@ -3,10 +3,14 @@ package nadirbasalamah.android.com.numoapps.patient.ui.home
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
 
 class HomeFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
+    private var nutPhoneNumber: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +39,7 @@ class HomeFragment : Fragment() {
 
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
         userViewModel.setContext(context)
-        userViewModel.getNutRecordByUserId(userId)?.observe(this, Observer {result ->
+        userViewModel.getNutRecordByUserId(userId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
                 tv_body_weight.text = result?.antropometry_data.bb.toString()
                 tv_body_height.text = result?.antropometry_data.tb.toString()
@@ -50,11 +55,18 @@ class HomeFragment : Fragment() {
                 tv_fat.text = result?.interenvention_data.persen_lemak.toString()
                 tv_fat_gram.text = result?.interenvention_data.gram_lemak.toString()
                 tv_diet_type.text = result?.interenvention_data.keterangan_inter
+                nutPhoneNumber = result?.nutritionist_data.phone_number?.replaceFirst("0","62",true)
             }
         })
 
         btn_to_foodmenu_detail.setOnClickListener {
             val intent = Intent(context,FoodMenuDetailActivity::class.java)
+            startActivity(intent)
+        }
+
+        fab_chat_to_whatsapp.setOnClickListener{
+            val intent = Intent(context,SendMessageActivity::class.java)
+            intent.putExtra(SendMessageActivity.PHONE_NUMBER,nutPhoneNumber)
             startActivity(intent)
         }
     }

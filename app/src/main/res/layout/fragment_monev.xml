@@ -24,42 +24,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_monitoring_save"
-            android:background="@color/colorAccent"
-            android:textColor="#FFFFFF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="128dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/save_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
+    <TextView
+        android:id="@+id/tv_return_date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/return_date_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
+
+    <TextView
+        android:id="@+id/tv_return_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/date_sample"
+        app:layout_constraintStart_toEndOf="@+id/tv_return_date_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_return_date_title" />
+
+    <DatePicker
+        android:id="@+id/dp_return_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_return_date_title" />
 
         <Button
-            android:id="@+id/btn_select_return_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
-            android:enabled="false"
-            android:padding="8dp"
-            android:text="@string/choose_return_date"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_mon_result" />
-
-        <TextView
-            android:id="@+id/tv_return_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/control_date"
-            app:layout_constraintBottom_toTopOf="@+id/btn_monitoring_save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_select_return_date" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/btn_monitoring_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorAccent"
+        android:text="@string/save_edit"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dp_return_date" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

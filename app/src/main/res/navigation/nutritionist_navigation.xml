@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/nut_navigation_settings"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.settings.SettingFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_settings"
         tools:layout="@layout/fragment_nut_setting" />
 </navigation>

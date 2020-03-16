@@ -13,7 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".patient.ui.settings.PatientReminderSettingActivity"></activity>
+        <activity android:name=".patient.ui.home.SendMessageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".patient.ui.settings.PatientReminderSettingActivity" />
         <activity android:name=".patient.ui.home.FoodMenuDetailActivity" />
         <activity android:name=".nutritionist.ui.nutrition_records.ViewNutritionRecordActivity" />
         <activity android:name=".nutritionist.ui.nutrition_records.PatientDetailActivity" />
