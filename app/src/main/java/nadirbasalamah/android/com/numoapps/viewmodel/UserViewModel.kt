@@ -55,9 +55,9 @@ class UserViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
-                        Toast.makeText(context, "Register sukses!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Register Berhasil!", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Register gagal!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Register Gagal!", Toast.LENGTH_SHORT).show()
                     }
                     result?.value = requestResult
                 }
@@ -88,7 +88,7 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
-                        Toast.makeText(context, "Login sukses!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Login Berhasil!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Login gagal!", Toast.LENGTH_SHORT).show()
                     }

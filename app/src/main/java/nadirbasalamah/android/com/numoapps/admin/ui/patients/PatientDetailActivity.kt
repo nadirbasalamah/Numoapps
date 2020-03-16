@@ -1,8 +1,10 @@
 package nadirbasalamah.android.com.numoapps.admin.ui.patients
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_patient_detail.*
@@ -28,6 +30,7 @@ class PatientDetailActivity : AppCompatActivity() {
         tv_detail_visitdate.setText(patient.visitdate)
         tv_detail_referral.setText(patient.referral)
         tv_detail_fullname.setText(patient.fullname)
+        tv_detail_age.setText(patient.age.toString())
         tv_detail_gender.setText(patient.gender)
         tv_detail_address.setText(patient.address)
         tv_detail_phone_number.setText(patient.phone_number)
@@ -43,13 +46,29 @@ class PatientDetailActivity : AppCompatActivity() {
         }
 
         btn_delete_patient.setOnClickListener {
-            adminViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(AdminViewModel::class.java)
-            adminViewModel.setContext(applicationContext)
-            adminViewModel.deletePatient(patient.id)?.observe(this, Observer {result ->
-                if(result?.status == true) {
-                    finish()
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.delete_confirmation)
+                .setPositiveButton(R.string.confirmation_yes
+                ) { dialog, id ->
+                    adminViewModel =
+                        ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+                            AdminViewModel::class.java
+                        )
+                    adminViewModel.setContext(applicationContext)
+                    adminViewModel.deletePatient(patient.id)?.observe(this, Observer { result ->
+                        if (result?.status == true) {
+                            finish()
+                        }
+                    })
+                    dialog.dismiss()
                 }
-            })
+                .setNegativeButton(R.string.confirmation_no
+                ) { dialog, id ->
+                    dialog.cancel()
+                }
+            // Create the AlertDialog object and return it
+            builder.create()
+            builder.show()
         }
     }
 }

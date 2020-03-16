@@ -36,6 +36,7 @@ class PatientDetailActivity : AppCompatActivity() {
         tv_detail_visitdate.setText(patient.visitdate)
         tv_detail_referral.setText(patient.referral)
         tv_detail_fullname.setText(patient.fullname)
+        tv_detail_age.setText(patient.age.toString())
         tv_detail_gender.setText(patient.gender)
         tv_detail_address.setText(patient.address)
         tv_detail_phone_number.setText(patient.phone_number)

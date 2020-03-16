@@ -1,5 +1,6 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.articles
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,13 +46,26 @@ class NutArticleDetailActivity : AppCompatActivity() {
                 return true
             }
             R.id.menu_delete_article -> {
-                articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
-                articleViewModel.setContext(applicationContext)
-                articleViewModel.deleteArticle(article.id)?.observe(this, Observer {result ->
-                    if(result?.status == true) {
-                        finish()
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage(R.string.delete_confirmation)
+                    .setPositiveButton(R.string.confirmation_yes
+                    ) { dialog, id ->
+                        articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
+                        articleViewModel.setContext(applicationContext)
+                        articleViewModel.deleteArticle(article.id)?.observe(this, Observer {result ->
+                            if(result?.status == true) {
+                                finish()
+                            }
+                        })
+                        dialog.dismiss()
                     }
-                })
+                    .setNegativeButton(R.string.confirmation_no
+                    ) { dialog, id ->
+                        dialog.cancel()
+                    }
+                // Create the AlertDialog object and return it
+                builder.create()
+                builder.show()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
