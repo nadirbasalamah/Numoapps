@@ -249,7 +249,7 @@ class UserViewModel : ViewModel() {
         return result
     }
 
-    internal fun getNutRecordByUserId(data: Int): MutableLiveData<NutritionRecordResponse?>? {
+    internal fun getNutRecordByUserId(data: Int?): MutableLiveData<NutritionRecordResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
         var requestResult: NutritionRecordResponse?
         val result: MutableLiveData<NutritionRecordResponse?>? = MutableLiveData()
@@ -282,7 +282,7 @@ class UserViewModel : ViewModel() {
         return result
     }
 
-    internal fun getFoodMenuByUserId(data: Int): MutableLiveData<FoodMenuResponse?>? {
+    internal fun getFoodMenuByUserId(data: Int?): MutableLiveData<FoodMenuResponse?>? {
         userApiInterface = ApiClient.getClient()?.create(UserApiInterface::class.java)
         var requestResult: FoodMenuResponse?
         val result: MutableLiveData<FoodMenuResponse?>? = MutableLiveData()

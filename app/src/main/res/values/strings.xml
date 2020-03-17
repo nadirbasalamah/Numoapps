@@ -178,4 +178,8 @@
     <string name="confirmation_no">TIDAK</string>
     <string name="age_title">Umur</string>
     <string name="age_year_unit">Tahun</string>
+    <string name="return_date_notif">Hari ini adalah jadwal kembali ke Ahli Gizi</string>
+    <string name="breakfast_notif">Makan Pagi Anda  : </string>
+    <string name="lunch_notif">Makan Siang Anda : </string>
+    <string name="dinner_notif">Makan Malam Anda : </string>
 </resources>
