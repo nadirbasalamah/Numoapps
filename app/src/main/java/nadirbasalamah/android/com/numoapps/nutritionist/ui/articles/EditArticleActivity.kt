@@ -26,7 +26,7 @@ class EditArticleActivity : AppCompatActivity() {
         et_article_edit_source.setText(article.source)
 
         btn_article_edit_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val title = et_article_edit_title.text.toString()
             val description = et_article_edit_description.text.toString()
             val source = et_article_edit_source.text.toString()

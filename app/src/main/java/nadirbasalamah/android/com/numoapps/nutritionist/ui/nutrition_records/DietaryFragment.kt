@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_dietary.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -63,7 +62,7 @@ class DietaryFragment : Fragment() {
         }
 
         btn_dietary_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val nafsu_makan = et_nafsu_makan.text.toString()
             val frekuensi_makan = et_frekuensi_makan.text.toString()
             val alergi = et_alergi.text.toString()

@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_nut_article_list.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.adapter.ArticlesAdapter
 import nadirbasalamah.android.com.numoapps.model.entity.Article
-import nadirbasalamah.android.com.numoapps.patient.ui.articles.ArticleDetailActivity
 import nadirbasalamah.android.com.numoapps.viewmodel.ArticleViewModel
 
 /**
@@ -57,7 +56,7 @@ class NutArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        articleViewModel.getAllArticles()?.observe(this, Observer {articleItems ->
+        articleViewModel.getAllArticles()?.observe(viewLifecycleOwner, Observer {articleItems ->
             if(articleItems != null) {
                 adapter.setData(articleItems.data)
                 showLoading(false)

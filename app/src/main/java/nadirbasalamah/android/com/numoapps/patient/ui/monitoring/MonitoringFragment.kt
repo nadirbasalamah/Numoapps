@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,11 +32,11 @@ class MonitoringFragment : Fragment() {
 
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
         userViewModel.setContext(context)
-        userViewModel.getNutRecordByUserId(userId)?.observe(this, Observer {result ->
+        userViewModel.getNutRecordByUserId(userId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
-                tv_mon_date.text = result?.monitoring_data.mon_date
-                tv_mon_result.text = result?.monitoring_data.result
-                tv_control_date.text = result?.monitoring_data.return_date
+                tv_mon_date.text = result.monitoring_data.mon_date
+                tv_mon_result.text = result.monitoring_data.result
+                tv_control_date.text = result.monitoring_data.return_date
             }
         })
     }

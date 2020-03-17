@@ -32,7 +32,7 @@ class AddPatientActivity : AppCompatActivity() {
 
             val datePickerDialog = DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     tv_patient_birthdate.text =
                         dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
                     age = calendar.get(Calendar.YEAR) - year
@@ -43,13 +43,13 @@ class AddPatientActivity : AppCompatActivity() {
         val calendar: Calendar = Calendar.getInstance()
         visitdate = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + calendar.get(Calendar.MONTH).toString() + "-" + calendar.get(Calendar.YEAR)
 
-        rg_patient_gender.setOnCheckedChangeListener{group, checkedId ->
+        rg_patient_gender.setOnCheckedChangeListener{ _, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
             gender = radio.text.toString()
         }
 
         btn_patient_save.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            val data : HashMap<String, String> = HashMap<String, String> ()
             val rm_number = et_rm_number.text.toString()
             val rmgizi_number = et_rmnut_number.text.toString()
             val visitdate = visitdate

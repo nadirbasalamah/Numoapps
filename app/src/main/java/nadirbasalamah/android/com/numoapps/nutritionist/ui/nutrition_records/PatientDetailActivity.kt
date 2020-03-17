@@ -31,19 +31,19 @@ class PatientDetailActivity : AppCompatActivity() {
         userId = loginData.getInt("id_user",0)
 
         patient = intent.getParcelableExtra(EXTRA_NUT_PATIENT) as Patient
-        tv_detail_rm_number.setText(patient.rm_number)
-        tv_detail_rm_nut_number.setText(patient.rmgizi_number)
-        tv_detail_visitdate.setText(patient.visitdate)
-        tv_detail_referral.setText(patient.referral)
-        tv_detail_fullname.setText(patient.fullname)
-        tv_detail_age.setText(patient.age.toString())
-        tv_detail_gender.setText(patient.gender)
-        tv_detail_address.setText(patient.address)
-        tv_detail_phone_number.setText(patient.phone_number)
-        tv_detail_birthdate.setText(patient.birthdate)
-        tv_detail_edu.setText(patient.education)
-        tv_detail_job.setText(patient.job)
-        tv_detail_religion.setText(patient.religion)
+        tv_detail_rm_number.text = patient.rm_number
+        tv_detail_rm_nut_number.text = patient.rmgizi_number
+        tv_detail_visitdate.text = patient.visitdate
+        tv_detail_referral.text = patient.referral
+        tv_detail_fullname.text = patient.fullname
+        tv_detail_age.text = patient.age.toString()
+        tv_detail_gender.text = patient.gender
+        tv_detail_address.text = patient.address
+        tv_detail_phone_number.text = patient.phone_number
+        tv_detail_birthdate.text = patient.birthdate
+        tv_detail_edu.text = patient.education
+        tv_detail_job.text = patient.job
+        tv_detail_religion.text = patient.religion
 
         nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
         nutritionistViewModel.setContext(applicationContext)
@@ -59,7 +59,7 @@ class PatientDetailActivity : AppCompatActivity() {
         })
 
         btn_to_add_nutrecord.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val idPatient = patient.id
             val idNutritionist = userId
 

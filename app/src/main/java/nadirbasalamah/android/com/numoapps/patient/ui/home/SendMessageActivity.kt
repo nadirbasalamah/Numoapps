@@ -29,7 +29,7 @@ class SendMessageActivity : AppCompatActivity() {
                 val intent = Intent(Intent.ACTION_VIEW)
                 val url = "https://api.whatsapp.com/send?phone="+ nutPhoneNumber +"&text=" + URLEncoder.encode(messageText, "UTF-8")
                 intent.setPackage("com.whatsapp")
-                intent.setData(Uri.parse(url))
+                intent.data = Uri.parse(url)
                 if(intent.resolveActivity(packageManager) != null) {
                     startActivity(intent)
                 }

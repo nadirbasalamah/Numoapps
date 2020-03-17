@@ -23,13 +23,13 @@ class NutritionistDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nutritionist_detail)
 
         nutritionist = intent?.getParcelableExtra(EXTRA_NUTRITIONIST) as Nutritionist
-        tv_nut_detail_fullname.setText(nutritionist.fullname)
-        tv_nut_detail_birthdate.setText(nutritionist.birthdate)
-        tv_nut_detail_gender.setText(nutritionist.gender)
-        tv_nut_detail_phone_number.setText(nutritionist.phone_number)
-        tv_nut_detail_email.setText(nutritionist.email)
-        tv_nut_detail_address.setText(nutritionist.address)
-        tv_nut_detail_nip.setText(nutritionist.nip)
+        tv_nut_detail_fullname.text = nutritionist.fullname
+        tv_nut_detail_birthdate.text = nutritionist.birthdate
+        tv_nut_detail_gender.text = nutritionist.gender
+        tv_nut_detail_phone_number.text = nutritionist.phone_number
+        tv_nut_detail_email.text = nutritionist.email
+        tv_nut_detail_address.text = nutritionist.address
+        tv_nut_detail_nip.text = nutritionist.nip
 
         btn_to_edit_nutritionist.setOnClickListener {
             val intent = Intent(this,EditNutritionistActivity::class.java)
@@ -41,7 +41,7 @@ class NutritionistDetailActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setMessage(R.string.delete_confirmation)
                 .setPositiveButton(R.string.confirmation_yes
-                ) { dialog, id ->
+                ) { dialog, _ ->
                     adminViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(AdminViewModel::class.java)
                     adminViewModel.setContext(applicationContext)
                     adminViewModel.deleteNutritionist(nutritionist.id)?.observe(this, Observer {result ->
@@ -52,7 +52,7 @@ class NutritionistDetailActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 .setNegativeButton(R.string.confirmation_no
-                ) { dialog, id ->
+                ) { dialog, _ ->
                     dialog.cancel()
                 }
             // Create the AlertDialog object and return it

@@ -49,7 +49,7 @@ class NutArticleDetailActivity : AppCompatActivity() {
                 val builder = AlertDialog.Builder(this)
                 builder.setMessage(R.string.delete_confirmation)
                     .setPositiveButton(R.string.confirmation_yes
-                    ) { dialog, id ->
+                    ) { dialog, _ ->
                         articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
                         articleViewModel.setContext(applicationContext)
                         articleViewModel.deleteArticle(article.id)?.observe(this, Observer {result ->
@@ -60,7 +60,7 @@ class NutArticleDetailActivity : AppCompatActivity() {
                         dialog.dismiss()
                     }
                     .setNegativeButton(R.string.confirmation_no
-                    ) { dialog, id ->
+                    ) { dialog, _ ->
                         dialog.cancel()
                     }
                 // Create the AlertDialog object and return it

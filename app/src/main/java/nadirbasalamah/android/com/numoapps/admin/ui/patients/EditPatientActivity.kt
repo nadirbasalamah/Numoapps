@@ -28,7 +28,7 @@ class EditPatientActivity : AppCompatActivity() {
         et_patient_edit_religion.setText(patient.religion)
 
         btn_patient_edit_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val address = et_patient_edit_address.text.toString()
             val phone_number = et_patient_edit_phone_number.text.toString()
             val education = et_patient_edit_edu.text.toString()

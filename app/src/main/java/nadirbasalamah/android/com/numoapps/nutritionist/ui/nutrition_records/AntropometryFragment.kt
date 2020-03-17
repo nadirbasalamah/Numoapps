@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_antropometry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -56,7 +55,7 @@ class AntropometryFragment : Fragment() {
         }
 
         btn_antropometry_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val bb = et_body_weight.text.toString()
             val tb = et_body_height.text.toString()
             val lila = et_head_circle.text.toString()

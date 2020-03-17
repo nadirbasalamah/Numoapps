@@ -1,8 +1,6 @@
 package nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records
 
 
-import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_monev.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
@@ -24,9 +21,6 @@ import kotlin.collections.HashMap
  * A simple [Fragment] subclass.
  */
 class MonevFragment : Fragment() {
-    private var year: Int = 0
-    private var month: Int = 0
-    private var day: Int = 0
     private var mon_date: String = ""
     private lateinit var nutritionistViewModel: NutritionistViewModel
 
@@ -65,7 +59,7 @@ class MonevFragment : Fragment() {
             val returnDate = dp_return_date.dayOfMonth.toString() + "-" + (dp_return_date.month + 1).toString() + "-" + dp_return_date.year.toString()
             tv_return_date.setText(returnDate)
 
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val result = et_mon_result.text.toString()
             val return_date = tv_return_date.text.toString()
 

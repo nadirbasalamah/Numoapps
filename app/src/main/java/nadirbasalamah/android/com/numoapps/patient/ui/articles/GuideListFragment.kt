@@ -51,7 +51,7 @@ class GuideListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        articleViewModel.getAllGuides()?.observe(this, Observer {articleItems ->
+        articleViewModel.getAllGuides()?.observe(viewLifecycleOwner, Observer {articleItems ->
             if(articleItems != null) {
                 adapter.setData(articleItems.data)
                 showLoading(false)

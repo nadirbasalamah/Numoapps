@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_diagnose.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -41,7 +40,7 @@ class ViewDiagnoseFragment : Fragment() {
         nutritionistViewModel.setContext(context)
         nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
-                tv_view_diagnosa.setText(result.diagnose_data.diagnose)
+                tv_view_diagnosa.text = result.diagnose_data.diagnose
             }
         })
     }

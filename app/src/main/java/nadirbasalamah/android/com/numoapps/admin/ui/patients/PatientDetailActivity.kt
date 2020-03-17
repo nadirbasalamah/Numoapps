@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_patient_detail.*
@@ -25,19 +24,19 @@ class PatientDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_patient_detail)
         patient = intent?.getParcelableExtra(EXTRA_PATIENT) as Patient
 
-        tv_detail_rm_number.setText(patient.rm_number)
-        tv_detail_rm_nut_number.setText(patient.rmgizi_number)
-        tv_detail_visitdate.setText(patient.visitdate)
-        tv_detail_referral.setText(patient.referral)
-        tv_detail_fullname.setText(patient.fullname)
-        tv_detail_age.setText(patient.age.toString())
-        tv_detail_gender.setText(patient.gender)
-        tv_detail_address.setText(patient.address)
-        tv_detail_phone_number.setText(patient.phone_number)
-        tv_detail_birthdate.setText(patient.birthdate)
-        tv_detail_edu.setText(patient.education)
-        tv_detail_job.setText(patient.job)
-        tv_detail_religion.setText(patient.religion)
+        tv_detail_rm_number.text = patient.rm_number
+        tv_detail_rm_nut_number.text = patient.rmgizi_number
+        tv_detail_visitdate.text = patient.visitdate
+        tv_detail_referral.text = patient.referral
+        tv_detail_fullname.text = patient.fullname
+        tv_detail_age.text = patient.age.toString()
+        tv_detail_gender.text = patient.gender
+        tv_detail_address.text = patient.address
+        tv_detail_phone_number.text = patient.phone_number
+        tv_detail_birthdate.text = patient.birthdate
+        tv_detail_edu.text = patient.education
+        tv_detail_job.text = patient.job
+        tv_detail_religion.text = patient.religion
 
         btn_to_edit_patient.setOnClickListener {
             val intent = Intent(this,EditPatientActivity::class.java)
@@ -49,7 +48,7 @@ class PatientDetailActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setMessage(R.string.delete_confirmation)
                 .setPositiveButton(R.string.confirmation_yes
-                ) { dialog, id ->
+                ) { dialog, _ ->
                     adminViewModel =
                         ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
                             AdminViewModel::class.java
@@ -63,7 +62,7 @@ class PatientDetailActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 .setNegativeButton(R.string.confirmation_no
-                ) { dialog, id ->
+                ) { dialog, _ ->
                     dialog.cancel()
                 }
             // Create the AlertDialog object and return it

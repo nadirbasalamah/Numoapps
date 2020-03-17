@@ -23,7 +23,7 @@ class NutritionistChangePasswordActivity : AppCompatActivity() {
         nutritionist = intent.getParcelableExtra(NUT_DATA) as Nutritionist
 
         btn_edit_nutritionist_save_password.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val old_password = et_edit_nutritionist_oldpassword.text.toString()
             val new_password = et_edit_nutritionist_newpassword.text.toString()
 

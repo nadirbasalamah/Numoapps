@@ -2,17 +2,13 @@ package nadirbasalamah.android.com.numoapps.main
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
-import android.content.Intent
 import android.os.Bundle
 import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_register.*
 import nadirbasalamah.android.com.numoapps.R
-import nadirbasalamah.android.com.numoapps.model.response.UserResponse
 import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
 import java.util.*
 
@@ -38,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val datePickerDialog = DatePickerDialog(
                 this,
-                OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     tv_birthdate.text = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
                     age = calendar.get(Calendar.YEAR) - year
                 }, year, month, day
@@ -46,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        rg_gender.setOnCheckedChangeListener{group, checkedId ->
+        rg_gender.setOnCheckedChangeListener{_, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
             gender = radio.text.toString()
         }
@@ -57,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btn_register.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            val data : HashMap<String, String> = HashMap<String, String> ()
             val fullname = et_fullname.text.toString()
             val username = et_username.text.toString()
             val password = et_password.text.toString()

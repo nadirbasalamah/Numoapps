@@ -56,7 +56,7 @@ class PatientListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        adminViewModel.getAllPatients()?.observe(this, Observer {patientItems ->
+        adminViewModel.getAllPatients()?.observe(viewLifecycleOwner, Observer {patientItems ->
             if(patientItems != null) {
                 adapter.setData(patientItems.data)
                 showLoading(false)

@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_add_food_menu.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.AddNutritionRecordActivity
@@ -66,7 +65,7 @@ class AddFoodMenuFragment : Fragment() {
 
         btn_choose_breakfast_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
-                context, OnTimeSetListener { view, hourOfDay, minute -> tv_breakfast_time.setText("$hourOfDay:$minute") },
+                context, OnTimeSetListener { _, hourOfDay, minute -> tv_breakfast_time.setText("$hourOfDay:$minute") },
                 hour,
                 minute,
                 true
@@ -76,7 +75,7 @@ class AddFoodMenuFragment : Fragment() {
 
         btn_choose_lunch_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
-                context, OnTimeSetListener { view, hourOfDay, minute -> tv_lunch_time.setText("$hourOfDay:$minute") },
+                context, OnTimeSetListener { _, hourOfDay, minute -> tv_lunch_time.setText("$hourOfDay:$minute") },
                 hour,
                 minute,
                 true
@@ -86,7 +85,7 @@ class AddFoodMenuFragment : Fragment() {
 
         btn_choose_dinner_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
-                context, OnTimeSetListener { view, hourOfDay, minute -> tv_dinner_time.setText("$hourOfDay:$minute") },
+                context, OnTimeSetListener { _, hourOfDay, minute -> tv_dinner_time.setText("$hourOfDay:$minute") },
                 hour,
                 minute,
                 true
@@ -95,7 +94,7 @@ class AddFoodMenuFragment : Fragment() {
         }
 
         btn_foodmenu_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            var data: HashMap<String, String> = HashMap()
             val breakfast = et_breakfast.text.toString()
             val breakfast_time = tv_breakfast_time.text.toString()
             val lunch = et_lunch.text.toString()

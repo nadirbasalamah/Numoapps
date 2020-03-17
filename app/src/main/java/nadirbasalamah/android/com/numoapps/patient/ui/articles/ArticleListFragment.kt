@@ -51,7 +51,7 @@ class ArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        articleViewModel.getAllArticles()?.observe(this, Observer {articleItems ->
+        articleViewModel.getAllArticles()?.observe(viewLifecycleOwner, Observer {articleItems ->
             if(articleItems != null) {
                 adapter.setData(articleItems.data)
                 showLoading(false)

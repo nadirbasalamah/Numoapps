@@ -25,9 +25,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
-    private var userApiInterface: UserApiInterface? = null
-    private var getNutRecordByUserId: Call<NutritionRecordResponse?>? = null
-    private var getFoodMenuByUserId: Call<FoodMenuResponse?>? = null
     companion object {
         const val TYPE_FOOD_SCHEDULE = "FoodAlarm"
         const val TYPE_RETURN_SCHEDULE = "ReturnAlarm"
@@ -80,7 +77,6 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     private val DATE_FORMAT = "dd-MM-yyyy"
-    private val TIME_FORMAT = "HH:mm"
 
     private fun isDateInvalid(date: String, format: String) : Boolean {
         return try {

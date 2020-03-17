@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -48,7 +47,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         showLoading(true)
 
-        adminViewModel.getAllPatients()?.observe(this, Observer {patientItems ->
+        adminViewModel.getAllPatients()?.observe(viewLifecycleOwner, Observer {patientItems ->
             if(patientItems != null) {
                 adapter.setData(patientItems.data)
                 showLoading(false)

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_dietary.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -41,21 +40,21 @@ class ViewDietaryFragment : Fragment() {
         nutritionistViewModel.setContext(context)
         nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
-                tv_view_nafsu_makan.setText(result.dietary_data.nafsu_makan)
-                tv_view_frekuensi_makan.setText(result.dietary_data.frekuensi_makan)
-                tv_view_alergi.setText(result.dietary_data.alergi)
-                tv_view_makanan_kesukaan.setText(result.dietary_data.makanan_kesukaan)
-                tv_view_dietary_nasi.setText(result.dietary_data.dietary_nasi)
-                tv_view_dietary_lauk_hewani.setText(result.dietary_data.dietary_lauk_hewani)
-                tv_view_dietary_lauk_nabati.setText(result.dietary_data.dietary_lauk_nabati)
-                tv_view_dietary_sayur.setText(result.dietary_data.dietary_sayur)
-                tv_view_dietary_sumber_minyak.setText(result.dietary_data.dietary_sumber_minyak)
-                tv_view_dietary_minuman.setText(result.dietary_data.dietary_minuman)
-                tv_view_dietary_soft_drink.setText(result.dietary_data.dietary_softdrink)
-                tv_view_dietary_jus.setText(result.dietary_data.dietary_jus)
-                tv_view_dietary_suplemen.setText(result.dietary_data.dietary_suplemen)
-                tv_view_dietary_lain.setText(result.dietary_data.dietary_lainnya)
-                tv_view_dlain2.setText(result.dietary_data.lain_lain)
+                tv_view_nafsu_makan.text = result.dietary_data.nafsu_makan
+                tv_view_frekuensi_makan.text = result.dietary_data.frekuensi_makan
+                tv_view_alergi.text = result.dietary_data.alergi
+                tv_view_makanan_kesukaan.text = result.dietary_data.makanan_kesukaan
+                tv_view_dietary_nasi.text = result.dietary_data.dietary_nasi
+                tv_view_dietary_lauk_hewani.text = result.dietary_data.dietary_lauk_hewani
+                tv_view_dietary_lauk_nabati.text = result.dietary_data.dietary_lauk_nabati
+                tv_view_dietary_sayur.text = result.dietary_data.dietary_sayur
+                tv_view_dietary_sumber_minyak.text = result.dietary_data.dietary_sumber_minyak
+                tv_view_dietary_minuman.text = result.dietary_data.dietary_minuman
+                tv_view_dietary_soft_drink.text = result.dietary_data.dietary_softdrink
+                tv_view_dietary_jus.text = result.dietary_data.dietary_jus
+                tv_view_dietary_suplemen.text = result.dietary_data.dietary_suplemen
+                tv_view_dietary_lain.text = result.dietary_data.dietary_lainnya
+                tv_view_dlain2.text = result.dietary_data.lain_lain
             }
         })
     }

@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_biochemistry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -60,7 +59,7 @@ class BiochemistryFragment : Fragment() {
         }
 
         btn_biochemistry_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val gda = et_gda.text.toString()
             val gdp = et_gdp.text.toString()
             val gd2jpp = et_gd2jpp.text.toString()

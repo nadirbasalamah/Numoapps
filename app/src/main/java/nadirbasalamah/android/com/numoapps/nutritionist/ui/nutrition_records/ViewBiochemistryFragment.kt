@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_view_biochemistry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -41,18 +40,18 @@ class ViewBiochemistryFragment : Fragment() {
         nutritionistViewModel.setContext(context)
         nutritionistViewModel.getNutRecordById(patientId)?.observe(viewLifecycleOwner, Observer {result ->
             if(result?.status == true) {
-                tv_view_gda.setText(result.biochemistry_data.gda.toString())
-                tv_view_gdp.setText(result.biochemistry_data.gdp.toString())
-                tv_view_gd2jpp.setText(result.biochemistry_data.gd2jpp.toString())
-                tv_view_asam_urat.setText(result.biochemistry_data.asam_urat.toString())
-                tv_view_trigliserida.setText(result.biochemistry_data.trigliserida.toString())
-                tv_view_kolesterol.setText(result.biochemistry_data.kolesterol.toString())
-                tv_view_ldl.setText(result.biochemistry_data.ldl.toString())
-                tv_view_hdl.setText(result.biochemistry_data.hdl.toString())
-                tv_view_ureum.setText(result.biochemistry_data.ureum.toString())
-                tv_view_kreatinin.setText(result.biochemistry_data.kreatinin.toString())
-                tv_view_sgot.setText(result.biochemistry_data.sgot.toString())
-                tv_view_sgpt.setText(result.biochemistry_data.sgpt.toString())
+                tv_view_gda.text = result.biochemistry_data.gda.toString()
+                tv_view_gdp.text = result.biochemistry_data.gdp.toString()
+                tv_view_gd2jpp.text = result.biochemistry_data.gd2jpp.toString()
+                tv_view_asam_urat.text = result.biochemistry_data.asam_urat.toString()
+                tv_view_trigliserida.text = result.biochemistry_data.trigliserida.toString()
+                tv_view_kolesterol.text = result.biochemistry_data.kolesterol.toString()
+                tv_view_ldl.text = result.biochemistry_data.ldl.toString()
+                tv_view_hdl.text = result.biochemistry_data.hdl.toString()
+                tv_view_ureum.text = result.biochemistry_data.ureum.toString()
+                tv_view_kreatinin.text = result.biochemistry_data.kreatinin.toString()
+                tv_view_sgot.text = result.biochemistry_data.sgot.toString()
+                tv_view_sgpt.text = result.biochemistry_data.sgpt.toString()
             }
         })
     }

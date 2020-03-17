@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_diagnose.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -49,7 +48,7 @@ class DiagnoseFragment : Fragment() {
         }
 
         btn_diagnose_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val diagnose = et_diagnosa.text.toString()
 
             data.put("id",patientId.toString())

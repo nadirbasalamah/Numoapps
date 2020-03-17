@@ -35,12 +35,12 @@ class AddArticleActivity : AppCompatActivity() {
         adminViewModel.setContext(applicationContext)
         adminViewModel.getNutritionistById(userId)?.observe(this, Observer {result ->
             if(result?.status == true) {
-                articleAuthor = result?.data.fullname
+                articleAuthor = result.data.fullname
             }
         })
 
         btn_article_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val title = et_article_title.text.toString()
             val description = et_article_description.text.toString()
             val source = et_article_source.text.toString()

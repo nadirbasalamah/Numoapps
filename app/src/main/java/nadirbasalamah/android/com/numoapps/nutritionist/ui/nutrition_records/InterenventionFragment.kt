@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_interenvention.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -53,13 +52,12 @@ class InterenventionFragment : Fragment() {
         }
 
         btn_interenvention_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val energi = et_energi.text.toString()
             val keterangan_inter = et_keterangan_inter.text.toString()
             val persen_karbohidrat = et_persen_karbohidrat.text.toString()
             val persen_protein = et_persen_protein.text.toString()
             val persen_lemak = et_persen_lemak.text.toString()
-
 
             data.put("id",patientId.toString())
             data.put("energi",energi)

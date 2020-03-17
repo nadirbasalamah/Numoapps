@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        var data : HashMap<String, String> = HashMap<String, String> ()
+        var data : HashMap<String, String> = HashMap()
         val username = et_username_login.text.toString()
         val password = et_password_login.text.toString()
 
@@ -78,14 +77,14 @@ class MainActivity : AppCompatActivity() {
             if(result?.status == true) {
                 loginData = appContext.getSharedPreferences("Login",MODE_PRIVATE)
                 val loginDataEdit = loginData.edit()
-                loginDataEdit.putInt("id_user",result?.data.id)
+                loginDataEdit.putInt("id_user",result.data.id)
                 loginDataEdit.putBoolean("isLoggedIn",true)
                 if(username.contains("AG_")) {
-                    loginDataEdit.putString("username","AG_" + result?.data.username)
-                    checkRole("AG_" + result?.data.username,true)
+                    loginDataEdit.putString("username","AG_" + result.data.username)
+                    checkRole("AG_" + result.data.username,true)
                 } else {
-                    loginDataEdit.putString("username",result?.data.username)
-                    checkRole(result?.data.username,true)
+                    loginDataEdit.putString("username",result.data.username)
+                    checkRole(result.data.username,true)
                 }
                 loginDataEdit.apply()
                 et_username_login.setText("")

@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_clinic.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -58,7 +57,7 @@ class ClinicFragment : Fragment() {
         }
 
         btn_clinic_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val tensi = et_tensi.text.toString()
             val rr = et_rr.text.toString()
             val suhu = et_suhu.text.toString()

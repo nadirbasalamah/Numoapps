@@ -36,7 +36,7 @@ class EditProfileActivity : AppCompatActivity() {
         })
 
         btn_edit_save.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            val data : HashMap<String, String> = HashMap<String, String> ()
             val username = et_edit_username.text.toString()
             val phone_number = et_edit_phone_number.text.toString()
             val email = et_edit_email.text.toString()

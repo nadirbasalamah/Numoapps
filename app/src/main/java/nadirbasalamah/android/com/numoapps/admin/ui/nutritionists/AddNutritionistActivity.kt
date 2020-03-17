@@ -34,7 +34,7 @@ class AddNutritionistActivity : AppCompatActivity() {
 
             val datePickerDialog = DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     tv_nutritionist_birthdate.text =
                         dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
                     age = calendar.get(Calendar.YEAR) - year
@@ -43,13 +43,13 @@ class AddNutritionistActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        rg_nutritionist_gender.setOnCheckedChangeListener{group, checkedId ->
+        rg_nutritionist_gender.setOnCheckedChangeListener{_, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
             gender = radio.text.toString()
         }
 
         btn_nutritionist_save.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            val data : HashMap<String, String> = HashMap<String, String> ()
             val fullname = et_nutritionist_fullname.text.toString()
             val username = et_nutritionist_username.text.toString()
             val password = et_nutritionist_password.text.toString()
@@ -76,7 +76,7 @@ class AddNutritionistActivity : AppCompatActivity() {
             adminViewModel.setContext(applicationContext)
             adminViewModel.addNutritionist(data)?.observe(this, Observer {result ->
                 if(result?.status == true) {
-                    sendSMS(result?.data.phone_number,result?.data.username,data["password"])
+                    sendSMS(result.data.phone_number, result.data.username,data["password"])
                 }
             })
         }
@@ -87,7 +87,8 @@ class AddNutritionistActivity : AppCompatActivity() {
         intent.setData(Uri.parse("smsto:"))
         intent.setType("vnd.android-dir/mms-sms")
         intent.putExtra("address", phonenum)
-        val sms_body =  "Berikut adalah akun ahli gizi untuk mengakses sistem \n"+ "username : " + name + "\n" + "password : "  +password
+        val sms_body =
+            "Berikut adalah akun ahli gizi untuk mengakses sistem \nusername : $name\npassword : $password"
         intent.putExtra("sms_body",sms_body)
 
         try {

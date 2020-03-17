@@ -16,7 +16,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forget_password)
 
         btn_forget_password.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            val data : HashMap<String, String> = HashMap()
             val username = et_forget_username.text.toString()
             val password = et_forget_password.text.toString()
 

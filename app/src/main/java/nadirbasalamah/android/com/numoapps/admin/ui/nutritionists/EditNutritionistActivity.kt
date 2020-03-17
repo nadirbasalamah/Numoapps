@@ -29,7 +29,7 @@ class EditNutritionistActivity : AppCompatActivity() {
         et_nutritionist_edit_address.setText(nutritionist.address)
 
         btn_nutritionist_edit_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap<String, String>()
+            val data: HashMap<String, String> = HashMap()
             val username = et_nutritionist_edit_username.text.toString()
             val phone_number = et_nutritionist_edit_phone_number.text.toString()
             val email = et_nutritionist_edit_email.text.toString()

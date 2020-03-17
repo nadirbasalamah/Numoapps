@@ -23,7 +23,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         userId = loginData.getInt("id_user",0)
 
         btn_edit_save_password.setOnClickListener {
-            var data : HashMap<String, String> = HashMap<String, String> ()
+            var data : HashMap<String, String> = HashMap()
             val old_password = et_edit_oldpassword.text.toString()
             val new_password = et_edit_newpassword.text.toString()
 

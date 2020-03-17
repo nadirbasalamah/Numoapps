@@ -3,8 +3,6 @@ package nadirbasalamah.android.com.numoapps.patient.ui.settings
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
-
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,6 +40,17 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
         val loginData = appContext.getSharedPreferences("Login", Context.MODE_PRIVATE)
         userId = loginData.getInt("id_user",0)
 
+        addPreferencesFromResource(R.xml.preferences)
+
+        alarmReceiver = AlarmReceiver()
+        AndroidThreeTen.init(context)
+        currentDate = LocalDate.now().toString()
+        init()
+        setSummaries()
+    }
+
+    override fun onResume() {
+        super.onResume()
         userViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             UserViewModel::class.java)
         userViewModel.setContext(context)
@@ -61,17 +70,6 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
                 foodMenu.put("dinner_time",result.data.dinner_time.toString())
             }
         })
-
-        addPreferencesFromResource(R.xml.preferences)
-        alarmReceiver = AlarmReceiver()
-        AndroidThreeTen.init(context)
-        currentDate = LocalDate.now().toString()
-        init()
-        setSummaries()
-    }
-
-    override fun onResume() {
-        super.onResume()
         preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
 
