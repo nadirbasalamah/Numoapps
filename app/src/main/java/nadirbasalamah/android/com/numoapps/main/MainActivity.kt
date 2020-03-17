@@ -56,7 +56,8 @@ class MainActivity : AppCompatActivity() {
         et_password_login.setOnEditorActionListener(enterListener)
         loginData = appContext.getSharedPreferences("Login", MODE_PRIVATE)
         val uname = loginData.getString("username",null).toString()
-        checkRole(uname)
+        val isLoggedIn = loginData.getBoolean("isLoggedIn",false)
+        checkRole(uname,isLoggedIn)
 
         btn_login.setOnClickListener{
             login()
@@ -75,14 +76,16 @@ class MainActivity : AppCompatActivity() {
         userViewModel.setContext(applicationContext)
         userViewModel.login(data)?.observe(this, Observer {result ->
             if(result?.status == true) {
+                loginData = appContext.getSharedPreferences("Login",MODE_PRIVATE)
                 val loginDataEdit = loginData.edit()
                 loginDataEdit.putInt("id_user",result?.data.id)
+                loginDataEdit.putBoolean("isLoggedIn",true)
                 if(username.contains("AG_")) {
                     loginDataEdit.putString("username","AG_" + result?.data.username)
-                    checkRole("AG_" + result?.data.username)
+                    checkRole("AG_" + result?.data.username,true)
                 } else {
                     loginDataEdit.putString("username",result?.data.username)
-                    checkRole(result?.data.username)
+                    checkRole(result?.data.username,true)
                 }
                 loginDataEdit.apply()
                 et_username_login.setText("")
@@ -91,8 +94,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun checkRole(uname: String) {
-        if(!uname.equals(null) ) {
+    private fun checkRole(uname: String, isLoggedIn: Boolean) {
+        if(!uname.equals(null)  && isLoggedIn) {
             if(uname.equals("admin")) {
                 startActivity(Intent(applicationContext,AdminActivity::class.java))
             } else if(uname.contains("AG_")) {
