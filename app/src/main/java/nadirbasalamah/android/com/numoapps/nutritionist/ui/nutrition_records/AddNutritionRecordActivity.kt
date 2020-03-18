@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,9 +19,12 @@ class AddNutritionRecordActivity : AppCompatActivity() {
     private var mode: String? = "MODE"
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var patientData: SharedPreferences
+    private lateinit var patientName: TextView
+    private var patientSampleName: String? = ""
     companion object {
         const val MODE = "MODE"
         const val PATIENT_ID = "PATIENT_ID"
+        const val PATIENT_NAME = "PATIENT_NAME"
         private lateinit var appContext: Context
         fun getAppContext(): Context {
             return appContext
@@ -33,6 +37,7 @@ class AddNutritionRecordActivity : AppCompatActivity() {
 
         patientId = intent.getIntExtra(PATIENT_ID,0)
         mode = intent.getStringExtra(MODE)
+        patientSampleName = intent.getStringExtra(PATIENT_NAME)
 
         appContext = applicationContext
         patientData = appContext.getSharedPreferences("Patient_Data", MODE_PRIVATE)
@@ -44,60 +49,11 @@ class AddNutritionRecordActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.enut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.enut_nav_view)
         val navController = findNavController(R.id.enut_nav_host_fragment)
-        navController.setGraph(R.navigation.edit_nutrecord_navigation)
 
-//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//            when(destination.id) {
-//                R.id.enut_navigation_antropometry -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_biochemistry -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_clinic -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_dietary -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_diagnose -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_interenvention -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_monev -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//                R.id.enut_navigation_foodmenu -> {
-//                    val arg = NavArgument.Builder().setDefaultValue(patientId).build()
-//                    val arg_mode = NavArgument.Builder().setDefaultValue(mode).build()
-//                    destination.addArgument("IDPATIENT", arg)
-//                    destination.addArgument("MODE",arg_mode)
-//                }
-//            }
-//        }
+        patientName = navView.getHeaderView(0).findViewById(R.id.tv_patient_sample_name)
+        patientName.text = patientSampleName
+
+        navController.setGraph(R.navigation.edit_nutrecord_navigation)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

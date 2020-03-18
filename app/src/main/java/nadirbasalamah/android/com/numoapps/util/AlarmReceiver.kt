@@ -30,7 +30,6 @@ class AlarmReceiver : BroadcastReceiver() {
         const val TYPE_RETURN_SCHEDULE = "ReturnAlarm"
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"
-        const val GROUP_KEY_FOODS = "group_key_foods"
 
         //2 jenis alarm
         private var ID_ONETIME = 0
@@ -55,8 +54,6 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     fun setReturnAlarm(context: Context?, type: String, date: String, message: String) {
-        if(isDateInvalid(date, DATE_FORMAT)) return
-
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
@@ -74,19 +71,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val pendingIntent = PendingIntent.getBroadcast(context, ID_ONETIME, intent, 0)
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent)
-    }
-
-    private val DATE_FORMAT = "dd-MM-yyyy"
-
-    private fun isDateInvalid(date: String, format: String) : Boolean {
-        return try {
-            val df = SimpleDateFormat(format, Locale.getDefault())
-            df.isLenient = false
-            df.parse(date)
-            false
-        } catch (e: Throwable) {
-            true
-        }
     }
 
     private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {

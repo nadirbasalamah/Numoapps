@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_interenvention.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -66,13 +67,22 @@ class InterenventionFragment : Fragment() {
             data.put("persen_protein",persen_protein)
             data.put("persen_lemak",persen_lemak)
 
-            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
-            nutritionistViewModel.setContext(context)
-            nutritionistViewModel.updateInterenvention(data)?.observe(viewLifecycleOwner, Observer {result ->
-                if(result?.status == true) {
-                    Toast.makeText(context,"Perekaman data interenvensi berhasil", Toast.LENGTH_SHORT).show()
+            when {
+                energi.isEmpty() -> et_energi.error = "Harap isi bidang ini!"
+                keterangan_inter.isEmpty() -> et_keterangan_inter.error = "Harap isi bidang ini!"
+                persen_karbohidrat.isEmpty() -> et_persen_karbohidrat.error = "Harap isi bidang ini!"
+                persen_protein.isEmpty() -> et_persen_protein.error = "Harap isi bidang ini!"
+                persen_lemak.isEmpty() -> et_persen_lemak.error = "Harap isi bidang ini!"
+                else -> {
+                    nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+                    nutritionistViewModel.setContext(context)
+                    nutritionistViewModel.updateInterenvention(data)?.observe(viewLifecycleOwner, Observer {result ->
+                        if(result?.status == true) {
+                            Toast.makeText(context,"Perekaman data interenvensi berhasil", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
-            })
+            }
         }
     }
 }

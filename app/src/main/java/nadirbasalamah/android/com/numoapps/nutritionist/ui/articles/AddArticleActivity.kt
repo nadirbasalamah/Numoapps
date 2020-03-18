@@ -3,8 +3,10 @@ package nadirbasalamah.android.com.numoapps.nutritionist.ui.articles
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.activity_add_article.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.main.MainActivity
@@ -15,6 +17,7 @@ class AddArticleActivity : AppCompatActivity() {
     private lateinit var articleViewModel: ArticleViewModel
     private lateinit var articleType: String
     private lateinit var adminViewModel: AdminViewModel
+    private lateinit var sheenValidator: SheenValidator
     private var userId: Int = 0
     private var articleAuthor: String? = ""
     companion object {
@@ -24,6 +27,7 @@ class AddArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_article)
+        sheenValidator = SheenValidator(this)
 
         articleType = intent.getStringExtra(ARTICLE_TYPE) as String
 
@@ -39,7 +43,16 @@ class AddArticleActivity : AppCompatActivity() {
             }
         })
 
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(this,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+
+        sheenValidator.registerAsRequired(et_article_title)
+        sheenValidator.registerAsRequired(et_article_description)
+        sheenValidator.registerAsRequired(et_article_source)
+
         btn_article_save.setOnClickListener {
+            sheenValidator.validate()
             val data: HashMap<String, String> = HashMap()
             val title = et_article_title.text.toString()
             val description = et_article_description.text.toString()

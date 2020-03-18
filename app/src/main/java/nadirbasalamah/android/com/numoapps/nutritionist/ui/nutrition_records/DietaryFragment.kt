@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_dietary.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -20,6 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class DietaryFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
+    private lateinit var sheenValidator: SheenValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +63,28 @@ class DietaryFragment : Fragment() {
             })
         }
 
+        sheenValidator = SheenValidator(requireContext())
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(context,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+        sheenValidator.registerAsRequired(et_nafsu_makan)
+        sheenValidator.registerAsRequired(et_frekuensi_makan)
+        sheenValidator.registerAsRequired(et_alergi)
+        sheenValidator.registerAsRequired(et_makanan_kesukaan)
+        sheenValidator.registerAsRequired(et_dietary_nasi)
+        sheenValidator.registerAsRequired(et_dietary_lauk_hewani)
+        sheenValidator.registerAsRequired(et_dietary_lauk_nabati)
+        sheenValidator.registerAsRequired(et_dietary_sayur)
+        sheenValidator.registerAsRequired(et_dietary_sumber_minyak)
+        sheenValidator.registerAsRequired(et_dietary_minuman)
+        sheenValidator.registerAsRequired(et_softdrink)
+        sheenValidator.registerAsRequired(et_jus)
+        sheenValidator.registerAsRequired(et_suplemen)
+        sheenValidator.registerAsRequired(et_dlain)
+        sheenValidator.registerAsRequired(et_dlain2)
+
         btn_dietary_save.setOnClickListener {
+            sheenValidator.validate()
             val data: HashMap<String, String> = HashMap()
             val nafsu_makan = et_nafsu_makan.text.toString()
             val frekuensi_makan = et_frekuensi_makan.text.toString()

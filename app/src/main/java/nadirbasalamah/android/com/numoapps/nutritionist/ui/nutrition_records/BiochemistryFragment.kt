@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_biochemistry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -86,14 +87,29 @@ class BiochemistryFragment : Fragment() {
             data.put("kreatinin",kreatinin)
             data.put("sgot",sgot)
             data.put("sgpt",sgpt)
-
-            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
-            nutritionistViewModel.setContext(context)
-            nutritionistViewModel.updateBiochemistry(data)?.observe(viewLifecycleOwner, Observer {result ->
-                if(result?.status == true) {
-                    Toast.makeText(context,"Perekaman data biokimia berhasil", Toast.LENGTH_SHORT).show()
+            when {
+                gda.isEmpty() -> et_gda.error = "Harap isi bidang ini!"
+                gdp.isEmpty() ->  et_gdp.error = "Harap isi bidang ini!"
+                gd2jpp.isEmpty() -> et_gd2jpp.error = "Harap isi bidang ini!"
+                asam_urat.isEmpty() ->  et_asam_urat.error = "Harap isi bidang ini!"
+                trigliserida.isEmpty() ->  et_trigliserida.error = "Harap isi bidang ini!"
+                kolesterol.isEmpty() ->  et_kolesterol.error = "Harap isi bidang ini!"
+                ldl.isEmpty() ->  et_ldl.error = "Harap isi bidang ini!"
+                hdl.isEmpty() ->  et_hdl.error = "Harap isi bidang ini!"
+                ureum.isEmpty() ->  et_ureum.error = "Harap isi bidang ini!"
+                kreatinin.isEmpty() ->  et_kreatinin.error = "Harap isi bidang ini!"
+                sgot.isEmpty() ->  et_sgot.error = "Harap isi bidang ini!"
+                sgpt.isEmpty() ->  et_sgpt.error = "Harap isi bidang ini!"
+                else -> {
+                    nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+                    nutritionistViewModel.setContext(context)
+                    nutritionistViewModel.updateBiochemistry(data)?.observe(viewLifecycleOwner, Observer {result ->
+                        if(result?.status == true) {
+                            Toast.makeText(context,"Perekaman data biokimia berhasil", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
-            })
+            }
         }
     }
 }

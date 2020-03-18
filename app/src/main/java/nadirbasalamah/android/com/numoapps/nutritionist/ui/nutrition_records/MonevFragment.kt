@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_monev.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
@@ -52,7 +53,7 @@ class MonevFragment : Fragment() {
         }
 
         val calendar: Calendar = Calendar.getInstance()
-        mon_date = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + calendar.get(Calendar.MONTH).toString() + "-" + calendar.get(
+        mon_date = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + (calendar.get(Calendar.MONTH) + 1).toString() + "-" + calendar.get(
             Calendar.YEAR)
 
         btn_monitoring_save.setOnClickListener {

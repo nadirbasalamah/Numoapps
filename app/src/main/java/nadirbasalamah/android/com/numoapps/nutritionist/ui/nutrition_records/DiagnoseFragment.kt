@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_diagnose.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -20,6 +21,7 @@ import nadirbasalamah.android.com.numoapps.viewmodel.NutritionistViewModel
  */
 class DiagnoseFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
+    private lateinit var sheenValidator: SheenValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +49,14 @@ class DiagnoseFragment : Fragment() {
             })
         }
 
+        sheenValidator = SheenValidator(requireContext())
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(context,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+        sheenValidator.registerAsRequired(et_diagnosa)
+
         btn_diagnose_save.setOnClickListener {
+            sheenValidator.validate()
             val data: HashMap<String, String> = HashMap()
             val diagnose = et_diagnosa.text.toString()
 

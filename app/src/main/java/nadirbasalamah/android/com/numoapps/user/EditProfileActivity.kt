@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.main.MainActivity
@@ -14,6 +15,7 @@ import java.util.HashMap
 
 class EditProfileActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
+    private lateinit var sheenValidator: SheenValidator
     private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +36,14 @@ class EditProfileActivity : AppCompatActivity() {
                 et_edit_address.setText(result.data.address)
             }
         })
+        sheenValidator  = SheenValidator(this)
+        sheenValidator.registerAsRequired(et_edit_username)
+        sheenValidator.registerAsRequired(et_edit_phone_number)
+        sheenValidator.registerAsRequired(et_edit_email)
+        sheenValidator.registerAsRequired(et_edit_address)
 
         btn_edit_save.setOnClickListener {
+            sheenValidator.validate()
             val data : HashMap<String, String> = HashMap<String, String> ()
             val username = et_edit_username.text.toString()
             val phone_number = et_edit_phone_number.text.toString()

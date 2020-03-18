@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.activity_add_nutritionist.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.AdminViewModel
@@ -21,10 +22,12 @@ class AddNutritionistActivity : AppCompatActivity() {
     private var age: Int = 0
     private var gender: String = ""
     private lateinit var adminViewModel: AdminViewModel
+    private lateinit var sheenValidator: SheenValidator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_nutritionist)
+        sheenValidator = SheenValidator(this)
 
         btn_nutritionist_birthdate.setOnClickListener {
             val calendar: Calendar = Calendar.getInstance()
@@ -48,7 +51,21 @@ class AddNutritionistActivity : AppCompatActivity() {
             gender = radio.text.toString()
         }
 
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(this,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+
+        sheenValidator.registerAsRequired(et_nutritionist_fullname)
+        sheenValidator.registerAsRequired(et_nutritionist_username)
+        sheenValidator.registerAsRequired(et_nutritionist_password)
+        sheenValidator.registerAsRequired(et_nutritionist_phone_number)
+        sheenValidator.registerAsRequired(et_nutritionist_email)
+        sheenValidator.registerAsEmail(et_nutritionist_email)
+        sheenValidator.registerAsRequired(et_nutritionist_address)
+        sheenValidator.registerAsRequired(et_nutritionist_nip)
+
         btn_nutritionist_save.setOnClickListener {
+            sheenValidator.validate()
             val data : HashMap<String, String> = HashMap<String, String> ()
             val fullname = et_nutritionist_fullname.text.toString()
             val username = et_nutritionist_username.text.toString()

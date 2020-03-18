@@ -4,9 +4,11 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.activity_register.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.UserViewModel
@@ -21,10 +23,12 @@ class RegisterActivity : AppCompatActivity() {
     private var gender: String = ""
     private var id_type:String = ""
     private lateinit var userViewModel: UserViewModel
+    private lateinit var sheenValidator: SheenValidator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        sheenValidator = SheenValidator(this)
 
         btn_datepicker.setOnClickListener {
             val calendar: Calendar = Calendar.getInstance()
@@ -52,7 +56,22 @@ class RegisterActivity : AppCompatActivity() {
             id_type = radio.text.toString()
         }
 
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(this,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+
+        sheenValidator.registerAsRequired(et_fullname)
+        sheenValidator.registerAsRequired(et_username)
+        sheenValidator.registerAsRequired(et_password)
+        sheenValidator.registerHasMinLength(et_password,6)
+        sheenValidator.registerAsRequired(et_phone_number)
+        sheenValidator.registerAsRequired(et_email)
+        sheenValidator.registerAsEmail(et_email)
+        sheenValidator.registerAsRequired(et_address)
+        sheenValidator.registerAsRequired(et_id_number)
+
         btn_register.setOnClickListener {
+            sheenValidator.validate()
             val data : HashMap<String, String> = HashMap<String, String> ()
             val fullname = et_fullname.text.toString()
             val username = et_username.text.toString()

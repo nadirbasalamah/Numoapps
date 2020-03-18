@@ -3,6 +3,7 @@ package nadirbasalamah.android.com.numoapps.patient.ui.settings
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -62,8 +63,8 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
 
         userViewModel.getFoodMenuByUserId(userId)?.observe(viewLifecycleOwner, Observer { result ->
             if(result?.status == true) {
-                foodMenu.put("brekfast",result.data.breakfast.toString())
-                foodMenu.put("brekfast_time",result.data.breakfast_time.toString())
+                foodMenu.put("breakfast",result.data.breakfast.toString())
+                foodMenu.put("breakfast_time",result.data.breakfast_time.toString())
                 foodMenu.put("lunch",result.data.lunch.toString())
                 foodMenu.put("lunch_time",result.data.lunch_time.toString())
                 foodMenu.put("dinner",result.data.dinner.toString())
@@ -99,9 +100,9 @@ class ReminderSettingFragment : PreferenceFragmentCompat(),
                 foodScheduleReminderPreference.isChecked = sharedPreference.getBoolean(FOOD_SCHEDULE_REMINDER, false)
                 isFoodScheduleChecked = sharedPreference.getBoolean(FOOD_SCHEDULE_REMINDER, false)
 
-                val breakfast = resources.getString(R.string.breakfast_notif) + foodMenu["breakfast"]
-                val lunch = resources.getString(R.string.lunch_notif) + foodMenu["lunch"]
-                val dinner = resources.getString(R.string.dinner_notif) + foodMenu["dinner"]
+                val breakfast = resources.getString(R.string.breakfast_notif) + " " + foodMenu["breakfast"]
+                val lunch = resources.getString(R.string.lunch_notif) + " " + foodMenu["lunch"]
+                val dinner = resources.getString(R.string.dinner_notif) + " " + foodMenu["dinner"]
 
                 alarmReceiver.setFoodMenuAlarm(context,AlarmReceiver.TYPE_FOOD_SCHEDULE,currentDate,foodMenu["breakfast_time"].toString(),breakfast)
                 alarmReceiver.setFoodMenuAlarm(context,AlarmReceiver.TYPE_FOOD_SCHEDULE,currentDate,foodMenu["lunch_time"].toString(),lunch)

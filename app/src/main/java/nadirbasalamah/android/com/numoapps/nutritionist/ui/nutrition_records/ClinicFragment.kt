@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_clinic.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -81,13 +82,27 @@ class ClinicFragment : Fragment() {
             data.put("diagnosa_dahulu",diagnosa_dahulu)
             data.put("diagnosa_skrg",diagnosa_skrg)
 
-            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
-            nutritionistViewModel.setContext(context)
-            nutritionistViewModel.updateClinic(data)?.observe(viewLifecycleOwner, Observer {result ->
-                if(result?.status == true) {
-                    Toast.makeText(context,"Perekaman data klinik berhasil", Toast.LENGTH_SHORT).show()
+            when {
+                tensi.isEmpty() -> et_tensi.error = "Harap isi bidang ini!"
+                rr.isEmpty() -> et_rr.error = "Harap isi bidang ini!"
+                suhu.isEmpty() -> et_suhu.error = "Harap isi bidang ini!"
+                data_lain.isEmpty() -> et_data_lain.error = "Harap isi bidang ini!"
+                oedema.isEmpty() -> et_oedema.error = "Harap isi bidang ini!"
+                aktivitas.isEmpty() -> et_aktivitas.error = "Harap isi bidang ini!"
+                durasi_olahraga.isEmpty() -> et_durasi_olahraga.error = "Harap isi bidang ini!"
+                jenis_olahraga.isEmpty() -> et_jenis_olahraga.error = "Harap isi bidang ini!"
+                diagnosa_dahulu.isEmpty() -> et_diagnosa_dahulu.error = "Harap isi bidang ini!"
+                diagnosa_skrg.isEmpty() -> et_diagnosa_sekarang.error = "Harap isi bidang ini!"
+                else -> {
+                    nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+                    nutritionistViewModel.setContext(context)
+                    nutritionistViewModel.updateClinic(data)?.observe(viewLifecycleOwner, Observer {result ->
+                        if(result?.status == true) {
+                            Toast.makeText(context,"Perekaman data klinik berhasil", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
-            })
+            }
         }
     }
 }

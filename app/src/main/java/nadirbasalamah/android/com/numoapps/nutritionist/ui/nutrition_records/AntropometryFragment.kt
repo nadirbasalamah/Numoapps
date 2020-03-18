@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_antropometry.*
 
 import nadirbasalamah.android.com.numoapps.R
@@ -75,13 +76,25 @@ class AntropometryFragment : Fragment() {
             data.put("muscle",muscle)
             data.put("body_age",body_age)
 
-            nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
-            nutritionistViewModel.setContext(context)
-            nutritionistViewModel.updateAntropometry(data)?.observe(viewLifecycleOwner, Observer {result ->
-                if(result?.status == true) {
-                    Toast.makeText(context,"Perekaman data antropometri berhasil",Toast.LENGTH_SHORT).show()
+            when {
+                bb.isEmpty() -> et_body_weight.error = "Harap isi bidang ini!"
+                tb.isEmpty() -> et_body_height.error = "Harap isi bidang ini!"
+                lila.isEmpty() -> et_head_circle.error = "Harap isi bidang ini!"
+                bbi.isEmpty() -> et_body_weight_index.error = "Harap isi bidang ini!"
+                fat.isEmpty() -> et_fat.error = "Harap isi bidang ini!"
+                visceral_fat.isEmpty() -> et_visceral_fat.error = "Harap isi bidang ini!"
+                muscle.isEmpty() -> et_muscle.error = "Harap isi bidang ini!"
+                body_age.isEmpty() -> et_body_age.error = "Harap isi bidang ini!"
+                else -> {
+                    nutritionistViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NutritionistViewModel::class.java)
+                    nutritionistViewModel.setContext(context)
+                    nutritionistViewModel.updateAntropometry(data)?.observe(viewLifecycleOwner, Observer {result ->
+                        if(result?.status == true) {
+                            Toast.makeText(context,"Perekaman data antropometri berhasil",Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
-            })
+            }
         }
     }
 }

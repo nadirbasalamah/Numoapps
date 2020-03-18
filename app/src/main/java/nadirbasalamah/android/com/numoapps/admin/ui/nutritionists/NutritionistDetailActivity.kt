@@ -23,13 +23,20 @@ class NutritionistDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nutritionist_detail)
 
         nutritionist = intent?.getParcelableExtra(EXTRA_NUTRITIONIST) as Nutritionist
-        tv_nut_detail_fullname.text = nutritionist.fullname
-        tv_nut_detail_birthdate.text = nutritionist.birthdate
-        tv_nut_detail_gender.text = nutritionist.gender
-        tv_nut_detail_phone_number.text = nutritionist.phone_number
-        tv_nut_detail_email.text = nutritionist.email
-        tv_nut_detail_address.text = nutritionist.address
-        tv_nut_detail_nip.text = nutritionist.nip
+
+        adminViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(AdminViewModel::class.java)
+        adminViewModel.setContext(applicationContext)
+        adminViewModel.getNutritionistById(nutritionist.id)?.observe(this, Observer {result ->
+            if(result?.status == true) {
+                tv_nut_detail_fullname.text = result.data.fullname
+                tv_nut_detail_birthdate.text = result.data.birthdate
+                tv_nut_detail_gender.text = result.data.gender
+                tv_nut_detail_phone_number.text = result.data.phone_number
+                tv_nut_detail_email.text = result.data.email
+                tv_nut_detail_address.text = result.data.address
+                tv_nut_detail_nip.text = result.data.nip
+            }
+        })
 
         btn_to_edit_nutritionist.setOnClickListener {
             val intent = Intent(this,EditNutritionistActivity::class.java)

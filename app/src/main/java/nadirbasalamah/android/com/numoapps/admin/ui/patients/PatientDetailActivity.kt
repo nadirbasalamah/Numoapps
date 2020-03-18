@@ -23,20 +23,25 @@ class PatientDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_detail)
         patient = intent?.getParcelableExtra(EXTRA_PATIENT) as Patient
-
-        tv_detail_rm_number.text = patient.rm_number
-        tv_detail_rm_nut_number.text = patient.rmgizi_number
-        tv_detail_visitdate.text = patient.visitdate
-        tv_detail_referral.text = patient.referral
-        tv_detail_fullname.text = patient.fullname
-        tv_detail_age.text = patient.age.toString()
-        tv_detail_gender.text = patient.gender
-        tv_detail_address.text = patient.address
-        tv_detail_phone_number.text = patient.phone_number
-        tv_detail_birthdate.text = patient.birthdate
-        tv_detail_edu.text = patient.education
-        tv_detail_job.text = patient.job
-        tv_detail_religion.text = patient.religion
+        adminViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(AdminViewModel::class.java)
+        adminViewModel.setContext(applicationContext)
+        adminViewModel.getPatientById(patient.id)?.observe(this, Observer { result ->
+            if (result?.status == true) {
+                tv_detail_rm_number.text = result.data.rm_number
+                tv_detail_rm_nut_number.text = result.data.rmgizi_number
+                tv_detail_visitdate.text = result.data.visitdate
+                tv_detail_referral.text = result.data.referral
+                tv_detail_fullname.text = result.data.fullname
+                tv_detail_age.text = result.data.age.toString()
+                tv_detail_gender.text = result.data.gender
+                tv_detail_address.text = result.data.address
+                tv_detail_phone_number.text = result.data.phone_number
+                tv_detail_birthdate.text = result.data.birthdate
+                tv_detail_edu.text = result.data.education
+                tv_detail_job.text = result.data.job
+                tv_detail_religion.text = result.data.religion
+            }
+        })
 
         btn_to_edit_patient.setOnClickListener {
             val intent = Intent(this,EditPatientActivity::class.java)

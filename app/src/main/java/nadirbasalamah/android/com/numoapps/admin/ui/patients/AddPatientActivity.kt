@@ -4,8 +4,10 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.viewmodel.AdminViewModel
@@ -19,10 +21,12 @@ class AddPatientActivity : AppCompatActivity() {
     private var gender: String = ""
     private var visitdate: String = ""
     private lateinit var adminViewModel: AdminViewModel
+    private lateinit var sheenValidator: SheenValidator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
+        sheenValidator = SheenValidator(this)
 
         btn_birthdate.setOnClickListener {
             val calendar: Calendar = Calendar.getInstance()
@@ -48,7 +52,22 @@ class AddPatientActivity : AppCompatActivity() {
             gender = radio.text.toString()
         }
 
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(this,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+
+        sheenValidator.registerAsRequired(et_rm_number)
+        sheenValidator.registerAsRequired(et_rmnut_number)
+        sheenValidator.registerAsRequired(et_referral)
+        sheenValidator.registerAsRequired(et_patient_fullname)
+        sheenValidator.registerAsRequired(et_patient_address)
+        sheenValidator.registerAsRequired(et_patient_phone_number)
+        sheenValidator.registerAsRequired(et_patient_edu)
+        sheenValidator.registerAsRequired(et_patient_job)
+        sheenValidator.registerAsRequired(et_patient_religion)
+
         btn_patient_save.setOnClickListener {
+            sheenValidator.validate()
             val data : HashMap<String, String> = HashMap<String, String> ()
             val rm_number = et_rm_number.text.toString()
             val rmgizi_number = et_rmnut_number.text.toString()

@@ -15,10 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".nutritionist.ui.settings.NutChangePasswordActivity"></activity>
+        <activity android:name=".nutritionist.ui.settings.NutEditProfileActivity" />
+
         <receiver
             android:name=".util.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity android:name=".patient.ui.home.SendMessageActivity">
             <intent-filter>

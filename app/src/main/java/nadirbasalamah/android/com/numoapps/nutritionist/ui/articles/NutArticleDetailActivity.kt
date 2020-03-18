@@ -25,10 +25,17 @@ class NutArticleDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nut_article_detail)
 
         article = intent.getParcelableExtra(EXTRA_NUT_ARTICLE) as Article
-        tv_article_detail_title.text = article.title
-        tv_article_writer.text = article.author
-        tv_article_content.text = article.description
-        tv_source.text = article.source
+        articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ArticleViewModel::class.java)
+        articleViewModel.setContext(applicationContext)
+        articleViewModel.getArticleById(article.id)?.observe(this, Observer {result ->
+            if(result?.status == true) {
+                tv_article_detail_title.text = result.data.title
+                tv_article_writer.text = result.data.author
+                tv_article_content.text = result.data.description
+                tv_source.text = result.data.source
+            }
+        })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

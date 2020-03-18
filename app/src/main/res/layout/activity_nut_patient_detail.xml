@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".nutritionist.ui.nutrition_records.PatientDetailActivity">
+
     <TextView
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:id="@+id/tv_rm_number_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:text="@string/rm_number_hint"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

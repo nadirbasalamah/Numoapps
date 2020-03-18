@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -21,8 +22,11 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
     private var patientId: Int = 0
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var patientData: SharedPreferences
+    private lateinit var patientName: TextView
+    private var patientSampleName: String? = ""
     companion object {
         const val PATIENT_ID = "PATIENT_ID"
+        const val PATIENT_NAME = "PATIENT_NAME"
         private lateinit var appContext: Context
         fun getAppContext(): Context {
             return appContext
@@ -34,6 +38,7 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_nutrition_record)
 
         patientId = intent.getIntExtra(PATIENT_ID,0)
+        patientSampleName = intent.getStringExtra(PATIENT_NAME)
 
         appContext = applicationContext
         patientData = appContext.getSharedPreferences("Patient_Data", MODE_PRIVATE)
@@ -46,6 +51,9 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.vnut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.vnut_nav_view)
         val navController = findNavController(R.id.vnut_nav_host_fragment)
+
+        patientName = navView.getHeaderView(0).findViewById(R.id.tv_patient_sample_name)
+        patientName.text = patientSampleName
 
         navController.setGraph(R.navigation.view_nutrecord_navigation)
 

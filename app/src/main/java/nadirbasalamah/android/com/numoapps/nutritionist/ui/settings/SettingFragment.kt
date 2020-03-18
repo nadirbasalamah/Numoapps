@@ -23,6 +23,10 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        cv_edit_profile.setOnClickListener {
+            val intent = Intent(context,NutEditProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         cv_logout.setOnClickListener {
             Logout.logout()

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import id.rizmaulana.sheenvalidator.lib.SheenValidator
 import kotlinx.android.synthetic.main.fragment_add_food_menu.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.nutritionist.ui.nutrition_records.AddNutritionRecordActivity
@@ -25,8 +26,13 @@ import kotlin.collections.HashMap
  */
 class AddFoodMenuFragment : Fragment() {
     private lateinit var nutritionistViewModel: NutritionistViewModel
-    private var hour: Int = 0
-    private var minute: Int = 0
+    private lateinit var sheenValidator: SheenValidator
+    private var breakfastHour: Int = 0
+    private var breakfastMinute: Int = 0
+    private var lunchHour: Int = 0
+    private var lunchMinute: Int = 0
+    private var dinnerHour: Int = 0
+    private var dinnerMinute: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,23 +57,39 @@ class AddFoodMenuFragment : Fragment() {
                 if(result?.status == true) {
                     et_breakfast.setText(result.data.breakfast)
                     tv_breakfast_time.setText(result.data.breakfast_time)
+                    val btime = splitTime(result.data.breakfast_time.toString())
+                    breakfastHour = btime[0]
+                    breakfastMinute = btime[1]
                     et_lunch.setText(result.data.lunch)
                     tv_lunch_time.setText(result.data.lunch_time)
+                    val ltime = splitTime(result.data.lunch_time.toString())
+                    lunchHour = ltime[0]
+                    lunchMinute = ltime[1]
                     et_dinner.setText(result.data.dinner)
                     tv_dinner_time.setText(result.data.dinner_time)
+                    val dtime = splitTime(result.data.dinner_time.toString())
+                    dinnerHour = dtime[0]
+                    dinnerMinute = dtime[1]
+
                 }
             })
-        }
+        } else {
+            val calendar: Calendar = Calendar.getInstance()
+            breakfastHour = calendar.get(Calendar.HOUR_OF_DAY)
+            breakfastMinute = calendar.get(Calendar.MINUTE)
 
-        val calendar: Calendar = Calendar.getInstance()
-        hour = calendar.get(Calendar.HOUR_OF_DAY)
-        minute = calendar.get(Calendar.MINUTE)
+            lunchHour = calendar.get(Calendar.HOUR_OF_DAY)
+            lunchMinute = calendar.get(Calendar.MINUTE)
+
+            dinnerHour = calendar.get(Calendar.HOUR_OF_DAY)
+            dinnerMinute = calendar.get(Calendar.MINUTE)
+        }
 
         btn_choose_breakfast_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
                 context, OnTimeSetListener { _, hourOfDay, minute -> tv_breakfast_time.setText("$hourOfDay:$minute") },
-                hour,
-                minute,
+                breakfastHour,
+                breakfastMinute,
                 true
             )
             timePickerDialog.show()
@@ -76,8 +98,8 @@ class AddFoodMenuFragment : Fragment() {
         btn_choose_lunch_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
                 context, OnTimeSetListener { _, hourOfDay, minute -> tv_lunch_time.setText("$hourOfDay:$minute") },
-                hour,
-                minute,
+                lunchHour,
+                lunchMinute,
                 true
             )
             timePickerDialog.show()
@@ -86,15 +108,25 @@ class AddFoodMenuFragment : Fragment() {
         btn_choose_dinner_time.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
                 context, OnTimeSetListener { _, hourOfDay, minute -> tv_dinner_time.setText("$hourOfDay:$minute") },
-                hour,
-                minute,
+                dinnerHour,
+                dinnerMinute,
                 true
             )
             timePickerDialog.show()
         }
+        sheenValidator = SheenValidator(appContext)
+
+        sheenValidator.setOnValidatorListener {
+            Toast.makeText(context,"Validasi sukses!",Toast.LENGTH_SHORT).show()
+        }
+
+        sheenValidator.registerAsRequired(et_breakfast)
+        sheenValidator.registerAsRequired(et_lunch)
+        sheenValidator.registerAsRequired(et_dinner)
 
         btn_foodmenu_save.setOnClickListener {
-            var data: HashMap<String, String> = HashMap()
+            sheenValidator.validate()
+            val data: HashMap<String, String> = HashMap()
             val breakfast = et_breakfast.text.toString()
             val breakfast_time = tv_breakfast_time.text.toString()
             val lunch = et_lunch.text.toString()
@@ -126,5 +158,11 @@ class AddFoodMenuFragment : Fragment() {
                 })
             }
         }
+    }
+
+    private fun splitTime(time: String): Array<Int> {
+        val timeArray = time.split(":").toTypedArray()
+        val result = arrayOf<Int>(Integer.parseInt(timeArray[0]),Integer.parseInt(timeArray[1]))
+        return result
     }
 }
