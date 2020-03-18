@@ -37,13 +37,18 @@ class NutritionistListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_nutritionistlist.setHasFixedSize(true)
-        showNutritionistList()
+
         sv_nutritionistlist.setOnQueryTextListener(this)
 
         fab_add_nutritionist.setOnClickListener {
             val intent = Intent(context,AddNutritionistActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showNutritionistList()
     }
 
     private fun showNutritionistList() {

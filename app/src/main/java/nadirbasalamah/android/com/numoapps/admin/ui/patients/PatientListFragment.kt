@@ -36,13 +36,18 @@ class PatientListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_patientlist.setHasFixedSize(true)
-        showPatientList()
+
         sv_patientlist.setOnQueryTextListener(this)
 
         fab_add_patient.setOnClickListener{
             val intent = Intent(context,AddPatientActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showPatientList()
     }
 
     private fun showPatientList() {

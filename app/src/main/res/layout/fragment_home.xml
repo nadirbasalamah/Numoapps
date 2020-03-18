@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -304,7 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/energy_gram_sample"
+                android:text="@string/number_sample"
                 app:layout_constraintStart_toEndOf="@+id/tv_carbo_percent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_energy_unit" />
 
@@ -344,7 +343,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/energy_gram_sample"
+                android:text="@string/number_sample"
                 app:layout_constraintStart_toEndOf="@+id/tv_protein_percent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_carbo_gram" />
 
@@ -391,10 +390,37 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/energy_gram_sample"
+                android:text="@string/number_sample"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_fat_percent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_protein_gram" />
+
+            <TextView
+                android:id="@+id/tv_carbo_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/gram_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_carbo_gram"
+                app:layout_constraintTop_toTopOf="@+id/tv_carbo_gram" />
+
+            <TextView
+                android:id="@+id/tv_protein_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/gram_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_protein_gram"
+                app:layout_constraintTop_toTopOf="@+id/tv_protein_gram" />
+
+            <TextView
+                android:id="@+id/tv_fat_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/gram_unit"
+                app:layout_constraintStart_toEndOf="@+id/tv_fat_gram"
+                app:layout_constraintTop_toTopOf="@+id/tv_fat_gram" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -462,6 +488,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_chat_white_24dp" />

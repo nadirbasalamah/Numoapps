@@ -36,8 +36,13 @@ class GuideListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_guides.setHasFixedSize(true)
-        showGuideList()
+
         sv_guides.setOnQueryTextListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showGuideList()
     }
 
     private fun showGuideList() {

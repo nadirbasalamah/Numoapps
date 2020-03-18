@@ -36,13 +36,18 @@ class NutGuideListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_nut_guidelist.setHasFixedSize(true)
-        showGuideList()
+
         sv_nut_guidelist.setOnQueryTextListener(this)
         fab_add_guide.setOnClickListener {
             val intent = Intent(context,AddArticleActivity::class.java)
             intent.putExtra(AddArticleActivity.ARTICLE_TYPE,"guide")
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showGuideList()
     }
 
     private fun showGuideList() {

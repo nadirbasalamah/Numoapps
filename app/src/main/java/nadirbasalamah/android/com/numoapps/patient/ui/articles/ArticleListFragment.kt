@@ -36,8 +36,13 @@ class ArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_articles.setHasFixedSize(true)
-        showArticleList()
+
         sv_articles.setOnQueryTextListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showArticleList()
     }
 
     private fun showArticleList() {

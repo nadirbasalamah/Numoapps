@@ -32,8 +32,13 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_nut_patientlist.setHasFixedSize(true)
-        showPatientList()
+
         sv_nut_patientlist.setOnQueryTextListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showPatientList()
     }
 
     private fun showPatientList() {

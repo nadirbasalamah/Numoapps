@@ -36,13 +36,18 @@ class NutArticleListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_nut_articlelist.setHasFixedSize(true)
-        showArticleList()
+
         sv_nut_articlelist.setOnQueryTextListener(this)
         fab_add_article.setOnClickListener {
             val intent = Intent(context,AddArticleActivity::class.java)
             intent.putExtra(AddArticleActivity.ARTICLE_TYPE,"article")
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showArticleList()
     }
 
     private fun showArticleList() {
