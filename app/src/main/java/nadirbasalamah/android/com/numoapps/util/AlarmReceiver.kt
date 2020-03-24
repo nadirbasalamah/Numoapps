@@ -9,19 +9,11 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.jakewharton.threetenabp.AndroidThreeTen
 import nadirbasalamah.android.com.numoapps.R
-import nadirbasalamah.android.com.numoapps.model.response.FoodMenuResponse
-import nadirbasalamah.android.com.numoapps.model.response.NutritionRecordResponse
-import org.json.JSONObject
-import org.threeten.bp.LocalDate
-import retrofit2.Call
-import java.lang.Exception
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -63,7 +55,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, Integer.parseInt(dateArray[2]))
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]))
+        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1)
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[0]))
         calendar.set(Calendar.HOUR_OF_DAY, 7)
         calendar.set(Calendar.MINUTE, 0)
@@ -115,7 +107,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, Integer.parseInt(dateArray[0]))
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]))
+        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1)
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]))
 
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
