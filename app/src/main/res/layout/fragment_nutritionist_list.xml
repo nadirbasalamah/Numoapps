@@ -19,13 +19,11 @@
         android:id="@+id/sv_nutritionistlist"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:iconifiedByDefault="false"
         app:layout_constraintBottom_toTopOf="@+id/rv_nutritionistlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <requestFocus />
     </SearchView>
@@ -34,13 +32,12 @@
         android:id="@+id/rv_nutritionistlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@id/sv_nutritionistlist" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_nutritionist"
         android:layout_width="wrap_content"
