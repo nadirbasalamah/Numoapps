@@ -9,7 +9,7 @@
         android:id="@+id/nut_navigation_home"
         android:name="nadirbasalamah.android.com.numoapps.nutritionist.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_nut_home" />
+        tools:layout="@layout/fragment_nut_home2" />
 
     <fragment
         android:id="@+id/nut_navigation_articles"

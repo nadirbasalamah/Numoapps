@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_patient_detail.*
 import nadirbasalamah.android.com.numoapps.R
 import nadirbasalamah.android.com.numoapps.model.entity.Patient
 import nadirbasalamah.android.com.numoapps.viewmodel.AdminViewModel
+import java.util.*
 
 class PatientDetailActivity : AppCompatActivity() {
     private lateinit var patient: Patient
@@ -47,6 +48,37 @@ class PatientDetailActivity : AppCompatActivity() {
             val intent = Intent(this,EditPatientActivity::class.java)
             intent.putExtra(EditPatientActivity.EXTRA_PATIENT_DATA,patient)
             startActivity(intent)
+        }
+
+        btn_register_patient.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.register_confirmation)
+                .setPositiveButton(R.string.confirmation_yes
+                ) { dialog, _ ->
+                    adminViewModel =
+                        ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+                            AdminViewModel::class.java
+                        )
+                    adminViewModel.setContext(applicationContext)
+                    val data : HashMap<String, String> = HashMap<String, String> ()
+                    val calendar: Calendar = Calendar.getInstance()
+                    val visitdate = calendar.get(Calendar.DAY_OF_MONTH).toString() + "-" + calendar.get(Calendar.MONTH).toString() + "-" + calendar.get(Calendar.YEAR)
+                    data.put("id",patient.id.toString())
+                    data.put("visitdate",visitdate)
+                    adminViewModel.registerPatient(data)?.observe(this, Observer { result ->
+                        if (result?.status == true) {
+                            finish()
+                        }
+                    })
+                    dialog.dismiss()
+                }
+                .setNegativeButton(R.string.confirmation_no
+                ) { dialog, _ ->
+                    dialog.cancel()
+                }
+            // Create the AlertDialog object and return it
+            builder.create()
+            builder.show()
         }
 
         btn_delete_patient.setOnClickListener {

@@ -7,6 +7,11 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/admin_navigation_patientvisit"
+        android:icon="@drawable/ic_account_circle_white_24dp"
+        android:title="@string/patient_list_title" />
+
+    <item
         android:id="@+id/admin_navigation_settings"
         android:icon="@drawable/ic_settings_applications_white_24dp"
         android:title="@string/title_settings" />

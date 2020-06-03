@@ -304,26 +304,39 @@
 
     <Button
         android:textColor="#FFFFFF"
-        android:background="@color/colorAccent"
-        android:id="@+id/btn_to_edit_patient"
-        android:layout_width="wrap_content"
+        android:background="@color/colorPrimary"
+        android:id="@+id/btn_register_patient"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/edit_keyword"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/register_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_religion" />
 
     <Button
-        android:background="@android:color/holo_red_dark"
-        android:textColor="#FFFFFF"
-        android:id="@+id/btn_delete_patient"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_to_edit_patient"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorAccent"
+        android:text="@string/edit_keyword"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register_patient" />
+
+    <Button
+        android:id="@+id/btn_delete_patient"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/holo_red_dark"
         android:text="@string/delete_keyword"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_to_edit_patient"
-        app:layout_constraintTop_toTopOf="@+id/btn_to_edit_patient" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_register_patient" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-    val BASE_URL: String = "http://192.168.1.12:8080/klinikapps-api/public/"
+    val BASE_URL: String = "http://192.168.1.84:8080/klinikapps-api/public/"
     private var retrofit: Retrofit? = null
     fun getClient(): Retrofit? {
         if (retrofit == null) {

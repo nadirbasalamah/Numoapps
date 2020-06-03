@@ -29,6 +29,16 @@ interface AdminApiInterface {
     ): Call<PatientResponse?>?
 
     @FormUrlEncoded
+    @POST("registerPatient/{id}")
+    fun postRegisterPatient(
+        @Path("id") id: Int?,
+        @Field("visitdate") visitdate: String?
+    ): Call<PatientResponse?>?
+
+    @GET("getPatientByVisitDate/{visitdate}")
+    fun getPatientByVisitDate(@Path("visitdate") visitdate: String?): Call<PatientsResponse?>?
+
+    @FormUrlEncoded
     @POST("addPatient")
     fun postAddPatient(
         @Field("rm_number") rm_number: String?,

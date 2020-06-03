@@ -18,8 +18,10 @@ class AdminViewModel :  ViewModel() {
     private var getPatientById: Call<PatientResponse?>? = null
     private var postDeletePatient: Call<PatientResponse?>? = null
     private var postEditPatient: Call<PatientResponse?>? = null
+    private var postRegisterPatient: Call<PatientResponse?>? = null
     private var postAddPatient: Call<PatientResponse?>? = null
     private var getPatientByName: Call<PatientsResponse?>? = null
+    private var getPatientByVisitDate: Call<PatientsResponse?>? = null
 
     private var getAllNutritionists: Call<NutritionistsResponse?>? = null
     private var getNutritionistById: Call<NutritionistResponse?>? = null
@@ -172,6 +174,42 @@ class AdminViewModel :  ViewModel() {
         return result
     }
 
+    internal fun registerPatient(data: HashMap<String, String>): MutableLiveData<PatientResponse?>? {
+        adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
+        var requestResult: PatientResponse?
+        val result: MutableLiveData<PatientResponse?>? = MutableLiveData()
+        postRegisterPatient = adminApiInterface?.postRegisterPatient(
+            data["id"]?.toInt(),
+            data["visitdate"]
+        )
+        postRegisterPatient?.enqueue(
+            object : Callback<PatientResponse?> {
+                override fun onResponse(
+                    call: Call<PatientResponse?>?,
+                    response: Response<PatientResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data pasien berhasil terdaftar!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Pendaftaran pasien gagal!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<PatientResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
     internal fun addPatient(data: HashMap<String, String>): MutableLiveData<PatientResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
         var requestResult: PatientResponse?
@@ -251,6 +289,41 @@ class AdminViewModel :  ViewModel() {
         )
         return result
     }
+
+    internal fun getPatientByVisitDate(data: String): MutableLiveData<PatientsResponse?>? {
+        adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
+        var requestResult: PatientsResponse?
+        val result: MutableLiveData<PatientsResponse?>? = MutableLiveData()
+        getPatientByVisitDate = adminApiInterface?.getPatientByVisitDate(data)
+        getPatientByVisitDate?.enqueue(
+            object : Callback<PatientsResponse?> {
+                override fun onResponse(
+                    call: Call<PatientsResponse?>?,
+                    response: Response<PatientsResponse?>?
+                ) {
+                    val test = response?.body()
+                    requestResult = test
+                    if(requestResult?.status == true) {
+                        Toast.makeText(context, "Data pasien berhasil ditemukan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Data pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
+                    result?.value = requestResult
+                }
+
+                override fun onFailure(
+                    call: Call<PatientsResponse?>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR:",t.toString())
+                }
+            }
+        )
+        return result
+    }
+
+
 
     internal fun getAllNutritionists(): MutableLiveData<NutritionistsResponse?>? {
         adminApiInterface = ApiClient.getClient()?.create(AdminApiInterface::class.java)
