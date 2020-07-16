@@ -1,5 +1,8 @@
 package nadirbasalamah.android.com.numoapps.viewmodel
 
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import nadirbasalamah.android.com.numoapps.patient.ui.home.HomeFragment
 import nadirbasalamah.android.com.numoapps.util.UserApiInterface
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -8,13 +11,14 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
+import org.mockito.Mockito.mock
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.HttpURLConnection
 
 class UserViewModelTest {
     private var mockWebServer = MockWebServer()
     private lateinit var userApiInterface: UserApiInterface
+    private lateinit var userViewModel: UserViewModel
 
 
     @Before

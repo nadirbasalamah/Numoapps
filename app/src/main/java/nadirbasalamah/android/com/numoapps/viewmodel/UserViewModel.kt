@@ -262,11 +262,6 @@ class UserViewModel : ViewModel() {
                 ) {
                     var test = response?.body()
                     requestResult = test
-                    if(requestResult?.status == true) {
-                        Toast.makeText(context, "Data gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, "Data gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
-                    }
                     result?.value = requestResult
                 }
 
