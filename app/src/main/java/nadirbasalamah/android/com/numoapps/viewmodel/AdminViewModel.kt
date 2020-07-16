@@ -49,11 +49,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -82,11 +84,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -115,11 +119,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil dihapus!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Penghapusan data pasien gagal, pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -155,11 +161,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data pasien gagal, pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -191,11 +199,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil terdaftar!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Pendaftaran pasien gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -238,11 +248,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Penambahan data pasien gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -271,11 +283,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -304,11 +318,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -339,11 +355,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -372,11 +390,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -405,11 +425,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil dihapus!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Penghapusan data ahli gizi gagal, data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -444,11 +466,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data ahli gizi gagal, Data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -481,11 +505,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data password ahli gizi berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data password ahli gizi gagal, Data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -525,11 +551,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Penambahan data ahli gizi gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -558,11 +586,13 @@ class AdminViewModel :  ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data ahli gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(

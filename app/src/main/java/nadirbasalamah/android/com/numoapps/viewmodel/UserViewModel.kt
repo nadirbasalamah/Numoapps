@@ -55,11 +55,12 @@ class UserViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Register Berhasil!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Register Gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -88,11 +89,12 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Login Berhasil!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Login gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -127,11 +129,12 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data profil berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data profil gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -160,11 +163,12 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan password gagal, username tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -197,11 +201,12 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan password gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -230,11 +235,12 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pengguna berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pengguna tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -297,11 +303,13 @@ class UserViewModel : ViewModel() {
                     var test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(

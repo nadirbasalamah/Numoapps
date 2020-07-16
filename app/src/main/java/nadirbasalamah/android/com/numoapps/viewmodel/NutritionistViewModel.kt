@@ -45,11 +45,13 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data pasien berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -383,11 +385,13 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
@@ -416,11 +420,13 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan berhasil ditemukan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan tidak ditemukan!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
+
                 }
 
                 override fun onFailure(
