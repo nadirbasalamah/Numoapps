@@ -88,11 +88,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data antropometri berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -135,11 +136,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data biokimia berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -179,11 +181,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data klinik berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -229,11 +232,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data dietary berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -265,11 +269,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data diagnosis berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -305,11 +310,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data interenvensi berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -343,11 +349,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data monitoring berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -450,11 +457,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Penambahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(
@@ -491,11 +499,12 @@ class NutritionistViewModel : ViewModel() {
                     val test = response?.body()
                     requestResult = test
                     if(requestResult?.status == true) {
+                        result?.value = requestResult
                         Toast.makeText(context, "Data menu makanan berhasil diubah!", Toast.LENGTH_SHORT).show()
                     } else {
+                        result?.value = requestResult
                         Toast.makeText(context, "Perubahan data gagal!", Toast.LENGTH_SHORT).show()
                     }
-                    result?.value = requestResult
                 }
 
                 override fun onFailure(

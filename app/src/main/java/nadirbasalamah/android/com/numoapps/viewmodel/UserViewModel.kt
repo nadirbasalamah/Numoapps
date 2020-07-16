@@ -262,7 +262,13 @@ class UserViewModel : ViewModel() {
                 ) {
                     var test = response?.body()
                     requestResult = test
-                    result?.value = requestResult
+                    if(requestResult?.status == true) {
+                        result?.value = requestResult
+                        Toast.makeText(context, "Data gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        result?.value = requestResult
+                        Toast.makeText(context, "Data gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 override fun onFailure(

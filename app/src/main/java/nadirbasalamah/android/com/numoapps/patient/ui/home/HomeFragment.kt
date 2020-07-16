@@ -52,9 +52,6 @@ class HomeFragment : Fragment() {
                 tv_fat_gram.text = result.interenvention_data.gram_lemak.toString()
                 tv_diet_type.text = result.interenvention_data.keterangan_inter
                 nutPhoneNumber = result.nutritionist_data.phone_number?.replaceFirst("0","62",true)
-                Toast.makeText(context, "Data gizi berhasil ditemukan!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Data gizi tidak ditemukan!", Toast.LENGTH_SHORT).show()
             }
         })
 
