@@ -186,4 +186,5 @@
     <string name="dinner_notif">Makan Malam Anda : </string>
     <string name="register_title">DAFTAR</string>
     <string name="patient_list_title">Daftar Pasien</string>
+    <string name="login_info">Untuk Ahli Gizi, gunakan tambahan "AG_" beserta username untuk login  (contoh: AG_username)</string>
 </resources>

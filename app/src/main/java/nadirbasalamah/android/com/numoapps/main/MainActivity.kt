@@ -1,5 +1,6 @@
 package nadirbasalamah.android.com.numoapps.main
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -32,6 +33,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appContext = applicationContext
+
+        btn_login_info.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.login_info)
+                .setPositiveButton(R.string.confirmation_yes
+                ) { dialog, _ ->
+                    dialog.dismiss()
+                }
+            // Create the AlertDialog object and return it
+            builder.create()
+            builder.show()
+        }
 
         btn_to_signup.setOnClickListener {
             val intent = Intent(applicationContext,RegisterActivity::class.java)
