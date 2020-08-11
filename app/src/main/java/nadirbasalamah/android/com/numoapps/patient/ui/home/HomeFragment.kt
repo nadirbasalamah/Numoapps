@@ -52,6 +52,8 @@ class HomeFragment : Fragment() {
                 tv_fat_gram.text = result.interenvention_data.gram_lemak.toString()
                 tv_diet_type.text = result.interenvention_data.keterangan_inter
                 nutPhoneNumber = result.nutritionist_data.phone_number?.replaceFirst("0","62",true)
+            } else {
+                fab_chat_to_whatsapp.isClickable = false
             }
         })
 
