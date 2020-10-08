@@ -20,7 +20,7 @@ class NutritionistViewModelTest {
     fun before() {
         mockWebServer.start()
         nutApiInterface = Retrofit.Builder()
-            .baseUrl(mockWebServer.url("http://192.168.1.84:8080/klinikapps-api/public/"))
+            .baseUrl(mockWebServer.url("https://klinikapps-api.net/"))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NutritionistApiInterface::class.java)

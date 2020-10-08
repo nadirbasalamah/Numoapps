@@ -46,8 +46,6 @@ class ViewNutritionRecordActivity : AppCompatActivity() {
         patientDataEdit.putInt("id_patient",patientId)
         patientDataEdit.apply()
 
-        Toast.makeText(applicationContext,"ID DARI ACTIVITY : $patientId",Toast.LENGTH_SHORT).show()
-
         val drawerLayout: DrawerLayout = findViewById(R.id.vnut_drawer_layout)
         val navView: NavigationView = findViewById(R.id.vnut_nav_view)
         val navController = findNavController(R.id.vnut_nav_host_fragment)
